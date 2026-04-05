@@ -1,10 +1,10 @@
-
 package scrapers;
 
 import Pages.PortalPage;
 import models.JobEntry;
+import models.User; // Ensure this matches your model name
 import utils.DataHandler;
-import utils.WhatsAppNotifier; // Import the new notifier
+import utils.WhatsAppNotifier;
 import org.junit.jupiter.api.Test;
 import com.microsoft.playwright.Locator;
 
@@ -15,26 +15,22 @@ public class JobScraper extends BaseTest {
 
     @Test
     void runScraper() {
-        // 1. Initialize the Portal Page (Assumes BaseTest setup)
         PortalPage portal = new PortalPage(page);
         portal.navigate();
 
-        // 2. Load the Database and setup variables
         Map<String, JobEntry> db = DataHandler.loadJobDatabase();
         List<String> currentPortalTitles = new ArrayList<>();
 
-        // 3. Get the Job Cards
         Locator cards = portal.getJobCards();
         int totalFound = cards.count();
 
-        StringBuilder newJobsBatch = new StringBuilder("🚀 *MIFOTRA NEW JOBS FOUND!*\n\n");
+        StringBuilder newJobsBatch = new StringBuilder();
         boolean hasNewJobs = false;
 
         for (int i = 0; i < totalFound; i++) {
             Locator currentCard = cards.nth(i);
             String title = portal.getJobTitle(currentCard);
 
-            // SCRAPE THE DATES
             String posted = currentCard.locator("p.MuiTypography-body2").nth(0).innerText();
             String deadline = currentCard.locator("p.MuiTypography-body2").nth(1).innerText();
 
@@ -42,38 +38,42 @@ public class JobScraper extends BaseTest {
 
             if (!db.containsKey(title)) {
                 db.put(title, new JobEntry(title, "LIVE", posted, deadline));
-
                 newJobsBatch.append("📌 *").append(title).append("*\n");
-                newJobsBatch.append("📅 *Posted:* ").append(posted).append("\n");
                 newJobsBatch.append("⏳ *Deadline:* ").append(deadline).append("\n\n");
-
                 hasNewJobs = true;
             }
         }
 
-        // 4. Logic for EXPIRED jobs (Compare current portal vs database)
-        for (String savedTitle : db.keySet()) {
-            if (!currentPortalTitles.contains(savedTitle)) {
-                JobEntry job = db.get(savedTitle);
-                if (job.status.equals("LIVE")) {
-                    job.status = "EXPIRED";
-                    job.expiredAt = LocalDateTime.now().toString();
+        // Handle Expired Jobs
+        for (JobEntry job : db.values()) {
+            if (!currentPortalTitles.contains(job.title) && "LIVE".equals(job.status)) {
+                job.status = "EXPIRED";
+                job.expiredAt = LocalDateTime.now().toString();
+            }
+        }
+
+        // 5. BROADCAST TO MULTIPLE USERS
+        if (hasNewJobs) {
+            List<User> subscribers = DataHandler.loadSubscribers();
+            WhatsAppNotifier notifier = new WhatsAppNotifier();
+
+            String footer = "--------------------------\n" +
+                    "💡 *HOW TO APPLY:*\n" +
+                    "1. Open: https://recruitment.mifotra.gov.rw/\n" +
+                    "2. Search & Login to apply.";
+
+            for (User user : subscribers) {
+                if (user.active) {
+                    String personalizedMsg = "Mwaramutse " + user.name + "!\n" +
+                            "🚀 *NEW MIFOTRA JOBS FOUND*\n\n" +
+                            newJobsBatch.toString() + footer;
+
+                    notifier.sendWhatsApp(user.phone, personalizedMsg);
                 }
             }
         }
 
-        // 5. Send Batch WhatsApp
-        if (hasNewJobs) {
-            newJobsBatch.append("--------------------------\n");
-            newJobsBatch.append("💡 *HOW TO APPLY:*\n");
-            newJobsBatch.append("1. Open the portal: https://recruitment.mifotra.gov.rw/\n");
-            newJobsBatch.append("2. Search for the *Job Title* you are interested in.\n");
-            newJobsBatch.append("3. Log in to your account to apply.");
-
-            WhatsAppNotifier.sendWhatsAppAlert(newJobsBatch.toString());
-        }
-
-        // 6. Save updated database
+        DataHandler.runCleanup(db);
         DataHandler.saveJobDatabase(db);
     }
 }
