@@ -2,7 +2,7 @@ package Pages;
 
 import com.microsoft.playwright.*;
 
-public class MifotraPage {
+public class PortalPage {
     private final Page page;
 
     // Based on your screenshot, each job is wrapped in a section with an aria-labelledby
@@ -10,7 +10,7 @@ public class MifotraPage {
     // The title is inside the h3 tag
     private final String titleSelector = "h3";
 
-    public MifotraPage(Page page) {
+    public PortalPage(Page page) {
         this.page = page;
     }
 

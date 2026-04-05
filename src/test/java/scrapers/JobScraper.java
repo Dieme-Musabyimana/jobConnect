@@ -1,7 +1,7 @@
 
 package scrapers;
 
-import Pages.MifotraPage;
+import Pages.PortalPage;
 import models.JobEntry;
 import utils.DataHandler;
 import utils.WhatsAppNotifier; // Import the new notifier
@@ -16,7 +16,7 @@ public class JobScraper extends BaseTest {
     @Test
     void runScraper() {
         // 1. Initialize the Portal Page (Assumes BaseTest setup)
-        MifotraPage portal = new MifotraPage(page);
+        PortalPage portal = new PortalPage(page);
         portal.navigate();
 
         // 2. Load the Database and setup variables
