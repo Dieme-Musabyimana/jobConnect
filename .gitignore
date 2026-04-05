@@ -1,0 +1,23 @@
+# --- INTEL-LIJ SPECIFIC (Moved from .idea/.gitignore) ---
+.idea/shelf/
+.idea/workspace.xml
+.idea/httpRequests/
+# Also ignore the whole .idea folder to be safe
+.idea/
+
+# --- PROJECT SECURITY (Our New Rules) ---
+.env
+src/test/resources/*.json
+
+# --- JAVA BUILD SYSTEM ---
+target/
+*.class
+*.log
+
+# --- ADDITIONAL CLEANUP ---
+# Ignore OS-specific metadata files
+.DS_Store
+Thumbs.db
+
+# Ignore Playwright's local test-results folder
+test-results/
