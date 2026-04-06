@@ -3,47 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JobConnect Rwanda | Mifotra Alerts</title>
+    <title>JobConnect Rwanda | Mifotra Alerts & CV Builder</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.min.css">
     <style>
-        body { max-width: 600px; margin: auto; padding: 40px 20px; }
+        body { max-width: 800px; margin: auto; padding: 40px 20px; }
         .hero { text-align: center; margin-bottom: 40px; }
         .badge { background: #e1f5fe; color: #01579b; padding: 5px 10px; border-radius: 5px; font-size: 0.8em; }
+        hr { margin: 50px 0; border: 1px solid #eee; }
     </style>
 </head>
 <body>
 
-<div class="hero">
-    <h1>🚀 JobConnect</h1>
-    <p>Get instant <b>Mifotra</b> job alerts via WhatsApp.</p>
-    <span class="badge">Verified QA Tool by Dieme Musabyimana</span>
+<div id="registration-section">
+    <div class="hero">
+        <h1>🚀 JobConnect</h1>
+        <p>Get instant <b>Mifotra</b> job alerts via WhatsApp.</p>
+        <span class="badge">Verified QA Tool by Dieme Musabyimana</span>
+    </div>
+
+    <form id="registrationForm">
+        <label>Full Name</label>
+        <input type="text" name="data[name]" placeholder="e.g. Jean Pierre" required>
+
+        <label>WhatsApp Number (with +250)</label>
+        <input type="tel" name="data[phone]" placeholder="+250780000000"
+               pattern="^\+2507[2389][0-9]{7}$" title="Format: +2507xxxxxxxx" required>
+
+        <input type="hidden" name="data[active]" value="true">
+        <button type="submit" id="submitBtn">Join Alert List</button>
+    </form>
+
+    <div id="successMessage" style="display:none; text-align:center; background:#d4edda; padding:15px; border-radius:8px;">
+        <h3>✅ You're almost there!</h3>
+        <p>Final Step: Send <b>"join [your-keyword]"</b> to your Twilio number on WhatsApp to activate.</p>
+    </div>
 </div>
 
-<form id="registrationForm">
-    <label>Full Name</label>
-    <input type="text" name="data[name]" placeholder="e.g. Jean Pierre" required>
+<hr />
 
-    <label>WhatsApp Number (with +250)</label>
-    <input type="tel" name="data[phone]" placeholder="+250780000000"
-           pattern="^\+2507[2389][0-9]{7}$" title="Format: +2507xxxxxxxx" required>
-
-    <input type="hidden" name="data[active]" value="true">
-
-    <button type="submit" id="submitBtn">Join Alert List</button>
-</form>
-
-<div id="successMessage" style="display:none; text-align:center; background:#d4edda; padding:15px; border-radius:8px;">
-    <h3>✅ You're almost there!</h3>
-    <p>Final Step: Send <b>"join [your-keyword]"</b> to your Twilio number on WhatsApp to activate.</p>
-</div>
-
-<script>
+<div id="root"></div> <script>
     const form = document.getElementById('registrationForm');
-
     form.addEventListener("submit", e => {
         e.preventDefault();
         const btn = document.getElementById('submitBtn');
-
         btn.disabled = true;
         btn.innerText = "Registering...";
 
@@ -60,14 +62,11 @@
                 btn.disabled = false;
                 btn.innerText = "Join Alert List";
             }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert("Connection error. Check your internet.");
-            btn.disabled = false;
         });
     });
 </script>
+
+<script type="module" src="src/main.jsx"></script>
 
 </body>
 </html>
