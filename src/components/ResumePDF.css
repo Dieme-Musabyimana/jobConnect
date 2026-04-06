@@ -1,0 +1,220 @@
+/* src/components/ResumePDF.css */
+
+.pdf-page {
+  width: 210mm;
+  min-height: 297mm;
+  background-color: white;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #1e293b;
+}
+
+.pdf-container {
+  display: flex !important;
+  flex-direction: row !important;
+  min-height: 297mm;
+}
+
+/* 4. Fixed 2-Column Layout: Sidebar (Left 33%) */
+.pdf-sidebar {
+  flex: 0 0 33%;
+  background-color: #1e293b !important;
+  -webkit-print-color-adjust: exact !important;
+  print-color-adjust: exact !important;
+  color: white !important;
+  padding: 30mm 15mm;
+  box-sizing: border-box;
+}
+
+.sidebar-section {
+  margin-bottom: 25px;
+  page-break-inside: avoid; /* Print Integrity: prevent content from splitting */
+}
+
+.sidebar-title {
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #475569;
+  padding-bottom: 8px;
+}
+
+.sidebar-item {
+  margin-bottom: 12px;
+}
+
+/* 4. Fixed 2-Column Layout: Main Body (Right 67%) */
+.pdf-main {
+  flex: 0 0 67%;
+  padding: 20mm 15mm;
+  background-color: white;
+  box-sizing: border-box;
+}
+
+.main-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.user-name {
+  font-size: 32px;
+  font-weight: 800;
+  margin: 0;
+  color: #1e293b;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+}
+
+.user-title {
+  font-size: 16px;
+  color: #2563eb;
+  font-weight: 600;
+  margin: 5px 0 10px;
+  text-transform: uppercase;
+}
+
+.contact-info {
+  font-size: 10px;
+  color: #64748b;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* 2. Vertical Pipe Separator */
+.contact-separator {
+  color: #cbd5e1;
+  font-weight: 300;
+}
+
+.section-block {
+  margin-bottom: 25px;
+  page-break-inside: avoid; /* Print Integrity: prevent content from splitting */
+}
+
+.main-section-title {
+  font-size: 15px;
+  font-weight: 800;
+  color: #1e293b;
+  text-transform: uppercase;
+  border-left: 4px solid #2563eb;
+  padding-left: 12px;
+  margin-bottom: 15px;
+}
+
+.profile-text {
+  font-size: 11px;
+  line-height: 1.6;
+  text-align: justify;
+  color: #334155;
+}
+
+/* 4. Data Pairing: Flex-row div for Name and Year */
+.item-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 2px;
+}
+
+.item-main {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.item-date {
+  font-size: 10px;
+  color: #64748b;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.item-sub {
+  font-size: 10px;
+  color: #475569;
+  margin: 0;
+}
+
+.job-role {
+  font-size: 13px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.job-company {
+  font-size: 11px;
+  font-weight: 600;
+  color: #2563eb;
+  margin: 2px 0 8px;
+}
+
+.project-name {
+  font-size: 13px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.project-tech {
+  font-size: 10px;
+  font-weight: 600;
+  color: #2563eb;
+  margin: 2px 0 4px;
+}
+
+.project-link {
+  font-size: 10px;
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.sidebar-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-list li {
+  font-size: 11px;
+  margin-bottom: 6px;
+  color: #f1f5f9;
+}
+
+/* Print specific adjustments */
+.activity-list {
+  padding-left: 18px;
+  margin-top: 5px;
+}
+
+.activity-list li {
+  font-size: 10.5px;
+  line-height: 1.5;
+  color: #475569;
+  margin-bottom: 4px;
+}
+
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skill-pill {
+  font-size: 9px;
+  background-color: #334155;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+@media print {
+  body { margin: 0; }
+  .pdf-page { width: 210mm; height: 297mm; }
+  .pdf-sidebar { background-color: #1e293b !important; color: #f8fafc !important; -webkit-print-color-adjust: exact; }
+}

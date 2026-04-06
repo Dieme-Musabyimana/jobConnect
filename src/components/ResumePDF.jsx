@@ -1,159 +1,192 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, Fragment } from 'react';
+import './ResumePDF.css';
 
 const ResumePDF = forwardRef(({ sections }, ref) => {
-  const getSection = (type) => sections.find(s => s.type === type)?.data || [];
+  // 1. Dynamic Section Controls: Filter out invisible sections
+  const visibleSections = sections.filter(s => s.visible !== false);
 
-  const personal = sections.find(s => s.type === 'personal_info')?.data || {};
-  const profile = sections.find(s => s.type === 'profile')?.data || {};
-  const experience = getSection('experience');
-  const education = getSection('education');
-  const certifications = getSection('certifications');
-  const skills = getSection('skills');
-  const softSkills = getSection('soft_skills');
-  const languages = getSection('languages');
+  // Helper to find data for visible sections
+  const getVisibleData = (type) => visibleSections.find(s => s.type === type)?.data;
+  const getVisibleSection = (type) => visibleSections.find(s => s.type === type);
 
-  const pageStyle = `
-    @page { size: portrait; margin: 0; }
-    @media print {
-      body { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
-      .print-container { display: flex !important; flex-direction: row !important; min-height: 297mm; }
-      .section-block { page-break-inside: avoid !important; margin-bottom: 25px; }
-    }
-  `;
 
-  const sidebarTitleStyle = {
-    fontSize: '13px',
-    fontWeight: 'bold',
-    borderBottom: '1px solid #475569',
-    paddingBottom: '5px',
-    marginBottom: '15px',
-    textTransform: 'uppercase',
-    letterSpacing: '1px'
-  };
+  const personal = getVisibleData('personal_info') || {};
+  const profile = getVisibleData('profile') || {};
+  const experience = getVisibleData('experience') || [];
+  const education = getVisibleData('education') || [];
+  const certifications = getVisibleData('certifications') || [];
+  const techSkills = getVisibleData('skills') || [];
+  const softSkills = getVisibleData('soft_skills') || [];
+  const languages = getVisibleData('languages') || [];
+  const projects = getVisibleData('projects') || [];
 
-  const mainTitleStyle = {
-    fontSize: '13px',
-    fontWeight: '900',
-    color: '#1e293b',
-    textTransform: 'uppercase',
-    borderLeft: '4px solid #1e293b',
-    paddingLeft: '12px',
-    marginBottom: '15px'
+  // 3. Logic for "Add Custom Section" tool
+  const standardTypes = [
+    'personal_info', 'profile', 'experience', 'education',
+    'certifications', 'skills', 'soft_skills', 'languages', 'projects'
+  ];
+  const customSections = visibleSections.filter(s => !standardTypes.includes(s.type));
+
+  // 2. Flexible Contact & Social Headers: Render contact info with custom fields and separators
+  const renderContactInfo = () => {
+    const contactItems = [];
+    if (personal.email) contactItems.push(<span>{personal.email}</span>);
+    if (personal.phone) contactItems.push(<span>{personal.phone}</span>);
+    if (personal.address) contactItems.push(<span>{personal.address}</span>);
+
+    personal.customFields?.forEach(field => {
+      if (field.label && field.value) {
+        contactItems.push(<span key={field.label}>{field.label}: {field.value}</span>);
+      }
+    });
+
+    return contactItems.map((item, index) => (
+      <Fragment key={index}>
+        {item}
+        {index < contactItems.length - 1 && <span className="contact-separator">|</span>}
+      </Fragment>
+    ));
   };
 
   return (
-    <div ref={ref} style={{ width: '210mm', minHeight: '297mm', backgroundColor: 'white' }}>
-      <style>{pageStyle}</style>
-      <div className="print-container" style={{ display: 'flex', minHeight: '297mm' }}>
-
-        {/* SIDEBAR (33%) */}
-        <div style={{ width: '33%', backgroundColor: '#1e293b', color: 'white', padding: '40px 25px' }}>
-          <div style={{ width: '80px', height: '80px', backgroundColor: '#334155', borderRadius: '50%', margin: '0 auto 30px', border: '2px solid #475569' }}></div>
-
+    <div ref={ref} className="pdf-page">
+      <div className="pdf-container">
+        {/* 4. Fixed 2-Column Layout: Sidebar (Left 33%) */}
+        <aside className="pdf-sidebar">
           {education.length > 0 && (
-            <div style={{ marginBottom: '35px' }}>
-              <h2 style={sidebarTitleStyle}>Education</h2>
+            <section className="sidebar-section">
+              <h2 className="sidebar-title">Education</h2>
               {education.map((edu, i) => (
-                <div key={i} style={{ marginBottom: '12px' }}>
-                  <p style={{ fontSize: '9px', color: '#60a5fa', fontWeight: 'bold', margin: '0' }}>{edu.year}</p>
-                  <p style={{ fontSize: '11px', fontWeight: 'bold', margin: '2px 0', textTransform: 'uppercase' }}>{edu.degree}</p>
-                  <p style={{ fontSize: '9px', color: '#94a3b8', margin: '0' }}>{edu.school}</p>
+                <div key={i} className="sidebar-item item-block">
+                  <div className="item-row">
+                    <span className="item-main">{edu.degree || edu.school}</span>
+                    <span className="item-date">{edu.year}</span>
+                  </div>
+                  {edu.degree && <p className="item-sub">{edu.school}</p>}
                 </div>
               ))}
-            </div>
+            </section>
           )}
 
-          {skills.length > 0 && (
-            <div style={{ marginBottom: '35px' }}>
-              <h2 style={sidebarTitleStyle}>Technical Skills</h2>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '5px' }}>
-                {skills.map((skill, i) => (
-                  <span key={i} style={{ fontSize: '9px', backgroundColor: '#334155', padding: '3px 7px', borderRadius: '3px', border: '1px solid #475569' }}>
-                    {skill.name}
-                  </span>
+          {techSkills.length > 0 && (
+            <section className="sidebar-section">
+              <h2 className="sidebar-title">Technical Skills</h2>
+              <div className="skills-grid">
+                {techSkills.map((skill, i) => (
+                  <span key={i} className="skill-pill">{skill.name}</span>
                 ))}
               </div>
-            </div>
+            </section>
           )}
 
           {softSkills.length > 0 && (
-            <div style={{ marginBottom: '35px' }}>
-              <h2 style={sidebarTitleStyle}>Soft Skills</h2>
-              <ul style={{ paddingLeft: '15px', margin: '0', fontSize: '10px', color: '#cbd5e1' }}>
-                {softSkills.map((s, i) => <li key={i} style={{ marginBottom: '4px' }}>{s.name}</li>)}
+            <section className="sidebar-section">
+              <h2 className="sidebar-title">Soft Skills</h2>
+              <ul className="sidebar-list">
+                {softSkills.map((skill, i) => (
+                  <li key={i}>{skill.name}</li>
+                ))}
               </ul>
-            </div>
+            </section>
           )}
 
           {languages.length > 0 && (
-            <div>
-              <h2 style={sidebarTitleStyle}>Languages</h2>
+            <section className="sidebar-section">
+              <h2 className="sidebar-title">Languages</h2>
               {languages.map((lang, i) => (
-                <div key={i} style={{ marginBottom: '8px' }}>
-                  <p style={{ fontSize: '10px', fontWeight: 'bold', margin: '0' }}>{lang.name}</p>
-                  {lang.level && <p style={{ fontSize: '9px', color: '#94a3b8', margin: '0' }}>{lang.level}</p>}
+                <div key={i} className="sidebar-item">
+                  <div className="item-row">
+                    <span className="item-main">{lang.name}</span>
+                    <span className="item-date">{lang.level}</span>
+                  </div>
                 </div>
               ))}
-            </div>
+            </section>
           )}
-        </div>
+        </aside>
 
-        {/* MAIN CONTENT (67%) */}
-        <div style={{ width: '67%', padding: '45px', display: 'flex', flexDirection: 'column', gap: '30px' }}>
-          <header style={{ border: '4px solid #1e293b', padding: '20px', textAlign: 'center' }}>
-            <h1 style={{ fontSize: '32px', fontWeight: '900', textTransform: 'uppercase', margin: '0', color: '#1e293b' }}>{personal.name || 'NAME'}</h1>
-            <p style={{ fontSize: '16px', color: '#64748b', textTransform: 'uppercase', letterSpacing: '4px', margin: '5px 0 0' }}>{personal.title || 'TITLE'}</p>
-            {(personal.address || personal.email) && (
-              <p style={{ fontSize: '9px', color: '#64748b', marginTop: '8px', letterSpacing: '1px' }}>
-                {personal.address} {personal.email && ` | ${personal.email}`} {personal.phone && ` | ${personal.phone}`}
-              </p>
-            )}
+        {/* 4. Fixed 2-Column Layout: Main Body (Right 67%) */}
+        <main className="pdf-main">
+          <header className="main-header">
+            <h1 className="user-name">{personal.name || 'YOUR NAME'}</h1>
+            {personal.title && <p className="user-title">{personal.title}</p>}
+
+            {/* 2. Flexible Contact & Social Headers */}
+            <div className="contact-info">
+              {renderContactInfo()}
+            </div>
           </header>
 
-          {profile.text && (
-            <div className="section-block">
-              <h2 style={mainTitleStyle}>Profile</h2>
-              <p style={{ fontSize: '10.5px', lineHeight: '1.6', color: '#334155', textAlign: 'justify' }}>{profile.text}</p>
-            </div>
+          {profile?.text && (
+            <section className="section-block">
+              <h2 className="main-section-title">Professional Profile</h2>
+              <p className="profile-text">{profile.text}</p>
+            </section>
           )}
 
           {experience.length > 0 && (
-            <div className="section-block">
-              <h2 style={mainTitleStyle}>Experience</h2>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '25px' }}>
-                {experience.map((job, i) => (
-                  <div key={i}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
-                      <h3 style={{ fontSize: '12px', fontWeight: 'bold', textTransform: 'uppercase' }}>{job.role}</h3>
-                      <span style={{ fontSize: '9px', color: '#94a3b8', fontWeight: 'bold' }}>{job.duration}</span>
-                    </div>
-                    <p style={{ fontSize: '11px', fontWeight: 'bold', color: '#2563eb', margin: '2px 0 8px' }}>{job.company}</p>
-                    <ul style={{ margin: '0', paddingLeft: '18px' }}>
-                      {job.activities?.map((act, aIdx) => (
-                        act && <li key={aIdx} style={{ fontSize: '10px', color: '#475569', marginBottom: '4px', lineHeight: '1.4' }}>{act}</li>
-                      ))}
-                    </ul>
+            <section className="section-block">
+              <h2 className="main-section-title">Experience</h2>
+              {experience.map((job, i) => (
+                <div key={i} className="experience-item item-block">
+                  <div className="item-row">
+                    <h3 className="job-role">{job.role}</h3>
+                    <span className="item-date">{job.duration}</span>
                   </div>
-                ))}
-              </div>
-            </div>
+                  <p className="job-company">{job.company}</p>
+                  <ul className="activity-list">
+                    {job.activities?.map((act, aIdx) => act && <li key={aIdx}>{act}</li>)}
+                  </ul>
+                </div>
+              ))}
+            </section>
+          )}
+
+          {projects.length > 0 && (
+            <section className="section-block">
+              <h2 className="main-section-title">Projects</h2>
+              {projects.map((proj, i) => (
+                <div key={i} className="project-item item-block">
+                  <div className="item-row">
+                    <h3 className="project-name">{proj.name}</h3>
+                    {proj.link && <a href={proj.link} target="_blank" rel="noopener noreferrer" className="project-link">Link</a>}
+                  </div>
+                  {proj.tech && <p className="project-tech">{proj.tech}</p>}
+                  {proj.description && <p className="profile-text">{proj.description}</p>}
+                </div>
+              ))}
+            </section>
           )}
 
           {certifications.length > 0 && (
-            <div className="section-block">
-              <h2 style={mainTitleStyle}>Certifications</h2>
+            <section className="section-block">
+              <h2 className="main-section-title">Certifications</h2>
               {certifications.map((cert, i) => (
-                <div key={i} style={{ marginBottom: '12px' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
-                    <p style={{ fontSize: '11px', fontWeight: 'bold', margin: '0' }}>{cert.name}</p>
-                    <span style={{ fontSize: '9px', color: '#94a3b8' }}>{cert.year}</span>
+                <div key={i} className="certification-item item-block">
+                  <div className="item-row">
+                    <span className="item-main">{cert.name}</span>
+                    <span className="item-date">{cert.year}</span>
                   </div>
-                  <p style={{ fontSize: '10px', color: '#2563eb', margin: '0' }}>{cert.issuer}</p>
+                  <p className="item-sub">{cert.issuer}</p>
                 </div>
               ))}
-            </div>
+            </section>
           )}
-        </div>
+
+          {/* Render Custom Sections */}
+          {customSections.map((section, i) => (
+            <section key={i} className="section-block">
+              <h2 className="main-section-title">{section.label}</h2>
+              {Array.isArray(section.data) ? (
+                <ul className="activity-list">
+                  {section.data.map((item, idx) => item.text && <li key={idx}>{item.text}</li>)}
+                </ul>
+              ) : (
+                <p className="profile-text">{section.data}</p>
+              )}
+            </section>
+          ))}
+        </main>
       </div>
     </div>
   );
