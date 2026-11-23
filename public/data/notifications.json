@@ -1,0 +1,912 @@
+[
+  {
+    "id": "4053f1d7-0c51-4f5d-a70b-8f5f5720811f",
+    "timestamp": "2026-11-23T15:11:20.609192400",
+    "channel": "WHATSAPP",
+    "recipient": "Didy",
+    "recipientKey": "hash:XEfkZIoh1xhwGOtS89owajPi4noIy_jJ8SzEm2w7Xhk",
+    "sentOpportunityIds": [
+      "mifotra-e526051b",
+      "mifotra-f8e38e1a",
+      "mifotra-5010c286",
+      "mifotra-e8ef606d",
+      "mifotra-b1a5a324"
+    ],
+    "sentOpportunityTitles": [
+      "Administrative Assistant to the SPIU Coordinator",
+      "Forest Extension Officer",
+      "Gender Specialist",
+      "Planning Specialist",
+      "Procurement Specialist"
+    ],
+    "opportunityTitles": [
+      "Administrative Assistant to the SPIU Coordinator",
+      "Forest Extension Officer",
+      "Gender Specialist",
+      "Planning Specialist",
+      "Procurement Specialist"
+    ],
+    "opportunityTitle": "Administrative Assistant to the SPIU Coordinator",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "matchScores": [
+      69.5,
+      69.5,
+      69.5,
+      69.5,
+      69.5
+    ],
+    "status": "LIVE_WHATSAPP_SENT",
+    "messageSnippet": "Opportunity digest with 5 new matches."
+  },
+  {
+    "id": "ea9b8016-988c-48cc-816b-bd2eaf8bef62",
+    "timestamp": "2026-11-23T15:11:19.552474100",
+    "channel": "WHATSAPP",
+    "recipient": "Uwimana",
+    "recipientKey": "hash:5TkE_R5BLFVU46-qhr3YfFrSB3vHAMgFyTXr3IELfSM",
+    "sentOpportunityIds": [
+      "mifotra-e526051b",
+      "mifotra-f8e38e1a",
+      "mifotra-5010c286",
+      "mifotra-e8ef606d",
+      "mifotra-b1a5a324"
+    ],
+    "sentOpportunityTitles": [
+      "Administrative Assistant to the SPIU Coordinator",
+      "Forest Extension Officer",
+      "Gender Specialist",
+      "Planning Specialist",
+      "Procurement Specialist"
+    ],
+    "opportunityTitles": [
+      "Administrative Assistant to the SPIU Coordinator",
+      "Forest Extension Officer",
+      "Gender Specialist",
+      "Planning Specialist",
+      "Procurement Specialist"
+    ],
+    "opportunityTitle": "Administrative Assistant to the SPIU Coordinator",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "matchScores": [
+      69.5,
+      69.5,
+      69.5,
+      69.5,
+      69.5
+    ],
+    "status": "LIVE_WHATSAPP_SENT",
+    "messageSnippet": "Opportunity digest with 5 new matches."
+  },
+  {
+    "id": "d123c0f6-9aac-4162-a6ce-97262c61c0d2",
+    "timestamp": "2026-11-23T15:11:18.457161400",
+    "channel": "WHATSAPP",
+    "recipient": "Didy",
+    "recipientKey": "hash:syo35jvlMkqluAfACwAZew4VNKE2FmBbJhRXS-kdLhg",
+    "sentOpportunityIds": [
+      "mifotra-e526051b",
+      "mifotra-f8e38e1a",
+      "mifotra-5010c286",
+      "mifotra-e8ef606d",
+      "mifotra-b1a5a324"
+    ],
+    "sentOpportunityTitles": [
+      "Administrative Assistant to the SPIU Coordinator",
+      "Forest Extension Officer",
+      "Gender Specialist",
+      "Planning Specialist",
+      "Procurement Specialist"
+    ],
+    "opportunityTitles": [
+      "Administrative Assistant to the SPIU Coordinator",
+      "Forest Extension Officer",
+      "Gender Specialist",
+      "Planning Specialist",
+      "Procurement Specialist"
+    ],
+    "opportunityTitle": "Administrative Assistant to the SPIU Coordinator",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "matchScores": [
+      69.5,
+      69.5,
+      69.5,
+      69.5,
+      69.5
+    ],
+    "status": "LIVE_WHATSAPP_SENT",
+    "messageSnippet": "Opportunity digest with 5 new matches."
+  },
+  {
+    "id": "fa8b149e-60d0-4f89-aff7-0af2d53f8d12",
+    "timestamp": "2026-11-23T15:11:17.531924500",
+    "channel": "WHATSAPP",
+    "recipient": "Uwimana",
+    "recipientKey": "hash:mQxR5x-uJMa3dbR9JibuifNXTeID10IfTSDfoFsyYQ8",
+    "sentOpportunityIds": [
+      "mifotra-e526051b",
+      "mifotra-f8e38e1a",
+      "mifotra-5010c286",
+      "mifotra-e8ef606d",
+      "mifotra-b1a5a324"
+    ],
+    "sentOpportunityTitles": [
+      "Administrative Assistant to the SPIU Coordinator",
+      "Forest Extension Officer",
+      "Gender Specialist",
+      "Planning Specialist",
+      "Procurement Specialist"
+    ],
+    "opportunityTitles": [
+      "Administrative Assistant to the SPIU Coordinator",
+      "Forest Extension Officer",
+      "Gender Specialist",
+      "Planning Specialist",
+      "Procurement Specialist"
+    ],
+    "opportunityTitle": "Administrative Assistant to the SPIU Coordinator",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "matchScores": [
+      69.5,
+      69.5,
+      69.5,
+      69.5,
+      69.5
+    ],
+    "status": "LIVE_WHATSAPP_SENT",
+    "messageSnippet": "Opportunity digest with 5 new matches."
+  },
+  {
+    "id": "3f8061f5-40de-422d-969c-94aac60d666c",
+    "timestamp": "2026-11-23T15:11:16.501145100",
+    "channel": "WHATSAPP",
+    "recipient": "Dev",
+    "recipientKey": "hash:O1m3psl3lpcVfBT_EvKXxktCF6aiuIgp0YiqRMWtAqM",
+    "sentOpportunityIds": [
+      "mifotra-e526051b",
+      "mifotra-f8e38e1a",
+      "mifotra-5010c286",
+      "mifotra-e8ef606d",
+      "mifotra-b1a5a324"
+    ],
+    "sentOpportunityTitles": [
+      "Administrative Assistant to the SPIU Coordinator",
+      "Forest Extension Officer",
+      "Gender Specialist",
+      "Planning Specialist",
+      "Procurement Specialist"
+    ],
+    "opportunityTitles": [
+      "Administrative Assistant to the SPIU Coordinator",
+      "Forest Extension Officer",
+      "Gender Specialist",
+      "Planning Specialist",
+      "Procurement Specialist"
+    ],
+    "opportunityTitle": "Administrative Assistant to the SPIU Coordinator",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "matchScores": [
+      69.5,
+      69.5,
+      69.5,
+      69.5,
+      69.5
+    ],
+    "status": "LIVE_WHATSAPP_SENT",
+    "messageSnippet": "Opportunity digest with 5 new matches."
+  },
+  {
+    "id": "e082f3e9-7ab2-4d8c-952c-106c9fca0232",
+    "timestamp": "2026-11-23T15:09:53.524142900",
+    "channel": "WHATSAPP",
+    "recipient": "Didy",
+    "recipientKey": "hash:syo35jvlMkqluAfACwAZew4VNKE2FmBbJhRXS-kdLhg",
+    "sentOpportunityIds": [
+      "mifotra-c450b450"
+    ],
+    "sentOpportunityTitles": [
+      "Gender Specialist"
+    ],
+    "opportunityTitles": [
+      "Gender Specialist"
+    ],
+    "opportunityTitle": "Gender Specialist",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "matchScores": [
+      69.5
+    ],
+    "status": "LIVE_WHATSAPP_SENT",
+    "messageSnippet": "Opportunity digest with 1 new matches."
+  },
+  {
+    "id": "2eb713b8-d8d9-456f-a100-3a479ff03a47",
+    "timestamp": "2026-11-23T15:09:53.036928100",
+    "channel": "WHATSAPP",
+    "recipient": "Uwimana",
+    "recipientKey": "hash:mQxR5x-uJMa3dbR9JibuifNXTeID10IfTSDfoFsyYQ8",
+    "sentOpportunityIds": [
+      "mifotra-c450b450"
+    ],
+    "sentOpportunityTitles": [
+      "Gender Specialist"
+    ],
+    "opportunityTitles": [
+      "Gender Specialist"
+    ],
+    "opportunityTitle": "Gender Specialist",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "matchScores": [
+      69.5
+    ],
+    "status": "LIVE_WHATSAPP_SENT",
+    "messageSnippet": "Opportunity digest with 1 new matches."
+  },
+  {
+    "id": "a4733219-7933-4894-9449-3100ca26219f",
+    "timestamp": "2026-11-23T15:09:52.528626700",
+    "channel": "WHATSAPP",
+    "recipient": "Uwimana",
+    "recipientKey": "hash:5TkE_R5BLFVU46-qhr3YfFrSB3vHAMgFyTXr3IELfSM",
+    "sentOpportunityIds": [
+      "mifotra-c450b450"
+    ],
+    "sentOpportunityTitles": [
+      "Gender Specialist"
+    ],
+    "opportunityTitles": [
+      "Gender Specialist"
+    ],
+    "opportunityTitle": "Gender Specialist",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "matchScores": [
+      69.5
+    ],
+    "status": "LIVE_WHATSAPP_SENT",
+    "messageSnippet": "Opportunity digest with 1 new matches."
+  },
+  {
+    "id": "25ff33f0-dcf8-4566-9342-55bdca55cca1",
+    "timestamp": "2026-11-23T15:09:52.000667",
+    "channel": "WHATSAPP",
+    "recipient": "Dev",
+    "recipientKey": "hash:O1m3psl3lpcVfBT_EvKXxktCF6aiuIgp0YiqRMWtAqM",
+    "sentOpportunityIds": [
+      "mifotra-c450b450"
+    ],
+    "sentOpportunityTitles": [
+      "Gender Specialist"
+    ],
+    "opportunityTitles": [
+      "Gender Specialist"
+    ],
+    "opportunityTitle": "Gender Specialist",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "matchScores": [
+      69.5
+    ],
+    "status": "LIVE_WHATSAPP_SENT",
+    "messageSnippet": "Opportunity digest with 1 new matches."
+  },
+  {
+    "id": "d025bf0b-13fc-400b-a2bb-e53abb5d9328",
+    "timestamp": "2026-11-23T15:09:51.464802600",
+    "channel": "WHATSAPP",
+    "recipient": "Didy",
+    "recipientKey": "hash:XEfkZIoh1xhwGOtS89owajPi4noIy_jJ8SzEm2w7Xhk",
+    "sentOpportunityIds": [
+      "mifotra-c450b450"
+    ],
+    "sentOpportunityTitles": [
+      "Gender Specialist"
+    ],
+    "opportunityTitles": [
+      "Gender Specialist"
+    ],
+    "opportunityTitle": "Gender Specialist",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "matchScores": [
+      69.5
+    ],
+    "status": "LIVE_WHATSAPP_SENT",
+    "messageSnippet": "Opportunity digest with 1 new matches."
+  },
+  {
+    "id": "34fd6e74-2c70-48cd-b253-b5adb5e900be",
+    "timestamp": "2026-11-23T14:55:46.033372500",
+    "channel": "WHATSAPP",
+    "recipient": "rtyuidh",
+    "recipientKey": "hash:XEfkZIoh1xhwGOtS89owajPi4noIy_jJ8SzEm2w7Xhk",
+    "sentOpportunityIds": [
+      "mifotra-e0a6407f",
+      "mifotra-0c477746",
+      "mifotra-769136c3",
+      "mifotra-7294c7d1",
+      "mifotra-2ca94c2a"
+    ],
+    "sentOpportunityTitles": [
+      "Administrative Assistant to the SPIU Coordinator",
+      "Forest Extension Officer",
+      "Gender Specialist",
+      "Planning Specialist",
+      "Procurement Specialist"
+    ],
+    "opportunityTitles": [
+      "Administrative Assistant to the SPIU Coordinator",
+      "Forest Extension Officer",
+      "Gender Specialist",
+      "Planning Specialist",
+      "Procurement Specialist"
+    ],
+    "opportunityTitle": "Administrative Assistant to the SPIU Coordinator",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "matchScores": [
+      69.5,
+      69.5,
+      69.5,
+      69.5,
+      69.5
+    ],
+    "status": "LIVE_WHATSAPP_SENT",
+    "messageSnippet": "Opportunity digest with 5 new matches."
+  },
+  {
+    "id": "f70f7a4c-5a3e-4ef4-b0ec-4287516c1e80",
+    "timestamp": "2026-11-23T14:29:10.608182800",
+    "channel": "WHATSAPP",
+    "recipient": "Uwimana",
+    "opportunityTitle": "Administrative Assistant to the SPIU Coordinator",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "status": "LIVE_WHATSAPP_SENT",
+    "messageSnippet": "Category match 70%: Administrative Assistant to the SPIU Coordinator"
+  },
+  {
+    "id": "5d197b14-d1dc-48da-8f56-61597cbba740",
+    "timestamp": "2026-11-23T14:29:10.189323900",
+    "channel": "WHATSAPP",
+    "recipient": "Uwimana",
+    "opportunityTitle": "Administrative Assistant to the SPIU Coordinator",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "status": "LIVE_WHATSAPP_SENT",
+    "messageSnippet": "Category match 70%: Administrative Assistant to the SPIU Coordinator"
+  },
+  {
+    "id": "79ae1a09-fa6d-4353-8bc3-a97f6883bf3d",
+    "timestamp": "2026-11-23T14:29:08.964013900",
+    "channel": "WHATSAPP",
+    "recipient": "Didy",
+    "opportunityTitle": "Administrative Assistant to the SPIU Coordinator",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "status": "LIVE_WHATSAPP_SENT",
+    "messageSnippet": "Category match 70%: Administrative Assistant to the SPIU Coordinator"
+  },
+  {
+    "id": "7ff3ad8d-a783-4a77-bdfd-ea90db7b561f",
+    "timestamp": "2026-11-23T14:29:08.505758100",
+    "channel": "WHATSAPP",
+    "recipient": "Dev",
+    "opportunityTitle": "Administrative Assistant to the SPIU Coordinator",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "status": "LIVE_WHATSAPP_SENT",
+    "messageSnippet": "Category match 70%: Administrative Assistant to the SPIU Coordinator"
+  },
+  {
+    "id": "18f672b0-8431-4b89-b349-1d4f6a1bb142",
+    "timestamp": "2026-11-23T14:29:07.428044300",
+    "channel": "WHATSAPP",
+    "recipient": "Didy",
+    "opportunityTitle": "Administrative Assistant to the SPIU Coordinator",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "status": "LIVE_WHATSAPP_SENT",
+    "messageSnippet": "Category match 70%: Administrative Assistant to the SPIU Coordinator"
+  },
+  {
+    "id": "c004389a-d4c8-41d8-b9ef-bfb12c95e917",
+    "timestamp": "2026-11-23T14:29:06.299337900",
+    "channel": "WHATSAPP",
+    "recipient": "Uwimana",
+    "opportunityTitle": "Forest Extension Officer",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "status": "LIVE_WHATSAPP_SENT",
+    "messageSnippet": "Category match 70%: Forest Extension Officer"
+  },
+  {
+    "id": "6f9131eb-f149-4b80-92ca-3b4ec7490ca0",
+    "timestamp": "2026-11-23T14:29:05.049271",
+    "channel": "WHATSAPP",
+    "recipient": "Uwimana",
+    "opportunityTitle": "Forest Extension Officer",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "status": "LIVE_WHATSAPP_SENT",
+    "messageSnippet": "Category match 70%: Forest Extension Officer"
+  },
+  {
+    "id": "94f3f93d-7457-4f02-8a6e-101ca18fb765",
+    "timestamp": "2026-11-23T14:29:04.046159",
+    "channel": "WHATSAPP",
+    "recipient": "Didy",
+    "opportunityTitle": "Forest Extension Officer",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "status": "LIVE_WHATSAPP_SENT",
+    "messageSnippet": "Category match 70%: Forest Extension Officer"
+  },
+  {
+    "id": "24fc1be6-878d-4d43-b50d-a05bcbe171b8",
+    "timestamp": "2026-11-23T14:29:02.801237800",
+    "channel": "WHATSAPP",
+    "recipient": "Dev",
+    "opportunityTitle": "Forest Extension Officer",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "status": "LIVE_WHATSAPP_SENT",
+    "messageSnippet": "Category match 70%: Forest Extension Officer"
+  },
+  {
+    "id": "b94b3c00-a1bf-41fb-bfd5-9ce9a243925e",
+    "timestamp": "2026-11-23T14:29:01.596364300",
+    "channel": "WHATSAPP",
+    "recipient": "Didy",
+    "opportunityTitle": "Forest Extension Officer",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "status": "LIVE_WHATSAPP_SENT",
+    "messageSnippet": "Category match 70%: Forest Extension Officer"
+  },
+  {
+    "id": "86ec6db4-68f4-475e-9672-269d8f0ab1a0",
+    "timestamp": "2026-11-23T14:29:00.363806700",
+    "channel": "WHATSAPP",
+    "recipient": "Uwimana",
+    "opportunityTitle": "Planning Specialist",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "status": "LIVE_WHATSAPP_SENT",
+    "messageSnippet": "Category match 70%: Planning Specialist"
+  },
+  {
+    "id": "e4b11889-65d6-4d93-ad74-35c2d35b23f0",
+    "timestamp": "2026-11-23T14:28:59.747925900",
+    "channel": "WHATSAPP",
+    "recipient": "Uwimana",
+    "opportunityTitle": "Planning Specialist",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "status": "LIVE_WHATSAPP_SENT",
+    "messageSnippet": "Category match 70%: Planning Specialist"
+  },
+  {
+    "id": "19bfa13f-f52a-489f-a71f-e81fa8d50a83",
+    "timestamp": "2026-11-23T14:28:59.131732300",
+    "channel": "WHATSAPP",
+    "recipient": "Didy",
+    "opportunityTitle": "Planning Specialist",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "status": "LIVE_WHATSAPP_SENT",
+    "messageSnippet": "Category match 70%: Planning Specialist"
+  },
+  {
+    "id": "9eb2a44a-78ca-459d-b8dd-3f08cb6b6cf1",
+    "timestamp": "2026-11-23T14:28:57.900484700",
+    "channel": "WHATSAPP",
+    "recipient": "Dev",
+    "opportunityTitle": "Planning Specialist",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "status": "LIVE_WHATSAPP_SENT",
+    "messageSnippet": "Category match 70%: Planning Specialist"
+  },
+  {
+    "id": "916c00f7-85ae-4ffa-869b-7d9e65c7c53e",
+    "timestamp": "2026-11-23T14:28:57.288517900",
+    "channel": "WHATSAPP",
+    "recipient": "Didy",
+    "opportunityTitle": "Planning Specialist",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "status": "LIVE_WHATSAPP_SENT",
+    "messageSnippet": "Category match 70%: Planning Specialist"
+  },
+  {
+    "id": "914b8168-eb5a-4646-832f-d1f3cd363045",
+    "timestamp": "2026-11-23T14:28:55.751948300",
+    "channel": "WHATSAPP",
+    "recipient": "Uwimana",
+    "opportunityTitle": "Procurement Specialist",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "status": "LIVE_WHATSAPP_SENT",
+    "messageSnippet": "Category match 70%: Procurement Specialist"
+  },
+  {
+    "id": "2fa59d22-6bc6-466e-9dea-35f5468395aa",
+    "timestamp": "2026-11-23T14:28:54.702808100",
+    "channel": "WHATSAPP",
+    "recipient": "Uwimana",
+    "opportunityTitle": "Procurement Specialist",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "status": "LIVE_WHATSAPP_SENT",
+    "messageSnippet": "Category match 70%: Procurement Specialist"
+  },
+  {
+    "id": "968b626a-e92e-44b2-a708-4fec8b72f762",
+    "timestamp": "2026-11-23T14:28:53.640065200",
+    "channel": "WHATSAPP",
+    "recipient": "Didy",
+    "opportunityTitle": "Procurement Specialist",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "status": "LIVE_WHATSAPP_SENT",
+    "messageSnippet": "Category match 70%: Procurement Specialist"
+  },
+  {
+    "id": "4586ba4b-7eda-47db-90a3-e19aecb13491",
+    "timestamp": "2026-11-23T14:28:52.514856400",
+    "channel": "WHATSAPP",
+    "recipient": "Dev",
+    "opportunityTitle": "Procurement Specialist",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "status": "LIVE_WHATSAPP_SENT",
+    "messageSnippet": "Category match 70%: Procurement Specialist"
+  },
+  {
+    "id": "31cb866b-c004-47f7-a3cc-e72ba2289c60",
+    "timestamp": "2026-11-23T14:28:51.415700200",
+    "channel": "WHATSAPP",
+    "recipient": "Didy",
+    "opportunityTitle": "Procurement Specialist",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "status": "LIVE_WHATSAPP_SENT",
+    "messageSnippet": "Category match 70%: Procurement Specialist"
+  },
+  {
+    "id": "e22666cc-1585-4477-bbdc-c5cc6a8ee4d0",
+    "timestamp": "2026-11-23T14:28:50.983693600",
+    "channel": "WHATSAPP",
+    "recipient": "Uwimana",
+    "opportunityTitle": "Gender Specialist",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "status": "LIVE_WHATSAPP_SENT",
+    "messageSnippet": "Category match 70%: Gender Specialist"
+  },
+  {
+    "id": "10cab8b1-6379-470d-9e53-3ad8a981b094",
+    "timestamp": "2026-11-23T14:28:49.915392200",
+    "channel": "WHATSAPP",
+    "recipient": "Uwimana",
+    "opportunityTitle": "Gender Specialist",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "status": "LIVE_WHATSAPP_SENT",
+    "messageSnippet": "Category match 70%: Gender Specialist"
+  },
+  {
+    "id": "0ea5298e-8314-41d4-b3d3-130637fa273e",
+    "timestamp": "2026-11-23T14:28:49.300366800",
+    "channel": "WHATSAPP",
+    "recipient": "Didy",
+    "opportunityTitle": "Gender Specialist",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "status": "LIVE_WHATSAPP_SENT",
+    "messageSnippet": "Category match 70%: Gender Specialist"
+  },
+  {
+    "id": "599df633-d629-4ea7-8829-437fd9677aed",
+    "timestamp": "2026-11-23T14:28:48.358297400",
+    "channel": "WHATSAPP",
+    "recipient": "Dev",
+    "opportunityTitle": "Gender Specialist",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "status": "LIVE_WHATSAPP_SENT",
+    "messageSnippet": "Category match 70%: Gender Specialist"
+  },
+  {
+    "id": "9f3d4533-b9fb-47de-8989-169051068540",
+    "timestamp": "2026-11-23T14:28:45.090138400",
+    "channel": "WHATSAPP",
+    "recipient": "Didy",
+    "opportunityTitle": "Gender Specialist",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "status": "LIVE_WHATSAPP_SENT",
+    "messageSnippet": "Category match 70%: Gender Specialist"
+  },
+  {
+    "id": "ecd205f7-e5f2-4ed8-9b9d-7f8965c18a8c",
+    "timestamp": "2026-11-23T14:15:23.494667700",
+    "channel": "WHATSAPP",
+    "recipient": "Uwimana",
+    "opportunityTitle": "Administrative Assistant to the SPIU Coordinator",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "status": "SIMULATED_SUCCESS",
+    "messageSnippet": "Category match 70%: Administrative Assistant to the SPIU Coordinator"
+  },
+  {
+    "id": "4bb87384-b49b-4b2b-936c-7b0c39440d57",
+    "timestamp": "2026-11-23T14:15:23.489669900",
+    "channel": "WHATSAPP",
+    "recipient": "Uwimana",
+    "opportunityTitle": "Administrative Assistant to the SPIU Coordinator",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "status": "SIMULATED_SUCCESS",
+    "messageSnippet": "Category match 70%: Administrative Assistant to the SPIU Coordinator"
+  },
+  {
+    "id": "48551b62-2773-4f38-a09f-794404108089",
+    "timestamp": "2026-11-23T14:15:23.484668300",
+    "channel": "WHATSAPP",
+    "recipient": "Didy",
+    "opportunityTitle": "Administrative Assistant to the SPIU Coordinator",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "status": "SIMULATED_SUCCESS",
+    "messageSnippet": "Category match 70%: Administrative Assistant to the SPIU Coordinator"
+  },
+  {
+    "id": "4df3db9e-8211-483c-91c4-a28335ec4cc9",
+    "timestamp": "2026-11-23T14:15:23.478669100",
+    "channel": "WHATSAPP",
+    "recipient": "Dev",
+    "opportunityTitle": "Administrative Assistant to the SPIU Coordinator",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "status": "SIMULATED_SUCCESS",
+    "messageSnippet": "Category match 70%: Administrative Assistant to the SPIU Coordinator"
+  },
+  {
+    "id": "c011036e-8f2b-4700-9b44-a7a2cb4c0339",
+    "timestamp": "2026-11-23T14:15:23.474671600",
+    "channel": "WHATSAPP",
+    "recipient": "Didy",
+    "opportunityTitle": "Administrative Assistant to the SPIU Coordinator",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "status": "SIMULATED_SUCCESS",
+    "messageSnippet": "Category match 70%: Administrative Assistant to the SPIU Coordinator"
+  },
+  {
+    "id": "8921d5f0-18fc-40c0-adab-17db4870ae84",
+    "timestamp": "2026-11-23T14:15:23.470667800",
+    "channel": "WHATSAPP",
+    "recipient": "Uwimana",
+    "opportunityTitle": "Forest Extension Officer",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "status": "SIMULATED_SUCCESS",
+    "messageSnippet": "Category match 70%: Forest Extension Officer"
+  },
+  {
+    "id": "771c9b57-c367-4ac9-89bf-6bd40f111175",
+    "timestamp": "2026-11-23T14:15:23.466675300",
+    "channel": "WHATSAPP",
+    "recipient": "Uwimana",
+    "opportunityTitle": "Forest Extension Officer",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "status": "SIMULATED_SUCCESS",
+    "messageSnippet": "Category match 70%: Forest Extension Officer"
+  },
+  {
+    "id": "61306091-2093-4b85-97fa-6da03823a3c0",
+    "timestamp": "2026-11-23T14:15:23.462692900",
+    "channel": "WHATSAPP",
+    "recipient": "Didy",
+    "opportunityTitle": "Forest Extension Officer",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "status": "SIMULATED_SUCCESS",
+    "messageSnippet": "Category match 70%: Forest Extension Officer"
+  },
+  {
+    "id": "05a23786-7a0f-4343-9c8b-03026098bb4b",
+    "timestamp": "2026-11-23T14:15:23.458669700",
+    "channel": "WHATSAPP",
+    "recipient": "Dev",
+    "opportunityTitle": "Forest Extension Officer",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "status": "SIMULATED_SUCCESS",
+    "messageSnippet": "Category match 70%: Forest Extension Officer"
+  },
+  {
+    "id": "a1390ed6-a6dc-478f-a79e-614bee31136b",
+    "timestamp": "2026-11-23T14:15:23.454683600",
+    "channel": "WHATSAPP",
+    "recipient": "Didy",
+    "opportunityTitle": "Forest Extension Officer",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "status": "SIMULATED_SUCCESS",
+    "messageSnippet": "Category match 70%: Forest Extension Officer"
+  },
+  {
+    "id": "43009013-384f-442f-9acb-59f64ad9d790",
+    "timestamp": "2026-11-23T14:15:23.449668200",
+    "channel": "WHATSAPP",
+    "recipient": "Uwimana",
+    "opportunityTitle": "Planning Specialist",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "status": "SIMULATED_SUCCESS",
+    "messageSnippet": "Category match 70%: Planning Specialist"
+  },
+  {
+    "id": "0931f80b-b2d8-41a8-b656-b3e532d86a42",
+    "timestamp": "2026-11-23T14:15:23.445667600",
+    "channel": "WHATSAPP",
+    "recipient": "Uwimana",
+    "opportunityTitle": "Planning Specialist",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "status": "SIMULATED_SUCCESS",
+    "messageSnippet": "Category match 70%: Planning Specialist"
+  },
+  {
+    "id": "14281b46-c807-495c-a25d-4b8ed10721ed",
+    "timestamp": "2026-11-23T14:15:23.440693400",
+    "channel": "WHATSAPP",
+    "recipient": "Didy",
+    "opportunityTitle": "Planning Specialist",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "status": "SIMULATED_SUCCESS",
+    "messageSnippet": "Category match 70%: Planning Specialist"
+  },
+  {
+    "id": "05fcfa08-cb4b-4359-851e-847ddc0ca36d",
+    "timestamp": "2026-11-23T14:15:23.435663500",
+    "channel": "WHATSAPP",
+    "recipient": "Dev",
+    "opportunityTitle": "Planning Specialist",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "status": "SIMULATED_SUCCESS",
+    "messageSnippet": "Category match 70%: Planning Specialist"
+  },
+  {
+    "id": "f165b88d-2ddd-4635-9756-a5b217dc22ff",
+    "timestamp": "2026-11-23T14:15:23.430663400",
+    "channel": "WHATSAPP",
+    "recipient": "Didy",
+    "opportunityTitle": "Planning Specialist",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "status": "SIMULATED_SUCCESS",
+    "messageSnippet": "Category match 70%: Planning Specialist"
+  },
+  {
+    "id": "692620a7-e3fb-4c0f-9c17-5b48d96a1c57",
+    "timestamp": "2026-11-23T14:15:23.425665800",
+    "channel": "WHATSAPP",
+    "recipient": "Uwimana",
+    "opportunityTitle": "Procurement Specialist",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "status": "SIMULATED_SUCCESS",
+    "messageSnippet": "Category match 70%: Procurement Specialist"
+  },
+  {
+    "id": "055eb03d-3609-4a6c-a589-6e22331733d3",
+    "timestamp": "2026-11-23T14:15:23.419669700",
+    "channel": "WHATSAPP",
+    "recipient": "Uwimana",
+    "opportunityTitle": "Procurement Specialist",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "status": "SIMULATED_SUCCESS",
+    "messageSnippet": "Category match 70%: Procurement Specialist"
+  },
+  {
+    "id": "d1b0f6f8-0378-4166-befb-f4cb28068b9a",
+    "timestamp": "2026-11-23T14:15:23.414673700",
+    "channel": "WHATSAPP",
+    "recipient": "Didy",
+    "opportunityTitle": "Procurement Specialist",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "status": "SIMULATED_SUCCESS",
+    "messageSnippet": "Category match 70%: Procurement Specialist"
+  },
+  {
+    "id": "1d998b73-61b9-42b8-9859-71aa5cedcab4",
+    "timestamp": "2026-11-23T14:15:23.410142500",
+    "channel": "WHATSAPP",
+    "recipient": "Dev",
+    "opportunityTitle": "Procurement Specialist",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "status": "SIMULATED_SUCCESS",
+    "messageSnippet": "Category match 70%: Procurement Specialist"
+  },
+  {
+    "id": "1cefd43b-308d-4898-9d7a-7f16e694436a",
+    "timestamp": "2026-11-23T14:15:23.404150500",
+    "channel": "WHATSAPP",
+    "recipient": "Didy",
+    "opportunityTitle": "Procurement Specialist",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "status": "SIMULATED_SUCCESS",
+    "messageSnippet": "Category match 70%: Procurement Specialist"
+  },
+  {
+    "id": "032b8a45-47f4-4149-9765-33e25796d345",
+    "timestamp": "2026-11-23T14:15:23.399145500",
+    "channel": "WHATSAPP",
+    "recipient": "Uwimana",
+    "opportunityTitle": "Gender Specialist",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "status": "SIMULATED_SUCCESS",
+    "messageSnippet": "Category match 70%: Gender Specialist"
+  },
+  {
+    "id": "51f55a45-5755-402f-a512-e469a30b9690",
+    "timestamp": "2026-11-23T14:15:23.395132200",
+    "channel": "WHATSAPP",
+    "recipient": "Uwimana",
+    "opportunityTitle": "Gender Specialist",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "status": "SIMULATED_SUCCESS",
+    "messageSnippet": "Category match 70%: Gender Specialist"
+  },
+  {
+    "id": "fb5c55c0-99e5-442c-a6d3-4f0f67f7753e",
+    "timestamp": "2026-11-23T14:15:23.390141800",
+    "channel": "WHATSAPP",
+    "recipient": "Didy",
+    "opportunityTitle": "Gender Specialist",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "status": "SIMULATED_SUCCESS",
+    "messageSnippet": "Category match 70%: Gender Specialist"
+  },
+  {
+    "id": "d237991c-f7cf-49d7-babc-6772d0a0e20d",
+    "timestamp": "2026-11-23T14:15:23.378967900",
+    "channel": "WHATSAPP",
+    "recipient": "Dev",
+    "opportunityTitle": "Gender Specialist",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "status": "SIMULATED_SUCCESS",
+    "messageSnippet": "Category match 70%: Gender Specialist"
+  },
+  {
+    "id": "55ce747c-0391-450d-8e6d-559d115ab139",
+    "timestamp": "2026-11-23T14:15:23.361969800",
+    "channel": "WHATSAPP",
+    "recipient": "Didy",
+    "opportunityTitle": "Gender Specialist",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "status": "SIMULATED_SUCCESS",
+    "messageSnippet": "Category match 70%: Gender Specialist"
+  }
+]
