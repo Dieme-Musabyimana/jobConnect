@@ -2,12 +2,14 @@ package scrapers;
 
 import Pages.PortalPage;
 import models.JobEntry;
-import models.User; // Ensure this matches your model name
+import models.User;
 import utils.DataHandler;
+import utils.MatchingEngine;
 import utils.WhatsAppNotifier;
 import org.junit.jupiter.api.Test;
 import com.microsoft.playwright.Locator;
 
+import java.nio.file.Path;
 import java.time.LocalDateTime;
 import java.util.*;
 
@@ -15,17 +17,20 @@ public class JobScraper extends BaseTest {
 
     @Test
     void runScraper() {
+        WhatsAppNotifier.beginScraperRun();
+        DataHandler.initializeNotificationsFile();
+        Path notificationsPath = DataHandler.getNotificationsPath();
+        System.out.println("Notifications file: " + notificationsPath);
+
         PortalPage portal = new PortalPage(page);
         portal.navigate();
 
         Map<String, JobEntry> db = DataHandler.loadJobDatabase();
         List<String> currentPortalTitles = new ArrayList<>();
+        List<JobEntry> newlyDiscoveredJobs = new ArrayList<>();
 
         Locator cards = portal.getJobCards();
         int totalFound = cards.count();
-
-        StringBuilder newJobsBatch = new StringBuilder();
-        boolean hasNewJobs = false;
 
         for (int i = 0; i < totalFound; i++) {
             Locator currentCard = cards.nth(i);
@@ -37,10 +42,18 @@ public class JobScraper extends BaseTest {
             currentPortalTitles.add(title);
 
             if (!db.containsKey(title)) {
-                db.put(title, new JobEntry(title, "LIVE", posted, deadline));
-                newJobsBatch.append("📌 *").append(title).append("*\n");
-                newJobsBatch.append("⏳ *Deadline:* ").append(deadline).append("\n\n");
-                hasNewJobs = true;
+                JobEntry newJob = new JobEntry(title, "LIVE", posted, deadline);
+                newJob.id = "mifotra-" + UUID.randomUUID().toString().substring(0, 8);
+                newJob.organization = "MIFOTRA / Public Service Rwanda";
+                newJob.category = "JOB";
+                newJob.sourceName = "MIFOTRA e-Recruitment";
+                newJob.applicationUrl = "https://recruitment.mifotra.gov.rw";
+                newJob.location = "Rwanda";
+                newJob.eligibilitySummary = "Official Rwandan Public Service vacancy. Apply directly through the MIFOTRA e-recruitment portal.";
+                newJob.createdAt = LocalDateTime.now().toString();
+
+                db.put(title, newJob);
+                newlyDiscoveredJobs.add(newJob);
             }
         }
 
@@ -52,28 +65,57 @@ public class JobScraper extends BaseTest {
             }
         }
 
-        // 5. BROADCAST TO MULTIPLE USERS
-        if (hasNewJobs) {
+        int activeSubscriberCount = 0;
+        int matchedUserCount = 0;
+        int matchedUserJobCount = 0;
+        int belowThresholdUserJobCount = 0;
+        int notificationsWritten = 0;
+        int opportunitiesIncludedInDigests = 0;
+
+        // 5. MATCHING & TARGETED NOTIFICATIONS (matchScore >= 60, channel consent, deduplication)
+        if (!newlyDiscoveredJobs.isEmpty()) {
             List<User> subscribers = DataHandler.loadSubscribers();
             WhatsAppNotifier notifier = new WhatsAppNotifier();
+            Set<User> matchedUsers = Collections.newSetFromMap(new IdentityHashMap<>());
+            Map<User, List<WhatsAppNotifier.OpportunityMatch>> matchesByUser = new IdentityHashMap<>();
+            activeSubscriberCount = (int) subscribers.stream().filter(Objects::nonNull).filter(user -> user.active).count();
 
-            String footer = "--------------------------\n" +
-                    "💡 *HOW TO APPLY:*\n" +
-                    "1. Open: https://recruitment.mifotra.gov.rw/\n" +
-                    "2. Search & Login to apply.";
-
-            for (User user : subscribers) {
-                if (user.active) {
-                    String personalizedMsg = "Mwaramutse " + user.name + "!\n" +
-                            "🚀 *NEW MIFOTRA JOBS FOUND*\n\n" +
-                            newJobsBatch.toString() + footer;
-
-                    notifier.sendWhatsApp(user.phone, personalizedMsg);
+            for (JobEntry job : newlyDiscoveredJobs) {
+                for (User user : subscribers) {
+                    if (user != null && user.active) {
+                        MatchingEngine.MatchResult match = MatchingEngine.calculateMatch(user, job);
+                        if (match.score >= 60.0) {
+                            matchedUserJobCount++;
+                            matchedUsers.add(user);
+                            matchesByUser.computeIfAbsent(user, ignored -> new ArrayList<>())
+                                    .add(new WhatsAppNotifier.OpportunityMatch(job, match));
+                        } else {
+                            belowThresholdUserJobCount++;
+                        }
+                    }
                 }
             }
+            matchedUserCount = matchedUsers.size();
+            for (Map.Entry<User, List<WhatsAppNotifier.OpportunityMatch>> entry : matchesByUser.entrySet()) {
+                int includedCount = notifier.notifyUserWithDigest(entry.getKey(), entry.getValue());
+                if (includedCount > 0) {
+                    notificationsWritten++;
+                    opportunitiesIncludedInDigests += includedCount;
+                }
+            }
+        } else {
+            System.out.println("Notification matching skipped: no newly discovered jobs; scraped jobs were already in the database.");
         }
 
         DataHandler.runCleanup(db);
         DataHandler.saveJobDatabase(db);
+        System.out.println("Jobs scraped: " + totalFound + "; new jobs: " + newlyDiscoveredJobs.size());
+        System.out.println("Active subscribers checked: " + activeSubscriberCount
+                + "; users with a match score of at least 60: " + matchedUserCount
+                + "; matching user-job pairs: " + matchedUserJobCount
+                + "; user-job pairs below 60: " + belowThresholdUserJobCount
+                + "; digest notifications recorded: " + notificationsWritten
+                + "; unsent opportunities included in digests: " + opportunitiesIncludedInDigests);
+        System.out.println("Notifications file: " + notificationsPath);
     }
 }

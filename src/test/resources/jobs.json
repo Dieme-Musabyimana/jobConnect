@@ -1,72 +1,77 @@
 {
-  "Roads, Bridges Construction and Maintenance Senior Engineer": {
-    "title": "Roads, Bridges Construction and Maintenance Senior Engineer",
-    "status": "LIVE"
-  },
-  "Road and Bridge Construction and Maintenance Engineer": {
-    "title": "Road and Bridge Construction and Maintenance Engineer",
-    "status": "LIVE"
-  },
-  "Health Care Specialist": {
-    "title": "Health Care Specialist",
-    "status": "LIVE"
-  },
-  "Internal Audit Specialist": {
-    "title": "Internal Audit Specialist",
-    "status": "LIVE"
-  },
-  "Refugee Data Management specialist": {
-    "title": "Refugee Data Management specialist",
-    "status": "LIVE"
-  },
-  "Electrical \u0026 Mechanical Engineering Officer": {
-    "title": "Electrical \u0026 Mechanical Engineering Officer",
-    "status": "LIVE"
-  },
-  "LAIS Processors": {
-    "title": "LAIS Processors",
-    "status": "LIVE"
-  },
-  "Accountant": {
-    "title": "Accountant",
+  "Gender Specialist": {
+    "id": "mifotra-5010c286",
+    "title": "Gender Specialist",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "category": "JOB",
+    "requiredSkills": [],
+    "location": "Rwanda",
+    "sourceName": "MIFOTRA e-Recruitment",
+    "applicationUrl": "https://recruitment.mifotra.gov.rw",
+    "eligibilitySummary": "Official Rwandan Public Service vacancy. Apply directly through the MIFOTRA e-recruitment portal.",
     "status": "LIVE",
-    "postedDate": "Mar 27, 2026",
-    "deadline": "Apr 6, 2026"
+    "postedDate": "Nov 19, 2026",
+    "deadline": "Nov 27, 2026",
+    "createdAt": "2026-11-23T15:11:09.936411300"
   },
-  "Urban Planning Officer": {
-    "title": "Urban Planning Officer",
+  "Procurement Specialist": {
+    "id": "mifotra-b1a5a324",
+    "title": "Procurement Specialist",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "category": "JOB",
+    "requiredSkills": [],
+    "location": "Rwanda",
+    "sourceName": "MIFOTRA e-Recruitment",
+    "applicationUrl": "https://recruitment.mifotra.gov.rw",
+    "eligibilitySummary": "Official Rwandan Public Service vacancy. Apply directly through the MIFOTRA e-recruitment portal.",
     "status": "LIVE",
-    "postedDate": "Mar 27, 2026",
-    "deadline": "Apr 6, 2026"
+    "postedDate": "Nov 19, 2026",
+    "deadline": "Nov 27, 2026",
+    "createdAt": "2026-11-23T15:11:09.958957"
   },
-  "Affordable Housing Planner": {
-    "title": "Affordable Housing Planner",
+  "Planning Specialist": {
+    "id": "mifotra-e8ef606d",
+    "title": "Planning Specialist",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "category": "JOB",
+    "requiredSkills": [],
+    "location": "Rwanda",
+    "sourceName": "MIFOTRA e-Recruitment",
+    "applicationUrl": "https://recruitment.mifotra.gov.rw",
+    "eligibilitySummary": "Official Rwandan Public Service vacancy. Apply directly through the MIFOTRA e-recruitment portal.",
     "status": "LIVE",
-    "postedDate": "Mar 28, 2026",
-    "deadline": "Apr 6, 2026"
+    "postedDate": "Nov 18, 2026",
+    "deadline": "Nov 26, 2026",
+    "createdAt": "2026-11-23T15:11:09.979193400"
   },
-  "Lecturer in Agricultural Engineering": {
-    "title": "Lecturer in Agricultural Engineering",
+  "Forest Extension Officer": {
+    "id": "mifotra-f8e38e1a",
+    "title": "Forest Extension Officer",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "category": "JOB",
+    "requiredSkills": [],
+    "location": "Rwanda",
+    "sourceName": "MIFOTRA e-Recruitment",
+    "applicationUrl": "https://recruitment.mifotra.gov.rw",
+    "eligibilitySummary": "Official Rwandan Public Service vacancy. Apply directly through the MIFOTRA e-recruitment portal.",
     "status": "LIVE",
-    "postedDate": "Apr 1, 2026",
-    "deadline": "Apr 9, 2026"
+    "postedDate": "Nov 18, 2026",
+    "deadline": "Nov 26, 2026",
+    "createdAt": "2026-11-23T15:11:09.997744400"
   },
-  "Building Construction Architect": {
-    "title": "Building Construction Architect",
+  "Administrative Assistant to the SPIU Coordinator": {
+    "id": "mifotra-e526051b",
+    "title": "Administrative Assistant to the SPIU Coordinator",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "category": "JOB",
+    "requiredSkills": [],
+    "location": "Rwanda",
+    "sourceName": "MIFOTRA e-Recruitment",
+    "applicationUrl": "https://recruitment.mifotra.gov.rw",
+    "eligibilitySummary": "Official Rwandan Public Service vacancy. Apply directly through the MIFOTRA e-recruitment portal.",
     "status": "LIVE",
-    "postedDate": "Mar 27, 2026",
-    "deadline": "Apr 6, 2026"
-  },
-  "Roads Development Senior Engineer": {
-    "title": "Roads Development Senior Engineer",
-    "status": "LIVE",
-    "postedDate": "Mar 27, 2026",
-    "deadline": "Apr 6, 2026"
-  },
-  "Building Structure Assessment Engineer": {
-    "title": "Building Structure Assessment Engineer",
-    "status": "LIVE",
-    "postedDate": "Mar 27, 2026",
-    "deadline": "Apr 6, 2026"
+    "postedDate": "Nov 18, 2026",
+    "deadline": "Nov 26, 2026",
+    "createdAt": "2026-11-23T15:11:10.023490700"
   }
 }
