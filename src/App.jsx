@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import CVEditor from './components/CVEditor';
 import { calculateMatch } from './utils/matching';
 import { supabase, isSupabaseConfigured } from './supabase/supabaseClient';
 
@@ -13,6 +12,7 @@ const INITIAL_CATEGORIES = [
   'Business / Administration',
   'Health'
 ];
+const SEED_USERS = [];
 
 const INITIAL_TYPES = [
   'ALL',
@@ -35,96 +35,104 @@ const LOCATIONS = [
   'Remote (Worldwide)'
 ];
 
-const SEED_USERS = [
-  {
-    id: "usr-001",
-    name: "Jean-Pierre Nshimiyimana",
-    email: "jp.nshimi@example.com",
-    role: "YOUTH",
-    adminStatus: "NONE",
-    phone: "+250788123456",
-    active: true,
-    optInCategoryAlerts: true,
-    alertCategoryScope: "SELECTED", // "ALL" or "SELECTED"
-    educationLevel: "Bachelor's Degree",
-    fieldOfStudy: "Computer Science / Information Technology",
-    skills: ["JavaScript", "React", "Node.js", "Git", "REST APIs"],
-    preferredCategories: ["IT", "JOB", "INTERNSHIP"],
-    preferredLocation: "Kigali, Rwanda",
-    notifyWhatsApp: true,
-    notifyEmail: true,
-    notifySms: false,
-    notificationFrequency: "IMMEDIATE"
-  },
-  {
-    id: "usr-002",
-    name: "Aline Uwase",
-    email: "aline.uwase@example.com",
-    role: "YOUTH",
-    adminStatus: "NONE",
-    phone: "+250789654321",
-    active: true,
-    optInCategoryAlerts: true,
-    alertCategoryScope: "SELECTED",
-    educationLevel: "Bachelor's Degree",
-    fieldOfStudy: "Agriculture & Environmental Sciences",
-    skills: ["Agroforestry", "Field Assessment", "Reporting", "Community Outreach"],
-    preferredCategories: ["Agriculture", "JOB", "ENTREPRENEURSHIP"],
-    preferredLocation: "Eastern Province, Rwanda",
-    notifyWhatsApp: true,
-    notifyEmail: true,
-    notifySms: false,
-    notificationFrequency: "DAILY"
-  },
-  {
-    id: "usr-003",
-    name: "Eric Mugisha",
-    email: "eric.mugisha@example.com",
-    role: "YOUTH",
-    adminStatus: "NONE",
-    phone: "+250782334455",
-    active: true,
-    optInCategoryAlerts: true,
-    alertCategoryScope: "SELECTED",
-    educationLevel: "TVET Certificate / A2 Level",
-    fieldOfStudy: "Electrical Engineering & TVET",
-    skills: ["Electrical Wiring", "Solar PV Systems", "Troubleshooting"],
-    preferredCategories: ["Energy", "APPRENTICESHIP", "JOB"],
-    preferredLocation: "Musanze & Huye, Rwanda",
-    notifyWhatsApp: false,
-    notifyEmail: false,
-    notifySms: true,
-    notificationFrequency: "WEEKLY"
-  },
-  {
-    id: "usr-004",
-    name: "Diane Ingabire",
-    email: "diane.ingabire@example.com",
-    role: "YOUTH",
-    adminStatus: "NONE",
-    phone: "+250785112233",
-    active: true,
-    optInCategoryAlerts: true,
-    alertCategoryScope: "SELECTED",
-    educationLevel: "Bachelor's Degree",
-    fieldOfStudy: "Economics & Procurement",
-    skills: ["Accounting", "Financial Audit", "Excel", "Compliance"],
-    preferredCategories: ["Accounting / Accountant", "Business / Administration", "JOB"],
-    preferredLocation: "Kigali, Rwanda",
-    notifyWhatsApp: true,
-    notifyEmail: true,
-    notifySms: false,
-    notificationFrequency: "IMMEDIATE"
-  }
+const ACCOUNT_TYPES = [
+  ['JOB_SEEKER', 'Job seeker'],
+  ['UNEMPLOYED', 'Unemployed job seeker'],
+  ['STUDENT', 'Student'],
+  ['GRADUATE', 'Graduate'],
+  ['EMPLOYED_WORKER', 'Employed worker'],
+  ['TRAINING_CENTER', 'Training campus / bootcamp / TVET'],
+  ['SCHOOL', 'School'],
+  ['PRIVATE_TUTOR', 'Private tutor'],
+  ['COURSE_PLATFORM', 'Course platform / academy'],
+  ['HIRING_COMPANY', 'Hiring company'],
+  ['NGO_EVENT', 'NGO / event organizer']
 ];
+const SEEKER_ACCOUNT_TYPES = ['JOB_SEEKER', 'UNEMPLOYED', 'STUDENT', 'GRADUATE'];
+
+const GLOBAL_TECH_RADAR = [
+  { area: 'Artificial intelligence', signal: 'AI literacy and responsible automation roles are growing globally.', skills: ['Python', 'Data analysis', 'Responsible AI'] },
+  { area: 'Clean energy', signal: 'Grid modernization and distributed renewables are creating technical pathways.', skills: ['Solar PV', 'Energy storage', 'Electrical safety'] },
+  { area: 'Cybersecurity', signal: 'Security operations and privacy skills remain in demand across sectors.', skills: ['Network security', 'Incident response', 'Risk analysis'] },
+  { area: 'Digital health', signal: 'Health data systems and telehealth are expanding access to care.', skills: ['Health informatics', 'Data protection', 'Service design'] }
+];
+
+const LEARNING_PROVIDER_LINKS = [
+  { name: 'Microsoft Learn', matches: /cloud|azure|security|data|ai|network|devops|sql|python|power platform/i, url: 'https://learn.microsoft.com/training/search/?terms=' },
+  { name: 'freeCodeCamp', matches: /javascript|react|web|html|css|node|programming|api|git/i, url: 'https://www.freecodecamp.org/news/search/?query=' },
+  { name: 'Khan Academy', matches: /math|algebra|statistics|economics|finance/i, url: 'https://www.khanacademy.org/search?page_search_query=' },
+  { name: 'Coursera', matches: /project management|accounting|communication|business|machine learning/i, url: 'https://www.coursera.org/search?query=' }
+];
+
+const REQUIRED_SKILL_HISTORY_MONTHS = 5;
+const SKILL_TERMS = [
+  'JavaScript', 'React', 'Node.js', 'REST APIs', 'Git', 'Python', 'SQL', 'Data Analysis',
+  'Excel', 'Accounting', 'Financial Audit', 'Reporting', 'Project Management',
+  'Community Outreach', 'Field Assessment', 'Solar PV Systems', 'Electrical Wiring',
+  'Troubleshooting', 'Cybersecurity', 'Network Security', 'Cloud Computing', 'AWS',
+  'Communication', 'Customer Service', 'Research', 'Monitoring and Evaluation'
+];
+
+function getOpportunitySkills(job) {
+  const skills = Array.isArray(job.requiredSkills) ? job.requiredSkills.filter(Boolean).slice() : [];
+  const description = [
+    job.description,
+    job.eligibilitySummary,
+    job.requirements,
+    job.title
+  ].filter(Boolean).join(' ').toLowerCase();
+  for (const skill of SKILL_TERMS) {
+    if (description.includes(skill.toLowerCase()) && !skills.some(item => item.toLowerCase() === skill.toLowerCase())) {
+      skills.push(skill);
+    }
+  }
+  return skills;
+}
+
+function getLearningLink(skill) {
+  const provider = LEARNING_PROVIDER_LINKS.find(item => item.matches.test(skill));
+  if (provider) {
+    return {
+      name: `${provider.name} course search`,
+      url: `${provider.url}${encodeURIComponent(skill)}`
+    };
+  }
+  if (skill && skill.trim()) {
+    return {
+      name: 'Course website search',
+      url: `https://www.coursera.org/search?query=${encodeURIComponent(skill)}`
+    };
+  }
+  return {
+    name: 'YouTube learning search',
+    url: 'https://www.youtube.com/results?search_query=skills+training+course'
+  };
+}
+
+function analyzeOpportunity(user, job) {
+  const requiredSkills = getOpportunitySkills(job);
+  const userSkills = (user?.skills || []).map(skill => skill.trim().toLowerCase()).filter(Boolean);
+  const matchedSkills = requiredSkills.filter(skill =>
+    userSkills.some(owned => owned === skill.toLowerCase()
+      || owned.includes(skill.toLowerCase())
+      || skill.toLowerCase().includes(owned))
+  );
+  const missingSkills = requiredSkills.filter(skill => !matchedSkills.includes(skill));
+  return {
+    matchScore: calculateMatch(user, job).score,
+    requiredSkills,
+    matchedSkills,
+    missingSkills
+  };
+}
 
 const DEFAULT_SUPER_ADMIN = {
   id: "superadmin-001",
-  name: "Super Administrator",
-  email: "superadmin@opportunityhub.local",
+  name: "Platform Administrator",
+  email: "",
   role: "SUPER_ADMIN",
   adminStatus: "APPROVED",
-  phone: "+250788999999",
+  phone: "",
   active: true,
   optInCategoryAlerts: true,
   alertCategoryScope: "ALL",
@@ -207,7 +215,7 @@ export default function App() {
     } catch (e) {
       // ignore
     }
-    return [...SEED_USERS, DEFAULT_SUPER_ADMIN];
+    return [DEFAULT_SUPER_ADMIN];
   });
 
   // Notifications Audit Log
@@ -252,6 +260,13 @@ export default function App() {
   const [authName, setAuthName] = useState('');
   const [authPhone, setAuthPhone] = useState('');
   const [authRoleRequested, setAuthRoleRequested] = useState('YOUTH');
+  const [authAccountType, setAuthAccountType] = useState('JOB_SEEKER');
+  const [authOrganization, setAuthOrganization] = useState('');
+  const [authEmployerName, setAuthEmployerName] = useState('');
+  const [authEmployerRole, setAuthEmployerRole] = useState('');
+  const [authExperience, setAuthExperience] = useState('');
+  const [authTeachingSubjects, setAuthTeachingSubjects] = useState('');
+  const [authLearningFocus, setAuthLearningFocus] = useState('');
   const [authEduLevel, setAuthEduLevel] = useState("Bachelor's Degree");
   const [authField, setAuthField] = useState('Computer Science / Information Technology');
   const [authSkills, setAuthSkills] = useState('JavaScript, React, Node.js');
@@ -259,12 +274,32 @@ export default function App() {
   const [authOptInCategoryAlerts, setAuthOptInCategoryAlerts] = useState(true);
   const [authAlertCategoryScope, setAuthAlertCategoryScope] = useState('SELECTED'); // "ALL" or "SELECTED"
   const [authLocation, setAuthLocation] = useState('Kigali, Rwanda');
-  const [authNotifyWhatsApp, setAuthNotifyWhatsApp] = useState(true);
+  const [authNotifyWhatsApp, setAuthNotifyWhatsApp] = useState(false);
   const [authNotifyEmail, setAuthNotifyEmail] = useState(true);
   const [authNotifySms, setAuthNotifySms] = useState(false);
   const [authFrequency, setAuthFrequency] = useState('IMMEDIATE');
   const [authError, setAuthError] = useState('');
   const [authSuccessMsg, setAuthSuccessMsg] = useState('');
+  const [selectedOpportunity, setSelectedOpportunity] = useState(null);
+  const [selectedOpportunityMessage, setSelectedOpportunityMessage] = useState('');
+  const [showPaidNotice, setShowPaidNotice] = useState(() => {
+    try { return localStorage.getItem('opportunityHub_paidNoticeDismissed') !== 'true'; } catch (e) { return true; }
+  });
+  const [showPaidGate, setShowPaidGate] = useState(false);
+  const [showPaidTestingModal, setShowPaidTestingModal] = useState(false);
+  const [paidFeatureLabel, setPaidFeatureLabel] = useState('');
+  const [technologyRadarOpen, setTechnologyRadarOpen] = useState(false);
+  const enforcePaymentBlock = import.meta.env.VITE_ENFORCE_PAYMENT_BLOCK === 'true';
+  const [communityJobs, setCommunityJobs] = useState(() => {
+    try { return JSON.parse(localStorage.getItem('opportunityHub_communityJobs') || '[]'); } catch (e) { return []; }
+  });
+  const [cohortSchedules, setCohortSchedules] = useState(() => {
+    try { return JSON.parse(localStorage.getItem('opportunityHub_cohortSchedules') || '[]'); } catch (e) { return []; }
+  });
+  const [workspaceMessage, setWorkspaceMessage] = useState('');
+  const [jobDraft, setJobDraft] = useState({ title: '', category: 'IT', skills: '', location: 'Kigali, Rwanda', url: '', minimumMatchThreshold: 0 });
+  const [learningDraft, setLearningDraft] = useState({ title: '', skills: '', url: '' });
+  const [cohortDraft, setCohortDraft] = useState({ cohortName: '', eventName: '', eventDate: '', summarySchedule: 'WEEKLY', contactChannel: 'EMAIL' });
 
   // Search & Filters for Opportunities
   const [searchTerm, setSearchTerm] = useState('');
@@ -362,8 +397,8 @@ export default function App() {
     async function loadData() {
       setLoading(true);
       const applyJobs = (list) => {
-        setJobs(list);
-        list.forEach(item => {
+        setJobs([...communityJobs, ...list]);
+        [...communityJobs, ...list].forEach(item => {
           if (item.domainCategory) ensureCategoryExists(item.domainCategory);
         });
       };
@@ -485,6 +520,151 @@ export default function App() {
     return true;
   };
 
+  const checkPaidFeature = (actionLabel) => {
+    if (!checkGuestAccess(actionLabel)) return false;
+    if (enforcePaymentBlock) {
+      setShowPaidGate(true);
+      return false;
+    }
+    setPaidFeatureLabel(actionLabel);
+    setShowPaidTestingModal(true);
+    return true;
+  };
+
+  const handleRegistrationRoleChange = (accountType) => {
+    setAuthAccountType(accountType);
+    setAuthOrganization('');
+    setAuthEmployerName('');
+    setAuthEmployerRole('');
+    setAuthTeachingSubjects('');
+    setAuthLearningFocus('');
+    setAuthExperience('');
+    setAuthEduLevel("Bachelor's Degree");
+    setAuthField('');
+    setAuthSkills('');
+    setAuthSelectedCats([]);
+    setAuthAlertCategoryScope('SELECTED');
+    setAuthFrequency('IMMEDIATE');
+    if (accountType === 'HIRING_COMPANY') {
+      setAuthNotifyWhatsApp(false);
+      setAuthNotifySms(false);
+      setAuthNotifyEmail(true);
+    } else if ([...SEEKER_ACCOUNT_TYPES, 'EMPLOYED_WORKER'].includes(accountType)) {
+      setAuthNotifyWhatsApp(false);
+      setAuthNotifySms(false);
+      setAuthNotifyEmail(true);
+    } else {
+      setAuthNotifyWhatsApp(false);
+      setAuthNotifySms(false);
+      setAuthNotifyEmail(false);
+    }
+    setAuthError('');
+  };
+
+  const handleProfileRoleChange = (accountType) => {
+    const roleSpecific = {
+      accountType,
+      role: accountType,
+      employerName: '',
+      employerRole: '',
+      organizationName: '',
+      organizationWebsite: '',
+      teachingSubjects: '',
+      learningFocus: '',
+      minimumMatchThreshold: accountType === 'HIRING_COMPANY'
+        ? Number(currentUser.minimumMatchThreshold) || 60
+        : 0,
+      cohortName: '',
+      eventName: '',
+      eventDate: '',
+      summarySchedule: ''
+    };
+    handleSaveProfile({ ...currentUser, ...roleSpecific });
+    setActiveTab('workspace');
+  };
+
+  const dismissPaidNotice = () => {
+    setShowPaidNotice(false);
+    try { localStorage.setItem('opportunityHub_paidNoticeDismissed', 'true'); } catch (e) { /* ignore */ }
+  };
+
+  const saveCommunityJob = (e) => {
+    e.preventDefault();
+    if (!checkGuestAccess('post a job listing')) return;
+    if (Number(jobDraft.minimumMatchThreshold) > 0 && !checkPaidFeature('set a paid minimum-match gate')) return;
+    if (!jobDraft.title.trim()) {
+      setWorkspaceMessage('Add a role title before publishing.');
+      return;
+    }
+    const listing = {
+      id: `community-${Date.now()}`,
+      title: jobDraft.title.trim(),
+      organization: currentUser.organizationName || currentUser.name,
+      category: 'JOB',
+      opportunityType: 'JOB',
+      domainCategory: jobDraft.category,
+      requiredSkills: jobDraft.skills.split(',').map(skill => skill.trim()).filter(Boolean),
+      location: jobDraft.location,
+      applicationUrl: jobDraft.url.trim(),
+      minimumMatchThreshold: Number(jobDraft.minimumMatchThreshold) || 0,
+      status: 'LIVE',
+      sourceName: 'Community hiring post',
+      postedDate: new Date().toLocaleDateString()
+    };
+    const updated = [listing, ...communityJobs];
+    setCommunityJobs(updated);
+    setJobs(prev => [listing, ...prev]);
+    try { localStorage.setItem('opportunityHub_communityJobs', JSON.stringify(updated)); } catch (error) { /* ignore */ }
+    setJobDraft({ title: '', category: 'IT', skills: '', location: 'Kigali, Rwanda', url: '', minimumMatchThreshold: 0 });
+    setWorkspaceMessage('Your free job post is now visible in the opportunity catalog.');
+    recordActivity('COMMUNITY_JOB_POSTED', `A hiring post was added with a ${listing.minimumMatchThreshold}% match threshold.`);
+  };
+
+  const saveCohortSchedule = (e) => {
+    e.preventDefault();
+    if (!checkPaidFeature('scheduled cohort and event summaries')) return;
+    if (!cohortDraft.cohortName.trim() || !cohortDraft.eventDate) {
+      setWorkspaceMessage('Add a cohort name and schedule date.');
+      return;
+    }
+    const schedule = { ...cohortDraft, id: `cohort-${Date.now()}`, userId: currentUser.id };
+    const updated = [schedule, ...cohortSchedules];
+    setCohortSchedules(updated);
+    try { localStorage.setItem('opportunityHub_cohortSchedules', JSON.stringify(updated)); } catch (error) { /* ignore */ }
+    setWorkspaceMessage(`A ${schedule.summarySchedule.toLowerCase()} cohort summary is scheduled. Delivery is simulated in this prototype.`);
+    recordActivity('COHORT_SUMMARY_SCHEDULED', `A cohort summary was scheduled for ${schedule.cohortName}.`);
+  };
+
+  const publishLearningResource = (e) => {
+    e.preventDefault();
+    if (!checkGuestAccess('share a learning opportunity')) return;
+    if (!learningDraft.title.trim()) {
+      setWorkspaceMessage('Add a course or learning pathway title.');
+      return;
+    }
+    const resource = {
+      id: `learning-${Date.now()}`,
+      title: learningDraft.title.trim(),
+      organization: currentUser.organizationName || currentUser.name,
+      category: 'TRAINING',
+      opportunityType: 'TRAINING',
+      domainCategory: currentUser.fieldOfStudy || 'Learning',
+      requiredSkills: learningDraft.skills.split(',').map(skill => skill.trim()).filter(Boolean),
+      location: 'Remote (Worldwide)',
+      applicationUrl: learningDraft.url.trim(),
+      status: 'LIVE',
+      sourceName: 'Community learning resource',
+      postedDate: new Date().toLocaleDateString()
+    };
+    setJobs(prev => [resource, ...prev]);
+    const updated = [resource, ...communityJobs];
+    setCommunityJobs(updated);
+    try { localStorage.setItem('opportunityHub_communityJobs', JSON.stringify(updated)); } catch (error) { /* ignore */ }
+    setLearningDraft({ title: '', skills: '', url: '' });
+    setWorkspaceMessage('Your learning opportunity is now listed in the public catalog.');
+    recordActivity('LEARNING_RESOURCE_POSTED', 'A community learning opportunity was added.');
+  };
+
   // Handle Auth submission
   const handleAuthSubmit = (e) => {
     e.preventDefault();
@@ -519,7 +699,7 @@ export default function App() {
         return;
       }
 
-      const found = registeredUsers.find(u => u.email.toLowerCase() === cleanEmail || u.name.toLowerCase().includes(cleanEmail));
+      const found = registeredUsers.find(u => (u.email || '').toLowerCase() === cleanEmail || (u.name || '').toLowerCase().includes(cleanEmail));
       if (found) {
         if (found.role === 'ADMIN' && found.adminStatus === 'PENDING_APPROVAL') {
           setAuthError('Your Administrator account request is currently PENDING Super Administrator approval.');
@@ -543,50 +723,74 @@ export default function App() {
         return;
       }
       if (!authPhone.trim()) {
-        setAuthError('Please provide a phone number for SMS or WhatsApp alerts');
+        if (authNotifyWhatsApp || authNotifySms) {
+          setAuthError('Add a phone number for the selected WhatsApp or SMS alert channel.');
+          return;
+        }
+      }
+      if ([...SEEKER_ACCOUNT_TYPES, 'EMPLOYED_WORKER'].includes(authAccountType)
+          && !authNotifyWhatsApp && !authNotifyEmail && !authNotifySms) {
+        setAuthError('Select at least one alert channel.');
+        return;
+      }
+      if (['SCHOOL', 'TRAINING_CENTER', 'PRIVATE_TUTOR', 'COURSE_PLATFORM', 'HIRING_COMPANY', 'NGO_EVENT'].includes(authAccountType)
+          && !authOrganization.trim()) {
+        setAuthError('Add your organization or provider name to continue.');
+        return;
+      }
+      if (['SCHOOL', 'TRAINING_CENTER', 'PRIVATE_TUTOR', 'COURSE_PLATFORM'].includes(authAccountType)
+          && !authTeachingSubjects.trim()) {
+        setAuthError('Add at least one subject or skill area you teach.');
         return;
       }
 
-      const existing = registeredUsers.find(u => u.email.toLowerCase() === authEmail.trim().toLowerCase());
+      const existing = registeredUsers.find(u => (u.email || '').toLowerCase() === authEmail.trim().toLowerCase());
       if (existing) {
         setAuthError('An account with this email address already exists. Please log in.');
         return;
       }
 
-      const isReqAdmin = authRoleRequested === 'ADMIN';
       const newUser = {
         id: `usr-${Date.now()}`,
         name: authName.trim(),
         email: authEmail.trim().toLowerCase(),
         phone: authPhone.trim(),
-        role: isReqAdmin ? 'YOUTH' : 'YOUTH',
-        adminStatus: isReqAdmin ? 'PENDING_APPROVAL' : 'NONE',
+        role: authRoleRequested === 'ADMIN' ? 'YOUTH' : authAccountType,
+        accountType: authAccountType,
+        adminStatus: authRoleRequested === 'ADMIN' ? 'PENDING_APPROVAL' : 'NONE',
         active: true,
         optInCategoryAlerts: authOptInCategoryAlerts,
         alertCategoryScope: authAlertCategoryScope,
         educationLevel: authEduLevel,
         fieldOfStudy: authField.trim() || 'General Studies',
         skills: authSkills.split(',').map(s => s.trim()).filter(Boolean),
+        experience: authExperience.trim(),
         preferredCategories: authSelectedCats,
         preferredLocation: authLocation,
         notifyWhatsApp: authNotifyWhatsApp,
         notifyEmail: authNotifyEmail,
         notifySms: authNotifySms,
-        notificationFrequency: authFrequency
+        notificationFrequency: authFrequency,
+        organizationName: authOrganization.trim(),
+        employerName: authEmployerName.trim(),
+        employerRole: authEmployerRole.trim(),
+        teachingSubjects: authTeachingSubjects.trim(),
+        learningFocus: authLearningFocus.trim(),
+        minimumMatchThreshold: authAccountType === 'HIRING_COMPANY' ? 60 : 0
       };
 
       const updatedList = [...registeredUsers, newUser];
       saveRegisteredUsers(updatedList);
 
       recordActivity(
-        isReqAdmin ? "ADMIN_ACCESS_REQUESTED" : "USER_REGISTERED",
-        isReqAdmin
+        authRoleRequested === 'ADMIN' ? "ADMIN_ACCESS_REQUESTED" : "USER_REGISTERED",
+        authRoleRequested === 'ADMIN'
           ? `New account created by ${newUser.name} with PENDING Administrator request`
           : `New Candidate registered: ${newUser.name} with category alerts ${authOptInCategoryAlerts ? 'enabled' : 'disabled'}`,
         newUser
       );
 
-      if (isReqAdmin) {
+      if (authRoleRequested === 'ADMIN') {
         setAuthSuccessMsg('Account created successfully. Your request for Administrator privileges is PENDING approval by the Super Administrator.');
         setTimeout(() => {
           setShowAuthModal(false);
@@ -601,12 +805,14 @@ export default function App() {
         setAuthName('');
         setAuthEmail('');
         setAuthPhone('');
+        setAuthExperience('');
       }
     }
   };
 
   const handleSaveProfile = async (updated) => {
-    handleSetCurrentUser(updated);
+    setCurrentUser(updated);
+    try { localStorage.setItem('opportunityHub_currentUser', JSON.stringify(updated)); } catch (e) { /* ignore */ }
     const updatedRegistered = registeredUsers.map(u => u.id === updated.id ? updated : u);
     saveRegisteredUsers(updatedRegistered);
 
@@ -664,6 +870,26 @@ export default function App() {
     }
   };
 
+  const reviewOpportunity = (job) => {
+    if (!checkGuestAccess('review this opportunity before applying')) return;
+    setSelectedOpportunity(job);
+    setSelectedOpportunityMessage('');
+  };
+
+  const applyToSelectedOpportunity = () => {
+    if (!selectedOpportunity || !selectedOpportunityAnalysis) return;
+    const threshold = Number(selectedOpportunity.minimumMatchThreshold) || 0;
+    if (selectedOpportunityAnalysis.matchScore < threshold) {
+      setSelectedOpportunityMessage(`This listing requires a ${threshold}% match. Your current match is ${Math.round(selectedOpportunityAnalysis.matchScore)}%. Review the missing skills before applying.`);
+      return;
+    }
+    if (selectedOpportunity.applicationUrl) {
+      window.open(selectedOpportunity.applicationUrl, '_blank', 'noopener,noreferrer');
+    }
+    handleTrackOpportunity(selectedOpportunity, 'APPLIED');
+    setSelectedOpportunityMessage('Application link opened. This opportunity was added to your tracker.');
+  };
+
   const handleRemoveTracked = (jobId, title) => {
     const updated = userApplications.filter(a => a.jobId !== jobId && a.title !== title);
     handleUpdateApplication(updated);
@@ -671,7 +897,7 @@ export default function App() {
   };
 
   // Dispatches alerts only to opted-in users matching category preferences
-  const dispatchAlertsForOpportunities = (opportunityList) => {
+  const dispatchAlertsForOpportunities = async (opportunityList) => {
     const generatedNotifs = [];
     const now = new Date().toISOString();
 
@@ -699,12 +925,12 @@ export default function App() {
 
         // Prevent duplicate alert for same user + opportunity
         const alreadyAlerted = notifications.some(
-          n => n.recipient && n.recipient.includes(user.name) && (
+          n => (n.recipientUserId === user.id || (n.recipient && n.recipient.includes(user.name))) && (
             n.opportunityTitle === job.title ||
             [n.opportunityTitles, n.sentOpportunityTitles].some(titles => Array.isArray(titles) && titles.includes(job.title))
           )
         ) || generatedNotifs.some(
-          g => g.recipient.includes(user.name) && (
+          g => g.recipientUserId === user.id && (
             g.opportunityTitle === job.title ||
             [g.opportunityTitles, g.sentOpportunityTitles].some(titles => Array.isArray(titles) && titles.includes(job.title))
           )
@@ -728,7 +954,9 @@ export default function App() {
             id: `notif-${Date.now()}-${Math.floor(Math.random() * 1000)}`,
             timestamp: now,
             channel: ch,
-            recipient: `${user.name} (${ch === 'EMAIL' ? user.email : user.phone})`,
+            recipient: '',
+            recipientUserId: user.id,
+            _contactIdentifier: user.email || user.phone || user.id || user.name,
             opportunityTitle: job.title,
             organization: job.organization || 'Direct Provider',
             matchScore: match.score,
@@ -739,6 +967,10 @@ export default function App() {
       });
     });
 
+    await Promise.all(generatedNotifs.map(async notice => {
+      notice.recipient = await hashContactIdentifier(notice._contactIdentifier);
+      delete notice._contactIdentifier;
+    }));
     if (generatedNotifs.length > 0) {
       setNotifications(prev => [...generatedNotifs, ...prev]);
     }
@@ -750,7 +982,7 @@ export default function App() {
     setIsScraping(true);
     setScraperStatusMsg('Connecting to public recruitment portals and checking for new listings...');
 
-    setTimeout(() => {
+    setTimeout(async () => {
       const newlyFoundJobs = [
         {
           id: `scraped-${Date.now()}-1`,
@@ -829,7 +1061,7 @@ export default function App() {
       });
 
       // Dispatch automatic alerts strictly to users opted into matching categories
-      const dispatched = dispatchAlertsForOpportunities(newlyFoundJobs);
+      const dispatched = await dispatchAlertsForOpportunities(newlyFoundJobs);
 
       recordActivity(
         "SCRAPER_RUN_COMPLETED",
@@ -849,7 +1081,7 @@ export default function App() {
       id: `test-${Date.now()}`,
       timestamp: new Date().toISOString(),
       channel: testChannel,
-      recipient: `${currentUser.name} (${testChannel === 'EMAIL' ? currentUser.email : currentUser.phone})`,
+      recipient: 'Administrator test account',
       opportunityTitle: "Admin System Diagnostic Test Alert",
       organization: "Opportunity Hub Core",
       matchScore: 99.0,
@@ -875,6 +1107,11 @@ export default function App() {
       };
     });
   }, [jobs, currentUser]);
+
+  const selectedOpportunityAnalysis = useMemo(() => {
+    if (!selectedOpportunity || !currentUser) return null;
+    return analyzeOpportunity(currentUser, selectedOpportunity);
+  }, [selectedOpportunity, currentUser]);
 
   // Filtered and sorted listings
   const displayedJobs = useMemo(() => {
@@ -940,7 +1177,7 @@ export default function App() {
 
   const userNotifications = useMemo(() => {
     if (!currentUser) return [];
-    return notifications.filter(n => n.recipient && n.recipient.includes(currentUser.name));
+    return notifications.filter(n => n.recipientUserId === currentUser.id || (n.recipient && n.recipient.includes(currentUser.name)));
   }, [notifications, currentUser]);
 
   const pendingAdminRequests = useMemo(() => {
@@ -949,6 +1186,14 @@ export default function App() {
 
   const isSuperAdmin = currentUser && currentUser.role === 'SUPER_ADMIN';
   const isAdmin = currentUser && (currentUser.role === 'ADMIN' || currentUser.role === 'SUPER_ADMIN') && currentUser.adminStatus === 'APPROVED';
+  const currentRoleLabel = currentUser
+    ? currentUser.role === 'SUPER_ADMIN' ? 'Super Admin' : currentUser.role === 'ADMIN' ? 'Admin' :
+      ACCOUNT_TYPES.find(([value]) => value === currentUser.accountType)?.[1] || 'Job seeker'
+    : 'Guest Mode';
+  const dashboardAccountType = currentUser?.accountType
+    || (ACCOUNT_TYPES.some(([value]) => value === currentUser?.role) ? currentUser.role : 'JOB_SEEKER');
+  const skillsDemandRoles = [...SEEKER_ACCOUNT_TYPES, 'EMPLOYED_WORKER', 'TRAINING_CENTER', 'SCHOOL',
+    'PRIVATE_TUTOR', 'COURSE_PLATFORM', 'HIRING_COMPANY', 'NGO_EVENT'];
 
   return (
     <div className={`min-h-screen flex flex-col font-sans transition-colors duration-200 ${
@@ -972,9 +1217,7 @@ export default function App() {
             </span>
             <span>•</span>
             <span>
-              {currentUser
-                ? `Role: ${currentUser.role === 'SUPER_ADMIN' ? 'Super Admin' : (currentUser.role === 'ADMIN' ? 'Admin' : 'Normal User')}`
-                : 'Guest Mode'}
+              {currentUser ? `Role: ${currentRoleLabel}` : currentRoleLabel}
             </span>
           </div>
         </div>
@@ -1021,6 +1264,18 @@ export default function App() {
               </span>
             </button>
 
+            {currentUser && (
+              <button
+                onClick={() => setActiveTab('workspace')}
+                className={`px-3 py-1.5 rounded-lg transition flex items-center gap-1.5 ${
+                  activeTab === 'workspace'
+                    ? (theme === 'dark' ? 'bg-slate-900 text-blue-400 font-bold shadow-sm' : 'bg-white text-blue-700 font-bold shadow-sm')
+                    : 'text-slate-500 hover:text-slate-900 dark:hover:text-slate-200'
+                }`}
+              >
+                <span>Workspace</span>
+              </button>
+            )}
             <button
               onClick={() => {
                 if (checkGuestAccess('manage your profile and alert channels')) {
@@ -1057,21 +1312,6 @@ export default function App() {
               }`}>
                 {currentUser ? userApplications.length : 0}
               </span>
-            </button>
-
-            <button
-              onClick={() => {
-                if (checkGuestAccess('build and download professional CVs')) {
-                  setActiveTab('cv');
-                }
-              }}
-              className={`px-3 py-1.5 rounded-lg transition flex items-center gap-1.5 ${
-                activeTab === 'cv'
-                  ? (theme === 'dark' ? 'bg-slate-900 text-blue-400 font-bold shadow-sm' : 'bg-white text-blue-700 font-bold shadow-sm')
-                  : 'text-slate-500 hover:text-slate-900 dark:hover:text-slate-200'
-              }`}
-            >
-              <span>CV Builder</span>
             </button>
 
             {currentUser && !isAdmin && (
@@ -1131,7 +1371,7 @@ export default function App() {
                 <div className="text-right hidden sm:block">
                   <p className="text-xs font-bold truncate max-w-[120px]">{currentUser.name}</p>
                   <p className="text-[10px] text-slate-500">
-                    {currentUser.role === 'SUPER_ADMIN' ? 'Super Admin' : (currentUser.role === 'ADMIN' ? 'Admin' : 'Normal User')}
+                    {currentRoleLabel}
                   </p>
                 </div>
                 <button
@@ -1355,6 +1595,7 @@ export default function App() {
                   const isTracked = userApplications.some(a => (a.jobId && a.jobId === job.id) || a.title === job.title);
                   const isHighMatch = job.matchScore >= 80;
                   const isMediumMatch = job.matchScore >= 60 && job.matchScore < 80;
+                  const meetsThreshold = (job.matchScore || 0) >= (Number(job.minimumMatchThreshold) || 0);
 
                   return (
                     <div
@@ -1440,14 +1681,18 @@ export default function App() {
 
                       {/* Right: Clean, Crisp Primary Actions (No manual simulate buttons) */}
                       <div className="flex md:flex-col items-stretch gap-2 min-w-[140px] pt-3 md:pt-0 border-t md:border-t-0 md:border-l border-slate-100 dark:border-slate-800 md:pl-4 w-full md:w-auto">
-                        <a
-                          href={job.applicationUrl || 'https://recruitment.mifotra.gov.rw'}
-                          target="_blank"
-                          rel="noopener noreferrer"
+                        {job.minimumMatchThreshold > 0 && !meetsThreshold && (
+                          <span className="px-2 py-2 text-[11px] text-amber-700 dark:text-amber-300 text-center">
+                            Hiring team set a {job.minimumMatchThreshold}% minimum match
+                          </span>
+                        )}
+                        <button
+                          type="button"
+                          onClick={() => reviewOpportunity(job)}
                           className="px-3.5 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold text-center transition shadow-sm"
                         >
-                          View & Apply ↗
-                        </a>
+                          Review skills and apply
+                        </button>
 
                         <button
                           onClick={() => handleTrackOpportunity(job, isTracked ? 'APPLIED' : 'SAVED')}
@@ -1504,6 +1749,55 @@ export default function App() {
               </div>
 
               <div>
+                <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Account Role</label>
+                <select
+                  value={currentUser.accountType || (ACCOUNT_TYPES.some(([value]) => value === currentUser.role) ? currentUser.role : 'JOB_SEEKER')}
+                  onChange={(e) => handleProfileRoleChange(e.target.value)}
+                  disabled={currentUser.role === 'ADMIN' || currentUser.role === 'SUPER_ADMIN'}
+                  className={`w-full text-xs p-2.5 border rounded-lg ${theme === 'dark' ? 'bg-slate-800 border-slate-700 text-slate-100' : 'bg-white border-slate-300 text-slate-800'}`}
+                >
+                  {ACCOUNT_TYPES.map(([value, label]) => <option key={value} value={value}>{label}</option>)}
+                </select>
+              </div>
+
+              {currentUser.accountType === 'EMPLOYED_WORKER' && (
+                <>
+                  <div>
+                    <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Current employer, private</label>
+                    <input type="text" value={currentUser.employerName || ''} onChange={(e) => handleSaveProfile({ ...currentUser, employerName: e.target.value })} className={`w-full text-xs p-2.5 border rounded-lg ${theme === 'dark' ? 'bg-slate-800 border-slate-700 text-slate-100' : 'bg-white border-slate-300 text-slate-800'}`} />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Current role, private</label>
+                    <input type="text" value={currentUser.employerRole || ''} onChange={(e) => handleSaveProfile({ ...currentUser, employerRole: e.target.value })} className={`w-full text-xs p-2.5 border rounded-lg ${theme === 'dark' ? 'bg-slate-800 border-slate-700 text-slate-100' : 'bg-white border-slate-300 text-slate-800'}`} />
+                  </div>
+                </>
+              )}
+              {['SCHOOL', 'TRAINING_CENTER', 'PRIVATE_TUTOR', 'COURSE_PLATFORM', 'HIRING_COMPANY', 'NGO_EVENT'].includes(currentUser.accountType) && (
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Organization name</label>
+                  <input type="text" value={currentUser.organizationName || ''} onChange={(e) => handleSaveProfile({ ...currentUser, organizationName: e.target.value })} className={`w-full text-xs p-2.5 border rounded-lg ${theme === 'dark' ? 'bg-slate-800 border-slate-700 text-slate-100' : 'bg-white border-slate-300 text-slate-800'}`} />
+                </div>
+              )}
+              {['SCHOOL', 'TRAINING_CENTER', 'PRIVATE_TUTOR', 'COURSE_PLATFORM'].includes(currentUser.accountType) && (
+                <div className="sm:col-span-2 grid grid-cols-2 gap-3">
+                  <label className="text-xs font-bold">Teaching subjects<input value={currentUser.teachingSubjects || ''} onChange={(e) => handleSaveProfile({ ...currentUser, teachingSubjects: e.target.value })} className={`mt-1 w-full text-xs p-2.5 border rounded-lg ${theme === 'dark' ? 'bg-slate-800 border-slate-700 text-slate-100' : 'bg-white border-slate-300 text-slate-800'}`} /></label>
+                  <label className="text-xs font-bold">Learning focus<input value={currentUser.learningFocus || ''} onChange={(e) => handleSaveProfile({ ...currentUser, learningFocus: e.target.value })} className={`mt-1 w-full text-xs p-2.5 border rounded-lg ${theme === 'dark' ? 'bg-slate-800 border-slate-700 text-slate-100' : 'bg-white border-slate-300 text-slate-800'}`} /></label>
+                </div>
+              )}
+              {currentUser.accountType === 'HIRING_COMPANY' && (
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Default minimum match for hiring posts</label>
+                  <select value={currentUser.minimumMatchThreshold ?? 0} onChange={(e) => {
+                    const threshold = Number(e.target.value);
+                    setJobDraft(previous => ({ ...previous, minimumMatchThreshold: threshold }));
+                    handleSaveProfile({ ...currentUser, minimumMatchThreshold: threshold });
+                  }} className={`w-full text-xs p-2.5 border rounded-lg ${theme === 'dark' ? 'bg-slate-800 border-slate-700 text-slate-100' : 'bg-white border-slate-300 text-slate-800'}`}>
+                    <option value="0">No minimum</option><option value="60">60%</option><option value="70">70%</option><option value="80">80%</option>
+                  </select>
+                </div>
+              )}
+
+              <div>
                 <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">WhatsApp / SMS Phone</label>
                 <input
                   type="text"
@@ -1554,6 +1848,53 @@ export default function App() {
                     theme === 'dark' ? 'bg-slate-800 border-slate-700 text-slate-100' : 'bg-slate-50 border-slate-300 text-slate-800'
                   }`}
                 />
+              </div>
+              <div className="sm:col-span-2">
+                <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Skills, comma separated</label>
+                <input
+                  type="text"
+                  value={(currentUser.skills || []).join(', ')}
+                  onChange={(e) => handleSaveProfile({ ...currentUser, skills: e.target.value.split(',').map(skill => skill.trim()).filter(Boolean) })}
+                  placeholder="Add skills to improve opportunity matching"
+                  className={`w-full text-xs p-2.5 border rounded-lg ${theme === 'dark' ? 'bg-slate-800 border-slate-700 text-slate-100' : 'bg-slate-50 border-slate-300 text-slate-800'}`}
+                />
+              </div>
+              <div className="sm:col-span-2">
+                <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Experience, projects, and achievements</label>
+                <textarea
+                  rows={4}
+                  value={currentUser.experience || ''}
+                  onChange={(e) => handleSaveProfile({ ...currentUser, experience: e.target.value })}
+                  placeholder="Add relevant work history, projects, volunteering, or practical experience"
+                  className={`w-full text-xs p-2.5 border rounded-lg focus:ring-2 focus:ring-blue-500 ${
+                    theme === 'dark' ? 'bg-slate-800 border-slate-700 text-slate-100' : 'bg-slate-50 border-slate-300 text-slate-800'
+                  }`}
+                />
+              </div>
+              <div className="sm:col-span-2">
+                <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Digest cadence</label>
+                <select value={currentUser.notificationFrequency || 'WEEKLY'} onChange={(e) => handleSaveProfile({ ...currentUser, notificationFrequency: e.target.value })} className={`w-full text-xs p-2.5 border rounded-lg ${theme === 'dark' ? 'bg-slate-800 border-slate-700 text-slate-100' : 'bg-white border-slate-300 text-slate-800'}`}>
+                  <option value="IMMEDIATE">As opportunities are found</option>
+                  <option value="DAILY">Daily digest</option>
+                  <option value="WEEKLY">Weekly digest</option>
+                </select>
+              </div>
+              <div className="sm:col-span-2">
+                <p className="text-xs font-bold text-slate-700 dark:text-slate-300 mb-2">Opportunity categories</p>
+                <div className="flex flex-wrap gap-2">
+                  {categories.filter(category => category !== 'ALL').map(category => {
+                    const selected = (currentUser.preferredCategories || []).includes(category);
+                    return <label key={category} className="flex items-center gap-1.5 rounded-lg border px-2.5 py-1.5 text-xs">
+                      <input type="checkbox" checked={selected} onChange={(e) => {
+                        const next = e.target.checked
+                          ? [...(currentUser.preferredCategories || []), category]
+                          : (currentUser.preferredCategories || []).filter(item => item !== category);
+                        handleSaveProfile({ ...currentUser, preferredCategories: next });
+                      }} />
+                      {category}
+                    </label>;
+                  })}
+                </div>
               </div>
 
               {/* Explicit Category Alert Opt-In Box */}
@@ -1792,27 +2133,6 @@ export default function App() {
                 ))}
               </div>
             )}
-          </div>
-        )}
-
-        {/* TAB 4: CV BUILDER */}
-        {activeTab === 'cv' && currentUser && (
-          <div className="space-y-4">
-            <div className={`p-4 rounded-xl border text-xs flex justify-between items-center ${
-              theme === 'dark' ? 'bg-blue-950/40 border-blue-900 text-blue-300' : 'bg-blue-50 border-blue-200 text-blue-900'
-            }`}>
-              <div>
-                <p className="font-bold">Opportunity Hub Integrated CV Builder</p>
-                <p className="text-[11px] opacity-80">
-                  Build and export a recruiter-ready CV formatted for public sector and private industry applications.
-                </p>
-              </div>
-            </div>
-            <div className={`rounded-2xl border overflow-hidden ${
-              theme === 'dark' ? 'bg-slate-900 border-slate-800' : 'bg-white border-slate-200 shadow-sm'
-            }`}>
-              <CVEditor />
-            </div>
           </div>
         )}
 
@@ -2097,7 +2417,265 @@ export default function App() {
             </div>
           </div>
         )}
+
+        {activeTab === 'workspace' && currentUser && (
+          <div className="space-y-5">
+            {showPaidNotice && (
+              <aside className="paid-notice">
+                <div>
+                  <strong>Paid feature testing notice</strong>
+                  <p>Payment features are not connected. Hiring posts are free. Paid match thresholds are optional in this prototype and can be enforced by configuration.</p>
+                </div>
+                <button type="button" onClick={dismissPaidNotice} aria-label="Dismiss paid feature notice">Dismiss</button>
+              </aside>
+            )}
+            <section className="hub-panel">
+              <div className="hub-heading">
+                <div>
+                  <p className="eyebrow">Your Opportunity Hub</p>
+                  <h2>{ACCOUNT_TYPES.find(([value]) => value === dashboardAccountType)?.[1] || 'Member'} dashboard</h2>
+                  <p>{SEEKER_ACCOUNT_TYPES.includes(dashboardAccountType)
+                    ? 'Explore opportunities, review your match and close skill gaps before applying.'
+                    : dashboardAccountType === 'EMPLOYED_WORKER'
+                      ? 'Explore private career growth, stronger-fit roles and emerging technology signals.'
+                      : dashboardAccountType === 'HIRING_COMPANY'
+                        ? 'Publish open roles and review the match rules attached to each listing.'
+                        : dashboardAccountType === 'NGO_EVENT'
+                          ? 'Manage community programs and scheduled cohort communications.'
+                          : 'Share learning pathways and align programs with current employer demand.'}</p>
+                </div>
+                <span className="hub-pill">{enrichedJobs.filter(job => job.matchScore >= 60).length} strong matches</span>
+              </div>
+              {workspaceMessage && <p className="hub-message" role="status">{workspaceMessage}</p>}
+            </section>
+
+            {skillsDemandRoles.includes(dashboardAccountType) && <FiveMonthSkillsDashboard jobs={jobs} />}
+
+            {SEEKER_ACCOUNT_TYPES.includes(dashboardAccountType) && (
+              <section className="hub-panel">
+                <p className="eyebrow">Job seeker services</p>
+                <h2>Strong matches ready for a skills review</h2>
+                <p className="hub-copy">Every apply action opens a job-specific skills analysis first. Listings remain visible even when your match is below 60%.</p>
+                <div className="hub-grid">
+                  {enrichedJobs.filter(job => job.matchScore >= 60).slice(0, 4).map(job => (
+                    <article className="hub-card" key={job.id || job.title}>
+                      <h3>{job.title}</h3>
+                      <p>{job.organization || 'Opportunity provider'} · {Math.round(job.matchScore)}% match</p>
+                      <button type="button" className="hub-primary" onClick={() => reviewOpportunity(job)}>Review skills before applying</button>
+                    </article>
+                  ))}
+                  {!enrichedJobs.some(job => job.matchScore >= 60) && <p className="hub-muted">No listings currently meet the 60% strong-match alert threshold. Public listings are still available in Opportunities.</p>}
+                </div>
+                <button type="button" className="hub-primary" onClick={() => setActiveTab('opportunities')}>Browse all public opportunities</button>
+              </section>
+            )}
+
+            {dashboardAccountType === 'EMPLOYED_WORKER' && (
+              <>
+              <section className="hub-panel">
+                <p className="eyebrow">Private to your profile</p>
+                <h2>Discreet better-pay alerts</h2>
+                <p className="hub-copy">Your current employer and role are never included in public listings or alert summaries.</p>
+                <p className="paid-feature-badge">Paid feature</p>
+                <label className="hub-check">
+                  <input type="checkbox" checked={Boolean(currentUser.betterPayAlerts)} onChange={(e) => {
+                    if (e.target.checked && !checkPaidFeature('discreet career-growth alerts')) return;
+                    handleSaveProfile({ ...currentUser, betterPayAlerts: e.target.checked });
+                  }} />
+                  <span>Show private alerts for opportunities above my current compensation</span>
+                </label>
+                <label className="hub-field">Target annual compensation (private)
+                  <input type="number" min="0" value={currentUser.targetCompensation || ''} onChange={(e) => handleSaveProfile({ ...currentUser, targetCompensation: e.target.value })} placeholder="Optional" />
+                </label>
+                <p className="hub-muted">Public opportunity sources may not include compensation. No alert is generated until a listing provides comparable pay data.</p>
+              </section>
+              <TechnologyRadar
+                isOpen={technologyRadarOpen}
+                onOpen={() => {
+                  if (checkPaidFeature('early global technology radar')) setTechnologyRadarOpen(true);
+                }}
+              />
+              <section className="hub-panel">
+                <p className="eyebrow">Private career growth</p>
+                <h2>Higher-fit opportunities</h2>
+                <div className="hub-list">
+                  {enrichedJobs.filter(job => job.matchScore >= 60).slice(0, 6).map(job => (
+                    <button type="button" key={job.id || job.title} onClick={() => reviewOpportunity(job)}>
+                      {job.title} · {Math.round(job.matchScore)}% match · Review skills
+                    </button>
+                  ))}
+                </div>
+              </section>
+              </>
+            )}
+
+            {dashboardAccountType === 'HIRING_COMPANY' && (
+              <section className="hub-panel">
+                <p className="eyebrow">Hiring workspace</p>
+                <h2>Post a role for free</h2>
+                <form className="hub-form" onSubmit={saveCommunityJob}>
+                  <label>Role title<input required value={jobDraft.title} onChange={(e) => setJobDraft({ ...jobDraft, title: e.target.value })} /></label>
+                  <label>Category<input value={jobDraft.category} onChange={(e) => setJobDraft({ ...jobDraft, category: e.target.value })} /></label>
+                  <label>Required skills, comma separated<input value={jobDraft.skills} onChange={(e) => setJobDraft({ ...jobDraft, skills: e.target.value })} /></label>
+                  <label>Location<input value={jobDraft.location} onChange={(e) => setJobDraft({ ...jobDraft, location: e.target.value })} /></label>
+                  <label>Application link<input type="url" value={jobDraft.url} onChange={(e) => setJobDraft({ ...jobDraft, url: e.target.value })} placeholder="https://" /></label>
+                  <label>Minimum candidate match
+                    <select value={jobDraft.minimumMatchThreshold} onChange={(e) => setJobDraft({ ...jobDraft, minimumMatchThreshold: e.target.value })}>
+                      <option value="0">No minimum, free</option>
+                      <option value="60">60% match gate</option>
+                      <option value="70">70% match gate</option>
+                      <option value="80">80% match gate</option>
+                    </select>
+                  </label>
+                  <button type="submit" className="hub-primary">Publish free job post</button>
+                </form>
+                <p className="hub-muted"><span className="paid-feature-badge">Paid feature</span> A positive minimum match blocks below-threshold applicants. Testing access is open while payment enforcement is disabled.</p>
+                <h3 className="hub-subheading">Your published roles</h3>
+                <div className="hub-list">{communityJobs.filter(job => job.organization === (currentUser.organizationName || currentUser.name)).map(job => (
+                  <p key={job.id}>{job.title} · {Number(job.minimumMatchThreshold) > 0 ? `${job.minimumMatchThreshold}% minimum match` : 'Open applications'}</p>
+                ))}</div>
+                <p className="hub-muted">Set 0% for free open applications, or activate a paid match-score gate for qualified applications only.</p>
+              </section>
+            )}
+
+            {['TRAINING_CENTER', 'SCHOOL', 'PRIVATE_TUTOR', 'COURSE_PLATFORM'].includes(dashboardAccountType) && (
+              <>
+              <section className="hub-panel">
+                <p className="eyebrow">{dashboardAccountType === 'PRIVATE_TUTOR' ? 'Tutor workspace' : dashboardAccountType === 'SCHOOL' ? 'School programs' : dashboardAccountType === 'TRAINING_CENTER' ? 'Training campus and cohort workspace' : 'Course platform workspace'}</p>
+                <h2>{dashboardAccountType === 'PRIVATE_TUTOR' ? 'Post a lesson or tutorial' : dashboardAccountType === 'SCHOOL' ? 'Publish an academic or technical program' : dashboardAccountType === 'TRAINING_CENTER' ? 'Publish a training intake or cohort' : 'List a course or learning pathway'}</h2>
+                <form className="hub-form" onSubmit={publishLearningResource}>
+                  <label>{dashboardAccountType === 'PRIVATE_TUTOR' ? 'Lesson title' : dashboardAccountType === 'SCHOOL' ? 'Program title' : 'Course or intake title'}<input required value={learningDraft.title} onChange={(e) => setLearningDraft({ ...learningDraft, title: e.target.value })} /></label>
+                  <label>Skills taught, comma separated<input required value={learningDraft.skills} onChange={(e) => setLearningDraft({ ...learningDraft, skills: e.target.value })} /></label>
+                  <label>Enrollment link<input type="url" value={learningDraft.url} onChange={(e) => setLearningDraft({ ...learningDraft, url: e.target.value })} placeholder="https://" /></label>
+                  <button type="submit" className="hub-primary">List learning opportunity</button>
+                </form>
+                <h3 className="hub-subheading">Your learning listings</h3>
+                <div className="hub-list">{communityJobs.filter(job => job.organization === (currentUser.organizationName || currentUser.name) && job.opportunityType === 'TRAINING').map(job => (
+                  <p key={job.id}>{job.title} · {(job.requiredSkills || []).join(', ')}</p>
+                ))}</div>
+              </section>
+              <TechnologyRadar
+                isOpen={technologyRadarOpen}
+                onOpen={() => {
+                  if (checkPaidFeature('early global technology radar')) setTechnologyRadarOpen(true);
+                }}
+              />
+              </>
+            )}
+
+            {dashboardAccountType === 'NGO_EVENT' && (
+              <section className="hub-panel">
+                <p className="eyebrow">Cohort and event outreach</p>
+                <h2>Schedule a cohort opportunity summary</h2>
+                <form className="hub-form" onSubmit={saveCohortSchedule}>
+                  <label>Cohort name<input required value={cohortDraft.cohortName} onChange={(e) => setCohortDraft({ ...cohortDraft, cohortName: e.target.value })} /></label>
+                  <label>Event or program<input value={cohortDraft.eventName} onChange={(e) => setCohortDraft({ ...cohortDraft, eventName: e.target.value })} /></label>
+                  <label>Next delivery date<input type="date" required value={cohortDraft.eventDate} onChange={(e) => setCohortDraft({ ...cohortDraft, eventDate: e.target.value })} /></label>
+                  <label>Summary cadence<select value={cohortDraft.summarySchedule} onChange={(e) => setCohortDraft({ ...cohortDraft, summarySchedule: e.target.value })}><option>WEEKLY</option><option>MONTHLY</option></select></label>
+                  <label>Preferred simulated channel<select value={cohortDraft.contactChannel} onChange={(e) => setCohortDraft({ ...cohortDraft, contactChannel: e.target.value })}><option>EMAIL</option><option>WHATSAPP</option><option>SMS</option></select></label>
+                  <button type="submit" className="hub-primary">Schedule summary</button>
+                </form>
+                <div className="hub-list">{cohortSchedules.filter(item => item.userId === currentUser.id).map(item => <p key={item.id}>{item.cohortName} · {item.summarySchedule} · {item.eventDate}</p>)}</div>
+                <p className="hub-muted">Scheduled SMS and WhatsApp summaries are recorded as test notifications. Live delivery remains disabled unless explicitly enabled.</p>
+              </section>
+            )}
+
+            {dashboardAccountType === 'NGO_EVENT' && (
+              <section className="hub-panel">
+                <p className="eyebrow">Program and event listings</p>
+                <h2>Publish a public program announcement</h2>
+                <form className="hub-form" onSubmit={publishLearningResource}>
+                  <label>Program or event title<input required value={learningDraft.title} onChange={(e) => setLearningDraft({ ...learningDraft, title: e.target.value })} /></label>
+                  <label>Participant skills or focus<input value={learningDraft.skills} onChange={(e) => setLearningDraft({ ...learningDraft, skills: e.target.value })} /></label>
+                  <label>Program information link<input type="url" value={learningDraft.url} onChange={(e) => setLearningDraft({ ...learningDraft, url: e.target.value })} placeholder="https://" /></label>
+                  <button type="submit" className="hub-primary">Publish program listing</button>
+                </form>
+              </section>
+            )}
+          </div>
+        )}
       </main>
+
+      {selectedOpportunity && selectedOpportunityAnalysis && (
+        <div className="fixed inset-0 z-[70] flex items-center justify-center bg-slate-950/60 p-4" role="dialog" aria-modal="true" aria-labelledby="pre-apply-title">
+          <section className={`max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-2xl border p-5 shadow-2xl ${theme === 'dark' ? 'bg-slate-900 border-slate-700 text-slate-100' : 'bg-white border-slate-200 text-slate-800'}`}>
+            <div className="flex items-start justify-between gap-4 border-b border-slate-200 pb-4 dark:border-slate-700">
+              <div>
+                <p className="eyebrow">Pre-apply skills-gap review</p>
+                <h2 id="pre-apply-title" className="mt-1 text-lg font-black">{selectedOpportunity.title}</h2>
+                <p className="text-sm text-slate-500">{selectedOpportunity.organization || 'Opportunity provider'}</p>
+              </div>
+              <button type="button" className="text-2xl leading-none text-slate-500" onClick={() => setSelectedOpportunity(null)} aria-label="Close skills review">×</button>
+            </div>
+            <div className="my-4 grid grid-cols-1 gap-3 sm:grid-cols-3">
+              <div className="hub-card"><p className="eyebrow">Match score</p><strong className="text-2xl">{Math.round(selectedOpportunityAnalysis.matchScore)}%</strong></div>
+              <div className="hub-card"><p className="eyebrow">Skills matched</p><strong className="text-2xl">{selectedOpportunityAnalysis.matchedSkills.length}</strong></div>
+              <div className="hub-card"><p className="eyebrow">Skills to develop</p><strong className="text-2xl">{selectedOpportunityAnalysis.missingSkills.length}</strong></div>
+            </div>
+            {selectedOpportunity.minimumMatchThreshold > 0 && (
+              <p className={`rounded-lg p-3 text-sm ${selectedOpportunityAnalysis.matchScore >= selectedOpportunity.minimumMatchThreshold ? 'bg-emerald-50 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-200' : 'bg-amber-50 text-amber-900 dark:bg-amber-950 dark:text-amber-200'}`}>
+                This listing has a {selectedOpportunity.minimumMatchThreshold}% match requirement. Your current score is {Math.round(selectedOpportunityAnalysis.matchScore)}%.
+                {selectedOpportunityAnalysis.matchScore < selectedOpportunity.minimumMatchThreshold && ' The application gate is not met yet.'}
+              </p>
+            )}
+            {selectedOpportunityAnalysis.requiredSkills.length === 0 ? (
+              <p className="hub-muted my-4">This listing does not publish explicit required skills. Review its description and eligibility information before applying.</p>
+            ) : (
+              <div className="my-4 grid gap-4 sm:grid-cols-2">
+                <div>
+                  <h3 className="hub-subheading">Skills in your profile</h3>
+                  {selectedOpportunityAnalysis.matchedSkills.length
+                    ? <ul className="hub-skill-list">{selectedOpportunityAnalysis.matchedSkills.map(skill => <li key={skill}>{skill}</li>)}</ul>
+                    : <p className="hub-muted">No listed skills match this opportunity yet.</p>}
+                </div>
+                <div>
+                  <h3 className="hub-subheading">Missing skills and learning links</h3>
+                  {selectedOpportunityAnalysis.missingSkills.length
+                    ? <ul className="hub-skill-list">{selectedOpportunityAnalysis.missingSkills.map(skill => {
+                      const resource = getLearningLink(skill);
+                      return <li key={skill}><span>{skill}</span><a href={resource.url} target="_blank" rel="noopener noreferrer">{resource.name}</a></li>;
+                    })}</ul>
+                    : <p className="hub-muted">Your profile covers the listed required skills.</p>}
+                </div>
+              </div>
+            )}
+            {selectedOpportunityMessage && <p className="hub-message" role="status">{selectedOpportunityMessage}</p>}
+            <div className="mt-5 flex flex-wrap justify-end gap-2">
+              <button type="button" className="hub-secondary" onClick={() => handleTrackOpportunity(selectedOpportunity, 'SAVED')}>Save opportunity</button>
+              <button
+                type="button"
+                className="hub-primary"
+                onClick={applyToSelectedOpportunity}
+                disabled={selectedOpportunityAnalysis.matchScore < (Number(selectedOpportunity.minimumMatchThreshold) || 0)}
+              >
+                {selectedOpportunityAnalysis.matchScore < (Number(selectedOpportunity.minimumMatchThreshold) || 0) ? 'Match requirement not met' : 'Continue to application'}
+              </button>
+            </div>
+          </section>
+        </div>
+      )}
+
+      {showPaidTestingModal && (
+        <div className="fixed inset-0 z-[80] flex items-center justify-center bg-slate-950/60 p-4" role="dialog" aria-modal="true" aria-labelledby="paid-test-title">
+          <section className="paid-modal">
+            <p className="paid-feature-badge">Paid feature</p>
+            <h2 id="paid-test-title">Add payment to activate this feature</h2>
+            <p>{paidFeatureLabel} is normally a paid service. Payment is not connected in this test build, so access continues immediately while enforcement is off.</p>
+            <button type="button" onClick={() => setShowPaidTestingModal(false)}>Close and continue testing</button>
+          </section>
+        </div>
+      )}
+
+      {showPaidGate && (
+        <div className="fixed inset-0 z-[80] flex items-center justify-center bg-slate-950/60 p-4" role="dialog" aria-modal="true" aria-labelledby="paid-gate-title">
+          <section className="paid-modal">
+            <p className="paid-feature-badge">Paid feature</p>
+            <h2 id="paid-gate-title">Feature unavailable</h2>
+            <p>Payment enforcement is enabled for this deployment. No payment method or checkout is configured, so this feature remains unavailable.</p>
+            <button type="button" onClick={() => setShowPaidGate(false)}>Close</button>
+          </section>
+        </div>
+      )}
 
       {/* Guest Action Lock / Interactive Auth Gate Modal */}
       {showAuthGateModal && (
@@ -2177,6 +2755,7 @@ export default function App() {
                 {authError}
               </p>
             )}
+
             {authSuccessMsg && (
               <p className="text-xs text-emerald-800 bg-emerald-50 dark:bg-emerald-950/60 dark:text-emerald-300 p-2.5 rounded-lg border border-emerald-200 dark:border-emerald-900 font-medium">
                 {authSuccessMsg}
@@ -2206,7 +2785,7 @@ export default function App() {
                       type="text"
                       value={authPhone}
                       onChange={(e) => setAuthPhone(e.target.value)}
-                      placeholder="+250788000000"
+                      placeholder="Include country code"
                       className={`w-full text-xs p-2.5 border rounded-lg focus:ring-2 focus:ring-blue-500 ${
                         theme === 'dark' ? 'bg-slate-800 border-slate-700 text-slate-100' : 'bg-slate-50 border-slate-300 text-slate-800'
                       }`}
@@ -2250,19 +2829,41 @@ export default function App() {
                     <div>
                       <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Account Role</label>
                       <select
-                        value={authRoleRequested}
-                        onChange={(e) => setAuthRoleRequested(e.target.value)}
+                        value={authAccountType}
+                        onChange={(e) => handleRegistrationRoleChange(e.target.value)}
                         className={`w-full text-xs p-2 border rounded-lg font-semibold ${
                           theme === 'dark' ? 'bg-slate-800 border-slate-700 text-slate-100' : 'bg-white border-slate-300 text-slate-800'
                         }`}
                       >
-                        <option value="YOUTH">Normal User (Youth Candidate)</option>
-                        <option value="ADMIN">Administrator (Pending Super Admin Approval)</option>
+                        {ACCOUNT_TYPES.map(([value, label]) => <option key={value} value={value}>{label}</option>)}
                       </select>
                     </div>
                   </div>
 
-                  <div>
+                  {['SCHOOL', 'TRAINING_CENTER', 'PRIVATE_TUTOR', 'COURSE_PLATFORM', 'HIRING_COMPANY', 'NGO_EVENT'].includes(authAccountType) && (
+                    <div>
+                      <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Organization name</label>
+                      <input type="text" value={authOrganization} onChange={(e) => setAuthOrganization(e.target.value)} placeholder="Organization or institution" className={`w-full text-xs p-2 border rounded-lg ${theme === 'dark' ? 'bg-slate-800 border-slate-700 text-slate-100' : 'bg-white border-slate-300 text-slate-800'}`} />
+                    </div>
+                  )}
+                  {authAccountType === 'EMPLOYED_WORKER' && (
+                    <div className="grid grid-cols-2 gap-2">
+                      <input aria-label="Current employer, private" value={authEmployerName} onChange={(e) => setAuthEmployerName(e.target.value)} placeholder="Current employer (private)" className={`text-xs p-2 border rounded-lg ${theme === 'dark' ? 'bg-slate-800 border-slate-700 text-slate-100' : 'bg-white border-slate-300 text-slate-800'}`} />
+                      <input aria-label="Current role, private" value={authEmployerRole} onChange={(e) => setAuthEmployerRole(e.target.value)} placeholder="Current role (private)" className={`text-xs p-2 border rounded-lg ${theme === 'dark' ? 'bg-slate-800 border-slate-700 text-slate-100' : 'bg-white border-slate-300 text-slate-800'}`} />
+                    </div>
+                  )}
+                  {['SCHOOL', 'TRAINING_CENTER', 'PRIVATE_TUTOR', 'COURSE_PLATFORM'].includes(authAccountType) && (
+                    <div className="grid grid-cols-2 gap-2">
+                      <input aria-label="Teaching subjects" value={authTeachingSubjects} onChange={(e) => setAuthTeachingSubjects(e.target.value)} placeholder="Subjects or disciplines" className={`text-xs p-2 border rounded-lg ${theme === 'dark' ? 'bg-slate-800 border-slate-700 text-slate-100' : 'bg-white border-slate-300 text-slate-800'}`} />
+                      <input aria-label="Learning focus" value={authLearningFocus} onChange={(e) => setAuthLearningFocus(e.target.value)} placeholder="Learning pathway focus" className={`text-xs p-2 border rounded-lg ${theme === 'dark' ? 'bg-slate-800 border-slate-700 text-slate-100' : 'bg-white border-slate-300 text-slate-800'}`} />
+                    </div>
+                  )}
+                  <label className="flex items-center gap-2 text-xs">
+                    <input type="checkbox" checked={authRoleRequested === 'ADMIN'} onChange={(e) => setAuthRoleRequested(e.target.checked ? 'ADMIN' : 'YOUTH')} />
+                    Request platform administrator access
+                  </label>
+
+                  {[...SEEKER_ACCOUNT_TYPES, 'EMPLOYED_WORKER'].includes(authAccountType) && <div>
                     <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Field of Study</label>
                     <input
                       type="text"
@@ -2273,6 +2874,14 @@ export default function App() {
                         theme === 'dark' ? 'bg-slate-800 border-slate-700 text-slate-100' : 'bg-white border-slate-300 text-slate-800'
                       }`}
                     />
+                  </div>}
+                  <div>
+                    <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Skills, comma separated</label>
+                    <input type="text" value={authSkills} onChange={(e) => setAuthSkills(e.target.value)} placeholder="Skills or services you offer" className={`w-full text-xs p-2 border rounded-lg ${theme === 'dark' ? 'bg-slate-800 border-slate-700 text-slate-100' : 'bg-white border-slate-300 text-slate-800'}`} />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Experience, projects, and achievements</label>
+                    <textarea rows={2} value={authExperience} onChange={(e) => setAuthExperience(e.target.value)} placeholder="Optional experience or programs delivered" className={`w-full text-xs p-2 border rounded-lg ${theme === 'dark' ? 'bg-slate-800 border-slate-700 text-slate-100' : 'bg-white border-slate-300 text-slate-800'}`} />
                   </div>
 
                   {/* Explicit Category Alert Opt-In in Signup */}
@@ -2319,6 +2928,25 @@ export default function App() {
                       </div>
                     )}
                   </div>
+
+                  <div className="space-y-1">
+                    <p className="text-xs font-bold">Choose opportunity categories</p>
+                    <div className="flex flex-wrap gap-2">
+                      {categories.filter(category => category !== 'ALL').map(category => (
+                        <label key={category} className="flex items-center gap-1 text-[11px]">
+                          <input type="checkbox" checked={authSelectedCats.includes(category)} onChange={(e) => setAuthSelectedCats(e.target.checked ? [...authSelectedCats, category] : authSelectedCats.filter(item => item !== category))} />
+                          {category}
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+                  <label className="block text-xs font-bold">Digest cadence
+                    <select value={authFrequency} onChange={(e) => setAuthFrequency(e.target.value)} className={`mt-1 w-full text-xs p-2 border rounded-lg ${theme === 'dark' ? 'bg-slate-800 border-slate-700 text-slate-100' : 'bg-white border-slate-300 text-slate-800'}`}>
+                      <option value="IMMEDIATE">As opportunities are found</option>
+                      <option value="DAILY">Daily digest</option>
+                      <option value="WEEKLY">Weekly digest</option>
+                    </select>
+                  </label>
 
                   {/* Channels & Guidance */}
                   <div className={`p-3 rounded-xl border space-y-2 ${
@@ -2411,6 +3039,133 @@ export default function App() {
       </footer>
     </div>
   );
+}
+
+function FiveMonthSkillsDashboard({ jobs }) {
+  const now = new Date();
+  const months = Array.from({ length: REQUIRED_SKILL_HISTORY_MONTHS }, (_, index) => {
+    const date = new Date(now.getFullYear(), now.getMonth() - (REQUIRED_SKILL_HISTORY_MONTHS - 1 - index), 1);
+    return {
+      date,
+      key: `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`,
+      label: date.toLocaleDateString(undefined, { month: 'short' }),
+      listings: 0
+    };
+  });
+  const firstMonth = months[0].date;
+  const monthByKey = new Map(months.map(month => [month.key, month]));
+  const skills = new Map();
+  const categories = new Map();
+  let inPeriodListings = 0;
+
+  jobs.forEach(job => {
+    const rawDate = job.postedDate || job.createdAt;
+    const parsedDate = rawDate ? new Date(rawDate) : null;
+    if (!parsedDate || Number.isNaN(parsedDate.getTime()) || parsedDate < firstMonth || parsedDate > now) return;
+    const monthKey = `${parsedDate.getFullYear()}-${String(parsedDate.getMonth() + 1).padStart(2, '0')}`;
+    const bucket = monthByKey.get(monthKey);
+    if (!bucket) return;
+    bucket.listings += 1;
+    inPeriodListings += 1;
+    const category = job.domainCategory || job.category || 'General';
+    const categoryRecord = categories.get(category) || { name: category, listings: 0, skills: new Map() };
+    categoryRecord.listings += 1;
+    getOpportunitySkills(job).forEach(skill => {
+      const normalized = skill.trim();
+      if (!normalized) return;
+      skills.set(normalized, (skills.get(normalized) || 0) + 1);
+      categoryRecord.skills.set(normalized, (categoryRecord.skills.get(normalized) || 0) + 1);
+    });
+    categories.set(category, categoryRecord);
+  });
+
+  const topSkills = [...skills.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).slice(0, 8);
+  const maxSkillCount = Math.max(1, ...topSkills.map(([, count]) => count));
+  const maxMonthlyListings = Math.max(1, ...months.map(month => month.listings));
+  const topCategories = [...categories.values()].sort((a, b) => b.listings - a.listings).slice(0, 6);
+
+  return (
+    <section className="hub-panel" aria-labelledby="skills-demand-title">
+      <div className="hub-heading">
+        <div>
+          <p className="eyebrow">Career field demand</p>
+          <h2 id="skills-demand-title">Most required skills in the past five months</h2>
+          <p>Based on published listings in the opportunity catalog. Counts show how many listings named each skill.</p>
+        </div>
+        <span className="hub-pill">{inPeriodListings} listings reviewed</span>
+      </div>
+      <div className="five-month-chart" role="img" aria-label="Monthly opportunity listing counts across the past five months">
+        {months.map(month => (
+          <div className="month-column" key={month.key}>
+            <span className="month-count">{month.listings}</span>
+            <div className="month-bar-track"><span style={{ height: `${Math.max(4, month.listings / maxMonthlyListings * 100)}%` }} /></div>
+            <span className="month-label">{month.label}</span>
+          </div>
+        ))}
+      </div>
+      <div className="hub-grid">
+        <article className="hub-card">
+          <h3>Most requested skills</h3>
+          {topSkills.length ? (
+            <div className="skill-demand-list">
+              {topSkills.map(([skill, count]) => (
+                <div className="skill-demand-row" key={skill}>
+                  <span>{skill}</span>
+                  <div className="skill-demand-track"><span style={{ width: `${count / maxSkillCount * 100}%` }} /></div>
+                  <strong>{count}</strong>
+                </div>
+              ))}
+            </div>
+          ) : <p className="hub-muted">Listings in this period do not yet include structured required-skill data.</p>}
+        </article>
+        <article className="hub-card">
+          <h3>Demand by career field</h3>
+          {topCategories.length ? topCategories.map(category => {
+            const categorySkills = [...category.skills.entries()].sort((a, b) => b[1] - a[1]).slice(0, 3);
+            return (
+              <div className="career-demand-row" key={category.name}>
+                <strong>{category.name}</strong>
+                <span>{category.listings} listings</span>
+                <small>{categorySkills.length ? categorySkills.map(([skill]) => skill).join(', ') : 'Skills not specified on listings'}</small>
+              </div>
+            );
+          }) : <p className="hub-muted">No dated opportunities were published in the five-month reporting window.</p>}
+        </article>
+      </div>
+    </section>
+  );
+}
+
+function TechnologyRadar({ isOpen, onOpen }) {
+  return (
+    <section className="hub-panel">
+      <p className="eyebrow">Early global technology radar</p>
+      <h2>Emerging skills and technology signals</h2>
+      <p className="hub-copy">Use these early signals to plan learning and update training before demand reaches local listings.</p>
+      <p className="paid-feature-badge">Paid feature</p>
+      {isOpen ? (
+        <div className="hub-radar">{GLOBAL_TECH_RADAR.map(signal => (
+          <details key={signal.area}>
+            <summary>{signal.area}</summary>
+            <p>{signal.signal}</p>
+            <span>{signal.skills.join(' · ')}</span>
+          </details>
+        ))}</div>
+      ) : <button type="button" className="hub-primary" onClick={onOpen}>Open technology radar</button>}
+    </section>
+  );
+}
+
+async function hashContactIdentifier(value) {
+  const identifier = String(value || 'anonymous').trim().toLowerCase();
+  try {
+    const bytes = new TextEncoder().encode(identifier);
+    const digest = await window.crypto.subtle.digest('SHA-256', bytes);
+    const hash = Array.from(new Uint8Array(digest), byte => byte.toString(16).padStart(2, '0')).join('');
+    return `user-${hash.slice(0, 24)}`;
+  } catch (error) {
+    return `user-${Array.from(identifier).reduce((sum, character) => ((sum * 31) + character.charCodeAt(0)) >>> 0, 7).toString(16)}`;
+  }
 }
 
 function getFallbackJobs() {

@@ -1,5 +1,245 @@
 [
   {
+    "id": "7314806e-d007-46b5-adcb-4742d32126a0",
+    "timestamp": "2026-11-28T12:21:48.638505100",
+    "channel": "EMAIL",
+    "recipient": "user-mQxR5x-uJMa3dbR9JibuifNXTeID10IfTSDfoFsyYQ8",
+    "recipientKey": "user-mQxR5x-uJMa3dbR9JibuifNXTeID10IfTSDfoFsyYQ8",
+    "opportunityTitle": "Legal Researcher",
+    "opportunityTitles": [
+      "Legal Researcher"
+    ],
+    "sentOpportunityTitles": [
+      "Legal Researcher"
+    ],
+    "sentOpportunityIds": [
+      "mifotra-e1fa1ab5"
+    ],
+    "jobCount": 1,
+    "matchScore": 69.5,
+    "matchScores": [
+      69.5
+    ],
+    "status": "SIMULATED_EMAIL_SENT",
+    "messageSnippet": "Opportunity digest with 1 new matches."
+  },
+  {
+    "id": "e752718f-a71b-4530-baa3-5e931b7668d5",
+    "timestamp": "2026-11-28T12:21:48.628486800",
+    "channel": "WHATSAPP",
+    "recipient": "Uwimana",
+    "recipientKey": "hash:mQxR5x-uJMa3dbR9JibuifNXTeID10IfTSDfoFsyYQ8",
+    "sentOpportunityIds": [
+      "mifotra-e1fa1ab5"
+    ],
+    "sentOpportunityTitles": [
+      "Legal Researcher"
+    ],
+    "opportunityTitles": [
+      "Legal Researcher"
+    ],
+    "opportunityTitle": "Legal Researcher",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "matchScores": [
+      69.5
+    ],
+    "status": "LIVE_WHATSAPP_SENT",
+    "messageSnippet": "Opportunity digest with 1 new matches."
+  },
+  {
+    "id": "e9cc4d5f-7d3c-446d-9eb3-2b70770c3dac",
+    "timestamp": "2026-11-28T12:21:47.868970400",
+    "channel": "EMAIL",
+    "recipient": "user-5TkE_R5BLFVU46-qhr3YfFrSB3vHAMgFyTXr3IELfSM",
+    "recipientKey": "user-5TkE_R5BLFVU46-qhr3YfFrSB3vHAMgFyTXr3IELfSM",
+    "opportunityTitle": "Legal Researcher",
+    "opportunityTitles": [
+      "Legal Researcher"
+    ],
+    "sentOpportunityTitles": [
+      "Legal Researcher"
+    ],
+    "sentOpportunityIds": [
+      "mifotra-e1fa1ab5"
+    ],
+    "jobCount": 1.0,
+    "matchScore": 69.5,
+    "matchScores": [
+      69.5
+    ],
+    "status": "SIMULATED_EMAIL_SENT",
+    "messageSnippet": "Opportunity digest with 1 new matches."
+  },
+  {
+    "id": "afdd2e7f-8c7e-43cb-82a0-a9e46a2bb82c",
+    "timestamp": "2026-11-28T12:21:47.861970600",
+    "channel": "WHATSAPP",
+    "recipient": "Uwimana",
+    "recipientKey": "hash:5TkE_R5BLFVU46-qhr3YfFrSB3vHAMgFyTXr3IELfSM",
+    "sentOpportunityIds": [
+      "mifotra-e1fa1ab5"
+    ],
+    "sentOpportunityTitles": [
+      "Legal Researcher"
+    ],
+    "opportunityTitles": [
+      "Legal Researcher"
+    ],
+    "opportunityTitle": "Legal Researcher",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "matchScores": [
+      69.5
+    ],
+    "status": "LIVE_WHATSAPP_SENT",
+    "messageSnippet": "Opportunity digest with 1 new matches."
+  },
+  {
+    "id": "8e648520-81d0-4a17-ac8b-58f7b81e66cf",
+    "timestamp": "2026-11-28T12:21:46.787806200",
+    "channel": "EMAIL",
+    "recipient": "user-XEfkZIoh1xhwGOtS89owajPi4noIy_jJ8SzEm2w7Xhk",
+    "recipientKey": "user-XEfkZIoh1xhwGOtS89owajPi4noIy_jJ8SzEm2w7Xhk",
+    "opportunityTitle": "Legal Researcher",
+    "opportunityTitles": [
+      "Legal Researcher"
+    ],
+    "sentOpportunityTitles": [
+      "Legal Researcher"
+    ],
+    "sentOpportunityIds": [
+      "mifotra-e1fa1ab5"
+    ],
+    "jobCount": 1.0,
+    "matchScore": 69.5,
+    "matchScores": [
+      69.5
+    ],
+    "status": "SIMULATED_EMAIL_SENT",
+    "messageSnippet": "Opportunity digest with 1 new matches."
+  },
+  {
+    "id": "0077191f-fee8-41e3-b228-3a9c5fa2f294",
+    "timestamp": "2026-11-28T12:21:46.783837200",
+    "channel": "WHATSAPP",
+    "recipient": "rtyuidh",
+    "recipientKey": "hash:XEfkZIoh1xhwGOtS89owajPi4noIy_jJ8SzEm2w7Xhk",
+    "sentOpportunityIds": [
+      "mifotra-e1fa1ab5"
+    ],
+    "sentOpportunityTitles": [
+      "Legal Researcher"
+    ],
+    "opportunityTitles": [
+      "Legal Researcher"
+    ],
+    "opportunityTitle": "Legal Researcher",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "matchScores": [
+      69.5
+    ],
+    "status": "LIVE_WHATSAPP_SENT",
+    "messageSnippet": "Opportunity digest with 1 new matches."
+  },
+  {
+    "id": "dcec8009-c3a0-4490-b0ec-98855ecf7dc2",
+    "timestamp": "2026-11-28T12:21:46.176390500",
+    "channel": "EMAIL",
+    "recipient": "user-O1m3psl3lpcVfBT_EvKXxktCF6aiuIgp0YiqRMWtAqM",
+    "recipientKey": "user-O1m3psl3lpcVfBT_EvKXxktCF6aiuIgp0YiqRMWtAqM",
+    "opportunityTitle": "Legal Researcher",
+    "opportunityTitles": [
+      "Legal Researcher"
+    ],
+    "sentOpportunityTitles": [
+      "Legal Researcher"
+    ],
+    "sentOpportunityIds": [
+      "mifotra-e1fa1ab5"
+    ],
+    "jobCount": 1.0,
+    "matchScore": 69.5,
+    "matchScores": [
+      69.5
+    ],
+    "status": "SIMULATED_EMAIL_SENT",
+    "messageSnippet": "Opportunity digest with 1 new matches."
+  },
+  {
+    "id": "3704a7cf-d4f6-4416-b5dd-d441963a5492",
+    "timestamp": "2026-11-28T12:21:46.168391400",
+    "channel": "WHATSAPP",
+    "recipient": "Dev",
+    "recipientKey": "hash:O1m3psl3lpcVfBT_EvKXxktCF6aiuIgp0YiqRMWtAqM",
+    "sentOpportunityIds": [
+      "mifotra-e1fa1ab5"
+    ],
+    "sentOpportunityTitles": [
+      "Legal Researcher"
+    ],
+    "opportunityTitles": [
+      "Legal Researcher"
+    ],
+    "opportunityTitle": "Legal Researcher",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "matchScores": [
+      69.5
+    ],
+    "status": "LIVE_WHATSAPP_SENT",
+    "messageSnippet": "Opportunity digest with 1 new matches."
+  },
+  {
+    "id": "d61257a3-3e07-4638-a826-0a0cfd45f794",
+    "timestamp": "2026-11-28T12:21:45.394861800",
+    "channel": "EMAIL",
+    "recipient": "user-syo35jvlMkqluAfACwAZew4VNKE2FmBbJhRXS-kdLhg",
+    "recipientKey": "user-syo35jvlMkqluAfACwAZew4VNKE2FmBbJhRXS-kdLhg",
+    "opportunityTitle": "Legal Researcher",
+    "opportunityTitles": [
+      "Legal Researcher"
+    ],
+    "sentOpportunityTitles": [
+      "Legal Researcher"
+    ],
+    "sentOpportunityIds": [
+      "mifotra-e1fa1ab5"
+    ],
+    "jobCount": 1.0,
+    "matchScore": 69.5,
+    "matchScores": [
+      69.5
+    ],
+    "status": "SIMULATED_EMAIL_SENT",
+    "messageSnippet": "Opportunity digest with 1 new matches."
+  },
+  {
+    "id": "e8bbd653-d841-4470-bdf4-8d23a538e855",
+    "timestamp": "2026-11-28T12:21:45.371859300",
+    "channel": "WHATSAPP",
+    "recipient": "Didy",
+    "recipientKey": "hash:syo35jvlMkqluAfACwAZew4VNKE2FmBbJhRXS-kdLhg",
+    "sentOpportunityIds": [
+      "mifotra-e1fa1ab5"
+    ],
+    "sentOpportunityTitles": [
+      "Legal Researcher"
+    ],
+    "opportunityTitles": [
+      "Legal Researcher"
+    ],
+    "opportunityTitle": "Legal Researcher",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "matchScores": [
+      69.5
+    ],
+    "status": "LIVE_WHATSAPP_SENT",
+    "messageSnippet": "Opportunity digest with 1 new matches."
+  },
+  {
     "id": "5acebb49-261f-419a-baff-92ad79b146df",
     "timestamp": "2026-11-23T19:22:27.627135200",
     "channel": "EMAIL",
@@ -15,7 +255,7 @@
     "sentOpportunityIds": [
       "mifotra-6686aa01"
     ],
-    "jobCount": 1,
+    "jobCount": 1.0,
     "matchScore": 69.5,
     "matchScores": [
       69.5

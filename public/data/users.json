@@ -11,7 +11,9 @@
     "notifyWhatsApp": true,
     "notifyEmail": true,
     "notifySms": false,
-    "notificationFrequency": "IMMEDIATE"
+    "notificationFrequency": "IMMEDIATE",
+    "accountType": "JOB_SEEKER",
+    "minimumMatchThreshold": 0
   },
   {
     "name": "Dev",
@@ -25,7 +27,9 @@
     "notifyWhatsApp": true,
     "notifyEmail": true,
     "notifySms": false,
-    "notificationFrequency": "IMMEDIATE"
+    "notificationFrequency": "IMMEDIATE",
+    "accountType": "JOB_SEEKER",
+    "minimumMatchThreshold": 0
   },
   {
     "name": "Didy",
@@ -39,7 +43,9 @@
     "notifyWhatsApp": true,
     "notifyEmail": true,
     "notifySms": false,
-    "notificationFrequency": "IMMEDIATE"
+    "notificationFrequency": "IMMEDIATE",
+    "accountType": "JOB_SEEKER",
+    "minimumMatchThreshold": 0
   },
   {
     "name": "Uwimana",
@@ -53,7 +59,9 @@
     "notifyWhatsApp": true,
     "notifyEmail": true,
     "notifySms": false,
-    "notificationFrequency": "IMMEDIATE"
+    "notificationFrequency": "IMMEDIATE",
+    "accountType": "JOB_SEEKER",
+    "minimumMatchThreshold": 0
   },
   {
     "name": "Uwimana",
@@ -67,7 +75,9 @@
     "notifyWhatsApp": true,
     "notifyEmail": true,
     "notifySms": false,
-    "notificationFrequency": "IMMEDIATE"
+    "notificationFrequency": "IMMEDIATE",
+    "accountType": "JOB_SEEKER",
+    "minimumMatchThreshold": 0
   },
   {
     "name": "rtyuidh",
@@ -81,6 +91,8 @@
     "notifyWhatsApp": true,
     "notifyEmail": true,
     "notifySms": false,
-    "notificationFrequency": "IMMEDIATE"
+    "notificationFrequency": "IMMEDIATE",
+    "accountType": "JOB_SEEKER",
+    "minimumMatchThreshold": 0
   }
 ]

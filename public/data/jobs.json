@@ -9,10 +9,12 @@
     "sourceName": "MIFOTRA e-Recruitment",
     "applicationUrl": "https://recruitment.mifotra.gov.rw",
     "eligibilitySummary": "Official Rwandan Public Service vacancy. Apply directly through the MIFOTRA e-recruitment portal.",
-    "status": "LIVE",
+    "status": "EXPIRED",
     "postedDate": "Nov 19, 2026",
     "deadline": "Nov 27, 2026",
-    "createdAt": "2026-11-23T15:11:09.958957"
+    "expiredAt": "2026-11-28T12:21:40.920951500",
+    "createdAt": "2026-11-23T15:11:09.958957",
+    "minimumMatchThreshold": 0
   },
   {
     "id": "mifotra-e8ef606d",
@@ -24,10 +26,12 @@
     "sourceName": "MIFOTRA e-Recruitment",
     "applicationUrl": "https://recruitment.mifotra.gov.rw",
     "eligibilitySummary": "Official Rwandan Public Service vacancy. Apply directly through the MIFOTRA e-recruitment portal.",
-    "status": "LIVE",
+    "status": "EXPIRED",
     "postedDate": "Nov 18, 2026",
     "deadline": "Nov 26, 2026",
-    "createdAt": "2026-11-23T15:11:09.979193400"
+    "expiredAt": "2026-11-28T12:21:40.920951500",
+    "createdAt": "2026-11-23T15:11:09.979193400",
+    "minimumMatchThreshold": 0
   },
   {
     "id": "mifotra-f8e38e1a",
@@ -39,10 +43,12 @@
     "sourceName": "MIFOTRA e-Recruitment",
     "applicationUrl": "https://recruitment.mifotra.gov.rw",
     "eligibilitySummary": "Official Rwandan Public Service vacancy. Apply directly through the MIFOTRA e-recruitment portal.",
-    "status": "LIVE",
+    "status": "EXPIRED",
     "postedDate": "Nov 18, 2026",
     "deadline": "Nov 26, 2026",
-    "createdAt": "2026-11-23T15:11:09.997744400"
+    "expiredAt": "2026-11-28T12:21:40.920951500",
+    "createdAt": "2026-11-23T15:11:09.997744400",
+    "minimumMatchThreshold": 0
   },
   {
     "id": "mifotra-68c65975",
@@ -54,10 +60,12 @@
     "sourceName": "MIFOTRA e-Recruitment",
     "applicationUrl": "https://recruitment.mifotra.gov.rw",
     "eligibilitySummary": "Official Rwandan Public Service vacancy. Apply directly through the MIFOTRA e-recruitment portal.",
-    "status": "LIVE",
+    "status": "EXPIRED",
     "postedDate": "Nov 18, 2026",
     "deadline": "Nov 26, 2026",
-    "createdAt": "2026-11-23T17:56:20.233476400"
+    "expiredAt": "2026-11-28T12:21:40.920951500",
+    "createdAt": "2026-11-23T17:56:20.233476400",
+    "minimumMatchThreshold": 0
   },
   {
     "id": "mifotra-7a05a483",
@@ -69,10 +77,12 @@
     "sourceName": "MIFOTRA e-Recruitment",
     "applicationUrl": "https://recruitment.mifotra.gov.rw",
     "eligibilitySummary": "Official Rwandan Public Service vacancy. Apply directly through the MIFOTRA e-recruitment portal.",
-    "status": "LIVE",
+    "status": "EXPIRED",
     "postedDate": "Nov 19, 2026",
     "deadline": "Nov 27, 2026",
-    "createdAt": "2026-11-23T17:59:50.501918700"
+    "expiredAt": "2026-11-28T12:21:40.920951500",
+    "createdAt": "2026-11-23T17:59:50.501918700",
+    "minimumMatchThreshold": 0
   },
   {
     "id": "mifotra-6686aa01",
@@ -87,6 +97,23 @@
     "status": "LIVE",
     "postedDate": "Nov 23, 2026",
     "deadline": "Dec 1, 2026",
-    "createdAt": "2026-11-23T19:22:18.615026900"
+    "createdAt": "2026-11-23T19:22:18.615026900",
+    "minimumMatchThreshold": 0
+  },
+  {
+    "id": "mifotra-e1fa1ab5",
+    "title": "Legal Researcher",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "category": "JOB",
+    "requiredSkills": [],
+    "location": "Rwanda",
+    "sourceName": "MIFOTRA e-Recruitment",
+    "applicationUrl": "https://recruitment.mifotra.gov.rw",
+    "eligibilitySummary": "Official Rwandan Public Service vacancy. Apply directly through the MIFOTRA e-recruitment portal.",
+    "status": "LIVE",
+    "postedDate": "Nov 26, 2026",
+    "deadline": "Dec 4, 2026",
+    "createdAt": "2026-11-28T12:21:40.903524800",
+    "minimumMatchThreshold": 0
   }
 ]

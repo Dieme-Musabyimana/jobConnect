@@ -14,6 +14,7 @@ public class User {
     public boolean optInCategoryAlerts = true; // User preference to receive automatic alerts for matched categories
     public String educationLevel;
     public String fieldOfStudy;
+    public String experience;
     public List<String> skills = new ArrayList<>();
     public List<String> preferredCategories = new ArrayList<>();
     public String preferredLocation;
@@ -21,10 +22,23 @@ public class User {
     public boolean notifyEmail;
     public boolean notifySms;
     public String notificationFrequency; // IMMEDIATE, DAILY, WEEKLY
+    public String accountType;
+    public String employerName;
+    public String employerRole;
+    public String organizationName;
+    public String organizationWebsite;
+    public String teachingSubjects;
+    public String learningFocus;
+    public int minimumMatchThreshold;
+    public String cohortName;
+    public String eventName;
+    public String eventDate;
+    public String summarySchedule;
 
     public User() {
         this.active = true;
         this.role = "YOUTH";
+        this.accountType = "JOB_SEEKER";
         this.adminStatus = "NONE";
         this.optInCategoryAlerts = true;
         this.notifyWhatsApp = true;
@@ -38,6 +52,7 @@ public class User {
         this.phone = phone;
         this.active = active;
         this.role = "YOUTH";
+        this.accountType = "JOB_SEEKER";
         this.adminStatus = "NONE";
         this.optInCategoryAlerts = true;
         this.notifyWhatsApp = true;
@@ -56,6 +71,7 @@ public class User {
         this.email = email;
         this.phone = phone;
         this.role = "YOUTH";
+        this.accountType = "JOB_SEEKER";
         this.adminStatus = "NONE";
         this.active = active;
         this.optInCategoryAlerts = true;

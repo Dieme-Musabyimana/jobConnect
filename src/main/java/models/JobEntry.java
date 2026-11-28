@@ -11,6 +11,7 @@ public class JobEntry {
     public String opportunityType; // Opportunity Format/Type: JOB, INTERNSHIP, SCHOLARSHIP, TRAINING, ENTREPRENEURSHIP, APPRENTICESHIP, FELLOWSHIP
     public String domainCategory; // Domain category: IT, Energy, Accounting / Accountant, Agriculture, Engineering, Business / Administration, Health, etc.
     public String fieldOfStudy;
+    public String description;
     public List<String> requiredSkills = new ArrayList<>();
     public String educationLevel;
     public String location;
@@ -22,6 +23,7 @@ public class JobEntry {
     public String deadline;
     public String expiredAt;
     public String createdAt;
+    public int minimumMatchThreshold;
 
     public JobEntry() {
     }
