@@ -1,19 +1,4 @@
 {
-  "Gender Specialist": {
-    "id": "mifotra-5010c286",
-    "title": "Gender Specialist",
-    "organization": "MIFOTRA / Public Service Rwanda",
-    "category": "JOB",
-    "requiredSkills": [],
-    "location": "Rwanda",
-    "sourceName": "MIFOTRA e-Recruitment",
-    "applicationUrl": "https://recruitment.mifotra.gov.rw",
-    "eligibilitySummary": "Official Rwandan Public Service vacancy. Apply directly through the MIFOTRA e-recruitment portal.",
-    "status": "LIVE",
-    "postedDate": "Nov 19, 2026",
-    "deadline": "Nov 27, 2026",
-    "createdAt": "2026-11-23T15:11:09.936411300"
-  },
   "Procurement Specialist": {
     "id": "mifotra-b1a5a324",
     "title": "Procurement Specialist",
@@ -60,7 +45,7 @@
     "createdAt": "2026-11-23T15:11:09.997744400"
   },
   "Administrative Assistant to the SPIU Coordinator": {
-    "id": "mifotra-e526051b",
+    "id": "mifotra-68c65975",
     "title": "Administrative Assistant to the SPIU Coordinator",
     "organization": "MIFOTRA / Public Service Rwanda",
     "category": "JOB",
@@ -72,6 +57,36 @@
     "status": "LIVE",
     "postedDate": "Nov 18, 2026",
     "deadline": "Nov 26, 2026",
-    "createdAt": "2026-11-23T15:11:10.023490700"
+    "createdAt": "2026-11-23T17:56:20.233476400"
+  },
+  "Gender Specialist": {
+    "id": "mifotra-7a05a483",
+    "title": "Gender Specialist",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "category": "JOB",
+    "requiredSkills": [],
+    "location": "Rwanda",
+    "sourceName": "MIFOTRA e-Recruitment",
+    "applicationUrl": "https://recruitment.mifotra.gov.rw",
+    "eligibilitySummary": "Official Rwandan Public Service vacancy. Apply directly through the MIFOTRA e-recruitment portal.",
+    "status": "LIVE",
+    "postedDate": "Nov 19, 2026",
+    "deadline": "Nov 27, 2026",
+    "createdAt": "2026-11-23T17:59:50.501918700"
+  },
+  "National Technical Advisor,": {
+    "id": "mifotra-6686aa01",
+    "title": "National Technical Advisor,",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "category": "JOB",
+    "requiredSkills": [],
+    "location": "Rwanda",
+    "sourceName": "MIFOTRA e-Recruitment",
+    "applicationUrl": "https://recruitment.mifotra.gov.rw",
+    "eligibilitySummary": "Official Rwandan Public Service vacancy. Apply directly through the MIFOTRA e-recruitment portal.",
+    "status": "LIVE",
+    "postedDate": "Nov 23, 2026",
+    "deadline": "Dec 1, 2026",
+    "createdAt": "2026-11-23T19:22:18.615026900"
   }
 }

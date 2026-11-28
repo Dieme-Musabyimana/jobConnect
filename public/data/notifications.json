@@ -1,5 +1,797 @@
 [
   {
+    "id": "5acebb49-261f-419a-baff-92ad79b146df",
+    "timestamp": "2026-11-23T19:22:27.627135200",
+    "channel": "EMAIL",
+    "recipient": "user-syo35jvlMkqluAfACwAZew4VNKE2FmBbJhRXS-kdLhg",
+    "recipientKey": "user-syo35jvlMkqluAfACwAZew4VNKE2FmBbJhRXS-kdLhg",
+    "opportunityTitle": "National Technical Advisor,",
+    "opportunityTitles": [
+      "National Technical Advisor,"
+    ],
+    "sentOpportunityTitles": [
+      "National Technical Advisor,"
+    ],
+    "sentOpportunityIds": [
+      "mifotra-6686aa01"
+    ],
+    "jobCount": 1,
+    "matchScore": 69.5,
+    "matchScores": [
+      69.5
+    ],
+    "status": "SIMULATED_EMAIL_SENT",
+    "messageSnippet": "Opportunity digest with 1 new matches."
+  },
+  {
+    "id": "38832862-630d-4b1d-940e-087765fc286b",
+    "timestamp": "2026-11-23T19:22:26.695817500",
+    "channel": "EMAIL",
+    "recipient": "user-5TkE_R5BLFVU46-qhr3YfFrSB3vHAMgFyTXr3IELfSM",
+    "recipientKey": "user-5TkE_R5BLFVU46-qhr3YfFrSB3vHAMgFyTXr3IELfSM",
+    "opportunityTitle": "National Technical Advisor,",
+    "opportunityTitles": [
+      "National Technical Advisor,"
+    ],
+    "sentOpportunityTitles": [
+      "National Technical Advisor,"
+    ],
+    "sentOpportunityIds": [
+      "mifotra-6686aa01"
+    ],
+    "jobCount": 1.0,
+    "matchScore": 69.5,
+    "matchScores": [
+      69.5
+    ],
+    "status": "SIMULATED_EMAIL_SENT",
+    "messageSnippet": "Opportunity digest with 1 new matches."
+  },
+  {
+    "id": "5bbc8ff4-b88c-466d-9223-0ca1893c5217",
+    "timestamp": "2026-11-23T19:22:25.776808100",
+    "channel": "EMAIL",
+    "recipient": "user-mQxR5x-uJMa3dbR9JibuifNXTeID10IfTSDfoFsyYQ8",
+    "recipientKey": "user-mQxR5x-uJMa3dbR9JibuifNXTeID10IfTSDfoFsyYQ8",
+    "opportunityTitle": "National Technical Advisor,",
+    "opportunityTitles": [
+      "National Technical Advisor,"
+    ],
+    "sentOpportunityTitles": [
+      "National Technical Advisor,"
+    ],
+    "sentOpportunityIds": [
+      "mifotra-6686aa01"
+    ],
+    "jobCount": 1.0,
+    "matchScore": 69.5,
+    "matchScores": [
+      69.5
+    ],
+    "status": "SIMULATED_EMAIL_SENT",
+    "messageSnippet": "Opportunity digest with 1 new matches."
+  },
+  {
+    "id": "fc7a8f3d-07ff-4a84-91aa-3f307aedef44",
+    "timestamp": "2026-11-23T19:22:24.237334200",
+    "channel": "EMAIL",
+    "recipient": "user-XEfkZIoh1xhwGOtS89owajPi4noIy_jJ8SzEm2w7Xhk",
+    "recipientKey": "user-XEfkZIoh1xhwGOtS89owajPi4noIy_jJ8SzEm2w7Xhk",
+    "opportunityTitle": "National Technical Advisor,",
+    "opportunityTitles": [
+      "National Technical Advisor,"
+    ],
+    "sentOpportunityTitles": [
+      "National Technical Advisor,"
+    ],
+    "sentOpportunityIds": [
+      "mifotra-6686aa01"
+    ],
+    "jobCount": 1.0,
+    "matchScore": 69.5,
+    "matchScores": [
+      69.5
+    ],
+    "status": "SIMULATED_EMAIL_SENT",
+    "messageSnippet": "Opportunity digest with 1 new matches."
+  },
+  {
+    "id": "0dbbee40-2694-4153-a1ff-b739809d1aa4",
+    "timestamp": "2026-11-23T19:22:23.426025100",
+    "channel": "EMAIL",
+    "recipient": "user-O1m3psl3lpcVfBT_EvKXxktCF6aiuIgp0YiqRMWtAqM",
+    "recipientKey": "user-O1m3psl3lpcVfBT_EvKXxktCF6aiuIgp0YiqRMWtAqM",
+    "opportunityTitle": "National Technical Advisor,",
+    "opportunityTitles": [
+      "National Technical Advisor,"
+    ],
+    "sentOpportunityTitles": [
+      "National Technical Advisor,"
+    ],
+    "sentOpportunityIds": [
+      "mifotra-6686aa01"
+    ],
+    "jobCount": 1.0,
+    "matchScore": 69.5,
+    "matchScores": [
+      69.5
+    ],
+    "status": "SIMULATED_EMAIL_SENT",
+    "messageSnippet": "Opportunity digest with 1 new matches."
+  },
+  {
+    "id": "3a459872-7acf-4f3b-a0aa-5fdec5638941",
+    "timestamp": "2026-11-23T17:59:57.972492300",
+    "channel": "EMAIL",
+    "recipient": "user-mQxR5x-uJMa3dbR9JibuifNXTeID10IfTSDfoFsyYQ8",
+    "recipientKey": "user-mQxR5x-uJMa3dbR9JibuifNXTeID10IfTSDfoFsyYQ8",
+    "opportunityTitle": "Gender Specialist",
+    "opportunityTitles": [
+      "Gender Specialist"
+    ],
+    "sentOpportunityTitles": [
+      "Gender Specialist"
+    ],
+    "sentOpportunityIds": [
+      "mifotra-7a05a483"
+    ],
+    "jobCount": 1.0,
+    "matchScore": 69.5,
+    "matchScores": [
+      69.5
+    ],
+    "status": "SIMULATED_EMAIL_SENT",
+    "messageSnippet": "Opportunity digest with 1 new matches."
+  },
+  {
+    "id": "8a3bf2c5-cd93-4f38-8da6-5f3e5d5a0223",
+    "timestamp": "2026-11-23T17:59:56.745072",
+    "channel": "EMAIL",
+    "recipient": "user-5TkE_R5BLFVU46-qhr3YfFrSB3vHAMgFyTXr3IELfSM",
+    "recipientKey": "user-5TkE_R5BLFVU46-qhr3YfFrSB3vHAMgFyTXr3IELfSM",
+    "opportunityTitle": "Gender Specialist",
+    "opportunityTitles": [
+      "Gender Specialist"
+    ],
+    "sentOpportunityTitles": [
+      "Gender Specialist"
+    ],
+    "sentOpportunityIds": [
+      "mifotra-7a05a483"
+    ],
+    "jobCount": 1.0,
+    "matchScore": 69.5,
+    "matchScores": [
+      69.5
+    ],
+    "status": "SIMULATED_EMAIL_SENT",
+    "messageSnippet": "Opportunity digest with 1 new matches."
+  },
+  {
+    "id": "d5e3b4ba-e9b9-4e8f-bc09-30bf3855a96f",
+    "timestamp": "2026-11-23T17:59:55.514677",
+    "channel": "EMAIL",
+    "recipient": "user-syo35jvlMkqluAfACwAZew4VNKE2FmBbJhRXS-kdLhg",
+    "recipientKey": "user-syo35jvlMkqluAfACwAZew4VNKE2FmBbJhRXS-kdLhg",
+    "opportunityTitle": "Gender Specialist",
+    "opportunityTitles": [
+      "Gender Specialist"
+    ],
+    "sentOpportunityTitles": [
+      "Gender Specialist"
+    ],
+    "sentOpportunityIds": [
+      "mifotra-7a05a483"
+    ],
+    "jobCount": 1.0,
+    "matchScore": 69.5,
+    "matchScores": [
+      69.5
+    ],
+    "status": "SIMULATED_EMAIL_SENT",
+    "messageSnippet": "Opportunity digest with 1 new matches."
+  },
+  {
+    "id": "18dd6fef-5c39-4f8a-9d30-0b9d9d6ef5b5",
+    "timestamp": "2026-11-23T17:59:54.261687700",
+    "channel": "EMAIL",
+    "recipient": "user-O1m3psl3lpcVfBT_EvKXxktCF6aiuIgp0YiqRMWtAqM",
+    "recipientKey": "user-O1m3psl3lpcVfBT_EvKXxktCF6aiuIgp0YiqRMWtAqM",
+    "opportunityTitle": "Gender Specialist",
+    "opportunityTitles": [
+      "Gender Specialist"
+    ],
+    "sentOpportunityTitles": [
+      "Gender Specialist"
+    ],
+    "sentOpportunityIds": [
+      "mifotra-7a05a483"
+    ],
+    "jobCount": 1.0,
+    "matchScore": 69.5,
+    "matchScores": [
+      69.5
+    ],
+    "status": "SIMULATED_EMAIL_SENT",
+    "messageSnippet": "Opportunity digest with 1 new matches."
+  },
+  {
+    "id": "132d36ad-7981-4f07-82d8-ff8a8e0b4344",
+    "timestamp": "2026-11-23T17:59:53.880637900",
+    "channel": "EMAIL",
+    "recipient": "user-XEfkZIoh1xhwGOtS89owajPi4noIy_jJ8SzEm2w7Xhk",
+    "recipientKey": "user-XEfkZIoh1xhwGOtS89owajPi4noIy_jJ8SzEm2w7Xhk",
+    "opportunityTitle": "Gender Specialist",
+    "opportunityTitles": [
+      "Gender Specialist"
+    ],
+    "sentOpportunityTitles": [
+      "Gender Specialist"
+    ],
+    "sentOpportunityIds": [
+      "mifotra-7a05a483"
+    ],
+    "jobCount": 1.0,
+    "matchScore": 69.5,
+    "matchScores": [
+      69.5
+    ],
+    "status": "SIMULATED_EMAIL_SENT",
+    "messageSnippet": "Opportunity digest with 1 new matches."
+  },
+  {
+    "id": "67032b80-6c8a-4b90-b1f1-5ee7391d704c",
+    "timestamp": "2026-11-23T17:56:28.768433600",
+    "channel": "EMAIL",
+    "recipient": "user-O1m3psl3lpcVfBT_EvKXxktCF6aiuIgp0YiqRMWtAqM",
+    "recipientKey": "user-O1m3psl3lpcVfBT_EvKXxktCF6aiuIgp0YiqRMWtAqM",
+    "opportunityTitle": "Administrative Assistant to the SPIU Coordinator",
+    "opportunityTitles": [
+      "Administrative Assistant to the SPIU Coordinator"
+    ],
+    "sentOpportunityTitles": [
+      "Administrative Assistant to the SPIU Coordinator"
+    ],
+    "sentOpportunityIds": [
+      "mifotra-68c65975"
+    ],
+    "jobCount": 1.0,
+    "matchScore": 69.5,
+    "matchScores": [
+      69.5
+    ],
+    "status": "SIMULATED_EMAIL_SENT",
+    "messageSnippet": "Opportunity digest with 1 new matches."
+  },
+  {
+    "id": "28910959-8693-4a00-aef8-e49975b011e2",
+    "timestamp": "2026-11-23T17:56:27.546323600",
+    "channel": "EMAIL",
+    "recipient": "user-syo35jvlMkqluAfACwAZew4VNKE2FmBbJhRXS-kdLhg",
+    "recipientKey": "user-syo35jvlMkqluAfACwAZew4VNKE2FmBbJhRXS-kdLhg",
+    "opportunityTitle": "Administrative Assistant to the SPIU Coordinator",
+    "opportunityTitles": [
+      "Administrative Assistant to the SPIU Coordinator"
+    ],
+    "sentOpportunityTitles": [
+      "Administrative Assistant to the SPIU Coordinator"
+    ],
+    "sentOpportunityIds": [
+      "mifotra-68c65975"
+    ],
+    "jobCount": 1.0,
+    "matchScore": 69.5,
+    "matchScores": [
+      69.5
+    ],
+    "status": "SIMULATED_EMAIL_SENT",
+    "messageSnippet": "Opportunity digest with 1 new matches."
+  },
+  {
+    "id": "e69e94bf-8129-41f0-9e98-e0fa5c202da3",
+    "timestamp": "2026-11-23T17:56:26.320226100",
+    "channel": "EMAIL",
+    "recipient": "user-XEfkZIoh1xhwGOtS89owajPi4noIy_jJ8SzEm2w7Xhk",
+    "recipientKey": "user-XEfkZIoh1xhwGOtS89owajPi4noIy_jJ8SzEm2w7Xhk",
+    "opportunityTitle": "Administrative Assistant to the SPIU Coordinator",
+    "opportunityTitles": [
+      "Administrative Assistant to the SPIU Coordinator"
+    ],
+    "sentOpportunityTitles": [
+      "Administrative Assistant to the SPIU Coordinator"
+    ],
+    "sentOpportunityIds": [
+      "mifotra-68c65975"
+    ],
+    "jobCount": 1.0,
+    "matchScore": 69.5,
+    "matchScores": [
+      69.5
+    ],
+    "status": "SIMULATED_EMAIL_SENT",
+    "messageSnippet": "Opportunity digest with 1 new matches."
+  },
+  {
+    "id": "9da98c19-8dd2-42f5-bdf3-30fede9ef185",
+    "timestamp": "2026-11-23T17:56:26.314229300",
+    "channel": "WHATSAPP",
+    "recipient": "rtyuidh",
+    "recipientKey": "hash:XEfkZIoh1xhwGOtS89owajPi4noIy_jJ8SzEm2w7Xhk",
+    "sentOpportunityIds": [
+      "mifotra-68c65975"
+    ],
+    "sentOpportunityTitles": [
+      "Administrative Assistant to the SPIU Coordinator"
+    ],
+    "opportunityTitles": [
+      "Administrative Assistant to the SPIU Coordinator"
+    ],
+    "opportunityTitle": "Administrative Assistant to the SPIU Coordinator",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "matchScores": [
+      69.5
+    ],
+    "status": "LIVE_WHATSAPP_SENT",
+    "messageSnippet": "Opportunity digest with 1 new matches."
+  },
+  {
+    "id": "c066466c-fc71-493f-8ec9-b96b45c4fb71",
+    "timestamp": "2026-11-23T17:56:25.709622700",
+    "channel": "EMAIL",
+    "recipient": "user-5TkE_R5BLFVU46-qhr3YfFrSB3vHAMgFyTXr3IELfSM",
+    "recipientKey": "user-5TkE_R5BLFVU46-qhr3YfFrSB3vHAMgFyTXr3IELfSM",
+    "opportunityTitle": "Administrative Assistant to the SPIU Coordinator",
+    "opportunityTitles": [
+      "Administrative Assistant to the SPIU Coordinator"
+    ],
+    "sentOpportunityTitles": [
+      "Administrative Assistant to the SPIU Coordinator"
+    ],
+    "sentOpportunityIds": [
+      "mifotra-68c65975"
+    ],
+    "jobCount": 1.0,
+    "matchScore": 69.5,
+    "matchScores": [
+      69.5
+    ],
+    "status": "SIMULATED_EMAIL_SENT",
+    "messageSnippet": "Opportunity digest with 1 new matches."
+  },
+  {
+    "id": "fa35edcc-074e-49de-9814-ff76660dc59a",
+    "timestamp": "2026-11-23T17:56:25.699630100",
+    "channel": "WHATSAPP",
+    "recipient": "Uwimana",
+    "recipientKey": "hash:5TkE_R5BLFVU46-qhr3YfFrSB3vHAMgFyTXr3IELfSM",
+    "sentOpportunityIds": [
+      "mifotra-68c65975"
+    ],
+    "sentOpportunityTitles": [
+      "Administrative Assistant to the SPIU Coordinator"
+    ],
+    "opportunityTitles": [
+      "Administrative Assistant to the SPIU Coordinator"
+    ],
+    "opportunityTitle": "Administrative Assistant to the SPIU Coordinator",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "matchScores": [
+      69.5
+    ],
+    "status": "LIVE_WHATSAPP_SENT",
+    "messageSnippet": "Opportunity digest with 1 new matches."
+  },
+  {
+    "id": "10b06cd8-0413-4f85-8efb-ade87110099e",
+    "timestamp": "2026-11-23T17:56:24.940632700",
+    "channel": "EMAIL",
+    "recipient": "user-mQxR5x-uJMa3dbR9JibuifNXTeID10IfTSDfoFsyYQ8",
+    "recipientKey": "user-mQxR5x-uJMa3dbR9JibuifNXTeID10IfTSDfoFsyYQ8",
+    "opportunityTitle": "Administrative Assistant to the SPIU Coordinator",
+    "opportunityTitles": [
+      "Administrative Assistant to the SPIU Coordinator"
+    ],
+    "sentOpportunityTitles": [
+      "Administrative Assistant to the SPIU Coordinator"
+    ],
+    "sentOpportunityIds": [
+      "mifotra-68c65975"
+    ],
+    "jobCount": 1.0,
+    "matchScore": 69.5,
+    "matchScores": [
+      69.5
+    ],
+    "status": "SIMULATED_EMAIL_SENT",
+    "messageSnippet": "Opportunity digest with 1 new matches."
+  },
+  {
+    "id": "e7c43eec-8088-4415-8c5f-a9e874351237",
+    "timestamp": "2026-11-23T17:56:24.921632800",
+    "channel": "WHATSAPP",
+    "recipient": "Uwimana",
+    "recipientKey": "hash:mQxR5x-uJMa3dbR9JibuifNXTeID10IfTSDfoFsyYQ8",
+    "sentOpportunityIds": [
+      "mifotra-68c65975"
+    ],
+    "sentOpportunityTitles": [
+      "Administrative Assistant to the SPIU Coordinator"
+    ],
+    "opportunityTitles": [
+      "Administrative Assistant to the SPIU Coordinator"
+    ],
+    "opportunityTitle": "Administrative Assistant to the SPIU Coordinator",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "matchScores": [
+      69.5
+    ],
+    "status": "LIVE_WHATSAPP_SENT",
+    "messageSnippet": "Opportunity digest with 1 new matches."
+  },
+  {
+    "id": "d61aaa17-8b95-4ace-ad9c-30fc19a24033",
+    "timestamp": "2026-11-23T17:29:42.386050800",
+    "channel": "EMAIL",
+    "recipient": "user-mQxR5x-uJMa3dbR9JibuifNXTeID10IfTSDfoFsyYQ8",
+    "recipientKey": "user-mQxR5x-uJMa3dbR9JibuifNXTeID10IfTSDfoFsyYQ8",
+    "opportunityTitle": "Administrative Assistant to the SPIU Coordinator",
+    "opportunityTitles": [
+      "Administrative Assistant to the SPIU Coordinator"
+    ],
+    "sentOpportunityTitles": [
+      "Administrative Assistant to the SPIU Coordinator"
+    ],
+    "sentOpportunityIds": [
+      "mifotra-fd81fd7b"
+    ],
+    "jobCount": 1.0,
+    "matchScore": 69.5,
+    "matchScores": [
+      69.5
+    ],
+    "status": "SIMULATED_EMAIL_SENT",
+    "messageSnippet": "Opportunity digest with 1 new matches."
+  },
+  {
+    "id": "ba2f1c63-9208-40da-a50b-9eea62034847",
+    "timestamp": "2026-11-23T17:29:42.377535",
+    "channel": "WHATSAPP",
+    "recipient": "Uwimana",
+    "recipientKey": "hash:mQxR5x-uJMa3dbR9JibuifNXTeID10IfTSDfoFsyYQ8",
+    "sentOpportunityIds": [
+      "mifotra-fd81fd7b"
+    ],
+    "sentOpportunityTitles": [
+      "Administrative Assistant to the SPIU Coordinator"
+    ],
+    "opportunityTitles": [
+      "Administrative Assistant to the SPIU Coordinator"
+    ],
+    "opportunityTitle": "Administrative Assistant to the SPIU Coordinator",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "matchScores": [
+      69.5
+    ],
+    "status": "LIVE_WHATSAPP_SENT",
+    "messageSnippet": "Opportunity digest with 1 new matches."
+  },
+  {
+    "id": "43ef16f3-81f3-492e-a475-b834ab6e6b7c",
+    "timestamp": "2026-11-23T17:29:41.808502200",
+    "channel": "EMAIL",
+    "recipient": "user-XEfkZIoh1xhwGOtS89owajPi4noIy_jJ8SzEm2w7Xhk",
+    "recipientKey": "user-XEfkZIoh1xhwGOtS89owajPi4noIy_jJ8SzEm2w7Xhk",
+    "opportunityTitle": "Administrative Assistant to the SPIU Coordinator",
+    "opportunityTitles": [
+      "Administrative Assistant to the SPIU Coordinator"
+    ],
+    "sentOpportunityTitles": [
+      "Administrative Assistant to the SPIU Coordinator"
+    ],
+    "sentOpportunityIds": [
+      "mifotra-fd81fd7b"
+    ],
+    "jobCount": 1.0,
+    "matchScore": 69.5,
+    "matchScores": [
+      69.5
+    ],
+    "status": "SIMULATED_EMAIL_SENT",
+    "messageSnippet": "Opportunity digest with 1 new matches."
+  },
+  {
+    "id": "3f9cc9a8-76fb-4c28-9fda-720719d8fcde",
+    "timestamp": "2026-11-23T17:29:41.801499",
+    "channel": "WHATSAPP",
+    "recipient": "Didy",
+    "recipientKey": "hash:XEfkZIoh1xhwGOtS89owajPi4noIy_jJ8SzEm2w7Xhk",
+    "sentOpportunityIds": [
+      "mifotra-fd81fd7b"
+    ],
+    "sentOpportunityTitles": [
+      "Administrative Assistant to the SPIU Coordinator"
+    ],
+    "opportunityTitles": [
+      "Administrative Assistant to the SPIU Coordinator"
+    ],
+    "opportunityTitle": "Administrative Assistant to the SPIU Coordinator",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "matchScores": [
+      69.5
+    ],
+    "status": "LIVE_WHATSAPP_SENT",
+    "messageSnippet": "Opportunity digest with 1 new matches."
+  },
+  {
+    "id": "98d8fee7-ebf5-49b5-903f-34554a858569",
+    "timestamp": "2026-11-23T17:29:41.157090400",
+    "channel": "EMAIL",
+    "recipient": "user-syo35jvlMkqluAfACwAZew4VNKE2FmBbJhRXS-kdLhg",
+    "recipientKey": "user-syo35jvlMkqluAfACwAZew4VNKE2FmBbJhRXS-kdLhg",
+    "opportunityTitle": "Administrative Assistant to the SPIU Coordinator",
+    "opportunityTitles": [
+      "Administrative Assistant to the SPIU Coordinator"
+    ],
+    "sentOpportunityTitles": [
+      "Administrative Assistant to the SPIU Coordinator"
+    ],
+    "sentOpportunityIds": [
+      "mifotra-fd81fd7b"
+    ],
+    "jobCount": 1.0,
+    "matchScore": 69.5,
+    "matchScores": [
+      69.5
+    ],
+    "status": "SIMULATED_EMAIL_SENT",
+    "messageSnippet": "Opportunity digest with 1 new matches."
+  },
+  {
+    "id": "740f0670-e735-4557-bfa4-3e1b7f00a795",
+    "timestamp": "2026-11-23T17:29:41.148091300",
+    "channel": "WHATSAPP",
+    "recipient": "Didy",
+    "recipientKey": "hash:syo35jvlMkqluAfACwAZew4VNKE2FmBbJhRXS-kdLhg",
+    "sentOpportunityIds": [
+      "mifotra-fd81fd7b"
+    ],
+    "sentOpportunityTitles": [
+      "Administrative Assistant to the SPIU Coordinator"
+    ],
+    "opportunityTitles": [
+      "Administrative Assistant to the SPIU Coordinator"
+    ],
+    "opportunityTitle": "Administrative Assistant to the SPIU Coordinator",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "matchScores": [
+      69.5
+    ],
+    "status": "LIVE_WHATSAPP_SENT",
+    "messageSnippet": "Opportunity digest with 1 new matches."
+  },
+  {
+    "id": "09329190-e639-41c2-83df-6bcf58081084",
+    "timestamp": "2026-11-23T17:29:40.447687600",
+    "channel": "EMAIL",
+    "recipient": "user-5TkE_R5BLFVU46-qhr3YfFrSB3vHAMgFyTXr3IELfSM",
+    "recipientKey": "user-5TkE_R5BLFVU46-qhr3YfFrSB3vHAMgFyTXr3IELfSM",
+    "opportunityTitle": "Administrative Assistant to the SPIU Coordinator",
+    "opportunityTitles": [
+      "Administrative Assistant to the SPIU Coordinator"
+    ],
+    "sentOpportunityTitles": [
+      "Administrative Assistant to the SPIU Coordinator"
+    ],
+    "sentOpportunityIds": [
+      "mifotra-fd81fd7b"
+    ],
+    "jobCount": 1.0,
+    "matchScore": 69.5,
+    "matchScores": [
+      69.5
+    ],
+    "status": "SIMULATED_EMAIL_SENT",
+    "messageSnippet": "Opportunity digest with 1 new matches."
+  },
+  {
+    "id": "53eb4921-5bb8-4aaa-a1f6-c297a8cc8fe7",
+    "timestamp": "2026-11-23T17:29:40.439253900",
+    "channel": "WHATSAPP",
+    "recipient": "Uwimana",
+    "recipientKey": "hash:5TkE_R5BLFVU46-qhr3YfFrSB3vHAMgFyTXr3IELfSM",
+    "sentOpportunityIds": [
+      "mifotra-fd81fd7b"
+    ],
+    "sentOpportunityTitles": [
+      "Administrative Assistant to the SPIU Coordinator"
+    ],
+    "opportunityTitles": [
+      "Administrative Assistant to the SPIU Coordinator"
+    ],
+    "opportunityTitle": "Administrative Assistant to the SPIU Coordinator",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "matchScores": [
+      69.5
+    ],
+    "status": "LIVE_WHATSAPP_SENT",
+    "messageSnippet": "Opportunity digest with 1 new matches."
+  },
+  {
+    "id": "3e19744f-99dc-453b-8e8b-8372184a2745",
+    "timestamp": "2026-11-23T17:29:39.909644800",
+    "channel": "EMAIL",
+    "recipient": "user-O1m3psl3lpcVfBT_EvKXxktCF6aiuIgp0YiqRMWtAqM",
+    "recipientKey": "user-O1m3psl3lpcVfBT_EvKXxktCF6aiuIgp0YiqRMWtAqM",
+    "opportunityTitle": "Administrative Assistant to the SPIU Coordinator",
+    "opportunityTitles": [
+      "Administrative Assistant to the SPIU Coordinator"
+    ],
+    "sentOpportunityTitles": [
+      "Administrative Assistant to the SPIU Coordinator"
+    ],
+    "sentOpportunityIds": [
+      "mifotra-fd81fd7b"
+    ],
+    "jobCount": 1.0,
+    "matchScore": 69.5,
+    "matchScores": [
+      69.5
+    ],
+    "status": "SIMULATED_EMAIL_SENT",
+    "messageSnippet": "Opportunity digest with 1 new matches."
+  },
+  {
+    "id": "57d6d97b-4413-42a2-a11b-2eb8a5e3eae1",
+    "timestamp": "2026-11-23T17:29:39.877597600",
+    "channel": "WHATSAPP",
+    "recipient": "Dev",
+    "recipientKey": "hash:O1m3psl3lpcVfBT_EvKXxktCF6aiuIgp0YiqRMWtAqM",
+    "sentOpportunityIds": [
+      "mifotra-fd81fd7b"
+    ],
+    "sentOpportunityTitles": [
+      "Administrative Assistant to the SPIU Coordinator"
+    ],
+    "opportunityTitles": [
+      "Administrative Assistant to the SPIU Coordinator"
+    ],
+    "opportunityTitle": "Administrative Assistant to the SPIU Coordinator",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "matchScores": [
+      69.5
+    ],
+    "status": "LIVE_WHATSAPP_SENT",
+    "messageSnippet": "Opportunity digest with 1 new matches."
+  },
+  {
+    "id": "75454a3a-28ea-4c0d-9d83-11125d1d6ed0",
+    "timestamp": "2026-11-23T15:25:46.613955",
+    "channel": "WHATSAPP",
+    "recipient": "Uwimana",
+    "recipientKey": "hash:mQxR5x-uJMa3dbR9JibuifNXTeID10IfTSDfoFsyYQ8",
+    "sentOpportunityIds": [
+      "mifotra-3023e33b"
+    ],
+    "sentOpportunityTitles": [
+      "Administrative Assistant to the SPIU Coordinator"
+    ],
+    "opportunityTitles": [
+      "Administrative Assistant to the SPIU Coordinator"
+    ],
+    "opportunityTitle": "Administrative Assistant to the SPIU Coordinator",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "matchScores": [
+      69.5
+    ],
+    "status": "LIVE_WHATSAPP_SENT",
+    "messageSnippet": "Opportunity digest with 1 new matches."
+  },
+  {
+    "id": "1650d6e1-d2e3-4747-b2d8-d90f96ac5f06",
+    "timestamp": "2026-11-23T15:25:45.396272500",
+    "channel": "WHATSAPP",
+    "recipient": "Didy",
+    "recipientKey": "hash:syo35jvlMkqluAfACwAZew4VNKE2FmBbJhRXS-kdLhg",
+    "sentOpportunityIds": [
+      "mifotra-3023e33b"
+    ],
+    "sentOpportunityTitles": [
+      "Administrative Assistant to the SPIU Coordinator"
+    ],
+    "opportunityTitles": [
+      "Administrative Assistant to the SPIU Coordinator"
+    ],
+    "opportunityTitle": "Administrative Assistant to the SPIU Coordinator",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "matchScores": [
+      69.5
+    ],
+    "status": "LIVE_WHATSAPP_SENT",
+    "messageSnippet": "Opportunity digest with 1 new matches."
+  },
+  {
+    "id": "bf002555-57a2-433b-b7c0-5ba9783e729d",
+    "timestamp": "2026-11-23T15:25:44.381464600",
+    "channel": "WHATSAPP",
+    "recipient": "Dev",
+    "recipientKey": "hash:O1m3psl3lpcVfBT_EvKXxktCF6aiuIgp0YiqRMWtAqM",
+    "sentOpportunityIds": [
+      "mifotra-3023e33b"
+    ],
+    "sentOpportunityTitles": [
+      "Administrative Assistant to the SPIU Coordinator"
+    ],
+    "opportunityTitles": [
+      "Administrative Assistant to the SPIU Coordinator"
+    ],
+    "opportunityTitle": "Administrative Assistant to the SPIU Coordinator",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "matchScores": [
+      69.5
+    ],
+    "status": "LIVE_WHATSAPP_SENT",
+    "messageSnippet": "Opportunity digest with 1 new matches."
+  },
+  {
+    "id": "d3fb0ff8-2e06-4b5e-bca7-27361986ce7b",
+    "timestamp": "2026-11-23T15:25:43.842410300",
+    "channel": "WHATSAPP",
+    "recipient": "rtyuidh",
+    "recipientKey": "hash:XEfkZIoh1xhwGOtS89owajPi4noIy_jJ8SzEm2w7Xhk",
+    "sentOpportunityIds": [
+      "mifotra-3023e33b"
+    ],
+    "sentOpportunityTitles": [
+      "Administrative Assistant to the SPIU Coordinator"
+    ],
+    "opportunityTitles": [
+      "Administrative Assistant to the SPIU Coordinator"
+    ],
+    "opportunityTitle": "Administrative Assistant to the SPIU Coordinator",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "matchScores": [
+      69.5
+    ],
+    "status": "LIVE_WHATSAPP_SENT",
+    "messageSnippet": "Opportunity digest with 1 new matches."
+  },
+  {
+    "id": "e7794e48-3258-423a-b448-acfd8f69f9f8",
+    "timestamp": "2026-11-23T15:25:43.209723400",
+    "channel": "WHATSAPP",
+    "recipient": "Uwimana",
+    "recipientKey": "hash:5TkE_R5BLFVU46-qhr3YfFrSB3vHAMgFyTXr3IELfSM",
+    "sentOpportunityIds": [
+      "mifotra-3023e33b"
+    ],
+    "sentOpportunityTitles": [
+      "Administrative Assistant to the SPIU Coordinator"
+    ],
+    "opportunityTitles": [
+      "Administrative Assistant to the SPIU Coordinator"
+    ],
+    "opportunityTitle": "Administrative Assistant to the SPIU Coordinator",
+    "organization": "MIFOTRA / Public Service Rwanda",
+    "matchScore": 69.5,
+    "matchScores": [
+      69.5
+    ],
+    "status": "LIVE_WHATSAPP_SENT",
+    "messageSnippet": "Opportunity digest with 1 new matches."
+  },
+  {
     "id": "4053f1d7-0c51-4f5d-a70b-8f5f5720811f",
     "timestamp": "2026-11-23T15:11:20.609192400",
     "channel": "WHATSAPP",

@@ -4,7 +4,9 @@ import Pages.PortalPage;
 import models.JobEntry;
 import models.User;
 import utils.DataHandler;
+import utils.EmailNotifier;
 import utils.MatchingEngine;
+import utils.SmsNotifier;
 import utils.WhatsAppNotifier;
 import org.junit.jupiter.api.Test;
 import com.microsoft.playwright.Locator;
@@ -18,6 +20,8 @@ public class JobScraper extends BaseTest {
     @Test
     void runScraper() {
         WhatsAppNotifier.beginScraperRun();
+        SmsNotifier.beginScraperRun();
+        EmailNotifier.beginScraperRun();
         DataHandler.initializeNotificationsFile();
         Path notificationsPath = DataHandler.getNotificationsPath();
         System.out.println("Notifications file: " + notificationsPath);
@@ -76,6 +80,8 @@ public class JobScraper extends BaseTest {
         if (!newlyDiscoveredJobs.isEmpty()) {
             List<User> subscribers = DataHandler.loadSubscribers();
             WhatsAppNotifier notifier = new WhatsAppNotifier();
+            SmsNotifier smsNotifier = new SmsNotifier();
+            EmailNotifier emailNotifier = new EmailNotifier();
             Set<User> matchedUsers = Collections.newSetFromMap(new IdentityHashMap<>());
             Map<User, List<WhatsAppNotifier.OpportunityMatch>> matchesByUser = new IdentityHashMap<>();
             activeSubscriberCount = (int) subscribers.stream().filter(Objects::nonNull).filter(user -> user.active).count();
@@ -97,10 +103,28 @@ public class JobScraper extends BaseTest {
             }
             matchedUserCount = matchedUsers.size();
             for (Map.Entry<User, List<WhatsAppNotifier.OpportunityMatch>> entry : matchesByUser.entrySet()) {
-                int includedCount = notifier.notifyUserWithDigest(entry.getKey(), entry.getValue());
-                if (includedCount > 0) {
-                    notificationsWritten++;
-                    opportunitiesIncludedInDigests += includedCount;
+                User user = entry.getKey();
+                List<WhatsAppNotifier.OpportunityMatch> userMatches = entry.getValue();
+                if (user.notifyWhatsApp) {
+                    int includedCount = notifier.notifyUserWithDigest(user, userMatches);
+                    if (includedCount > 0) {
+                        notificationsWritten++;
+                        opportunitiesIncludedInDigests += includedCount;
+                    }
+                }
+                if (user.notifyEmail) {
+                    int includedCount = emailNotifier.notifyUserWithDigest(user, userMatches);
+                    if (includedCount > 0) {
+                        notificationsWritten++;
+                        opportunitiesIncludedInDigests += includedCount;
+                    }
+                }
+                if (user.notifySms) {
+                    int includedCount = smsNotifier.notifyUserWithDigest(user, userMatches);
+                    if (includedCount > 0) {
+                        notificationsWritten++;
+                        opportunitiesIncludedInDigests += includedCount;
+                    }
                 }
             }
         } else {
